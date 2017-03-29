@@ -53,12 +53,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="InversionOfControl\Ioc.cs" />
     <Compile Include="InversionOfControl\IocContainer.cs" />
     <Compile Include="InversionOfControl\UnityContainerWrapper.cs" />
     <Compile Include="NullableResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RuntimeChecks\ArgumentChecks.cs" />
+    <Compile Include="StartUp\IProjectInitializationPlugin.cs" />
+    <Compile Include="StartUp\ProjectInitializationPluginAttribute.cs" />
+    <Compile Include="StartUp\StartUp.cs" />
+    <Compile Include="StartUp\StartUpException.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

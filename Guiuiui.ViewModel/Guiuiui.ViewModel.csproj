@@ -49,6 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControls\ICustomControlAdapter.cs" />
+    <Compile Include="DataBinding\IBindable.cs" />
+    <Compile Include="DataBinding\IPropertyPredicate.cs" />
+    <Compile Include="IViewModel.cs" />
+    <Compile Include="IViewModelFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
