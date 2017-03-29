@@ -6,8 +6,6 @@
 
 namespace Guiuiui.ViewModel.Services
 {
-    using System;
-
     /// <summary>
     /// See <see cref="IViewModelFactory"/>.
     /// </summary>
