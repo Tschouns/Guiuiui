@@ -51,7 +51,7 @@ bin/
 obj/
 
 # User options file
-.vs/SnapshotManager/v14/.suo
+.vs/Guiuiui/v14/.suo
 
 # Style Cop cache files
 **/StyleCop.Cache
