@@ -20,17 +20,17 @@ namespace Guiuiui.ViewModel.DataBinding
         /// <summary>
         /// Binds a property read-only.
         /// </summary>
-        /// <typeparam name="TProperty">
-        /// Type of the property
+        /// <typeparam name="TPropertyValue">
+        /// Type of the property value
         /// </typeparam>
-        IPropertyPredicate PropertyGet<TProperty>(Func<TModel, TProperty> getFunc);
+        IPropertyPredicate PropertyGet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc);
 
         /// <summary>
         /// Binds a property two-way.
         /// </summary>
-        /// <typeparam name="TProperty">
-        /// Type of the property
+        /// <typeparam name="TPropertyValue">
+        /// Type of the property value
         /// </typeparam>
-        IPropertyPredicate PropertyGetAndSet<TProperty>(Func<TModel, TProperty> getFunc, Action<TProperty, TModel> SetAction);
+        IPropertyPredicate PropertyGetAndSet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TPropertyValue, TModel> SetAction);
     }
 }

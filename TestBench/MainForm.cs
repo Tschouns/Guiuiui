@@ -88,7 +88,6 @@
             }
         }
 
-
         private void personListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             this._personViewModel.Model = GetSelectedModel<Person>(this.personListView);
