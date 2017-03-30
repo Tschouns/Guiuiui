@@ -45,6 +45,10 @@
     <Compile Include="ControlAdapter\GenericTextBoxAdapter.cs" />
     <Compile Include="ControlAdapter\IControlAdapter.cs" />
     <Compile Include="Conversion\StringToIntConversion.cs" />
+    <Compile Include="DataBinding\DataBinding.cs" />
+    <Compile Include="DataBinding\IDataBinding.cs" />
+    <Compile Include="DataBinding\IGetter.cs" />
+    <Compile Include="DataBinding\ISetter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel.cs" />
     <Compile Include="ViewModelFactory.cs" />
@@ -60,9 +64,7 @@
       <Name>Guiuiui.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataBinding\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

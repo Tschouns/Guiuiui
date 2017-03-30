@@ -53,6 +53,8 @@
     <Compile Include="Conversion\IConversion.cs" />
     <Compile Include="CustomControls\ICustomControlAdapter.cs" />
     <Compile Include="DataBinding\IBindable.cs" />
+    <Compile Include="DataBinding\INotifiable.cs" />
+    <Compile Include="DataBinding\INotifyOnValuesChanged.cs" />
     <Compile Include="DataBinding\IPropertyPredicate.cs" />
     <Compile Include="IViewModel.cs" />
     <Compile Include="IViewModelFactory.cs" />

@@ -6,6 +6,7 @@
 
 namespace Guiuiui.ViewModel.Services
 {
+    using System;
     using Guiuiui.ViewModel.DataBinding;
 
     /// <summary>
@@ -17,7 +18,38 @@ namespace Guiuiui.ViewModel.Services
     public class ViewModel<TModel> : IViewModel<TModel>
         where TModel : class
     {
-        public IBindable<TModel> Bind { get; }
+        /// <summary>
+        /// See <see cref="INotifyOnValueChanged.ValueChanged"/>.
+        /// </summary>
+        public event EventHandler ValueChanged;
+
+        /// <summary>
+        /// See <see cref="IViewModel{TModel}.Model"/>.
+        /// </summary>
         public TModel Model { get; set; }
+
+        /// <summary>
+        /// See <see cref="IBindable{TModel}.BindPropertyGet{TPropertyValue}(Func{TModel, TPropertyValue})"/>.
+        /// </summary>
+        public IPropertyPredicate BindPropertyGet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// See <see cref="IBindable{TModel}.BindPropertyGetAndSet{TPropertyValue}(Func{TModel, TPropertyValue}, Action{TPropertyValue, TModel})"/>.
+        /// </summary>
+        public IPropertyPredicate BindPropertyGetAndSet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TPropertyValue, TModel> SetAction)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// See <see cref="INotifiable.NotifyValueHasChanged"/>.
+        /// </summary>
+        public void NotifyValueHasChanged()
+        {
+            this.ValueChanged?.Invoke(this, new EventArgs());
+        }
     }
 }

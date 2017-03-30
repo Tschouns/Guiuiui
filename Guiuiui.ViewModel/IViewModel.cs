@@ -15,14 +15,9 @@ namespace Guiuiui.ViewModel
     /// <typeparam name="TModel">
     /// Type of the underlying data model
     /// </typeparam>
-    public interface IViewModel<TModel>
+    public interface IViewModel<TModel> : INotifyOnValueChanged, INotifiable, IBindable<TModel>
         where TModel : class
     {
-        /// <summary>
-        /// Gets the <see cref="IBindable{TModel}"/>, to set up the data binding.
-        /// </summary>
-        IBindable<TModel> Bind { get; }
-
         /// <summary>
         /// Gets or sets the actual data model.
         /// </summary>
