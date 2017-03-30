@@ -18,6 +18,8 @@ namespace Guiuiui.ViewModel.Services
     public class ViewModel<TModel> : IViewModel<TModel>
         where TModel : class
     {
+        private TModel _model = null;
+
         /// <summary>
         /// See <see cref="INotifyOnValueChanged.ValueChanged"/>.
         /// </summary>
@@ -26,7 +28,15 @@ namespace Guiuiui.ViewModel.Services
         /// <summary>
         /// See <see cref="IViewModel{TModel}.Model"/>.
         /// </summary>
-        public TModel Model { get; set; }
+        public TModel Model
+        {
+            get { return this._model; }
+            set
+            {
+                this._model = value;
+                this.OnValueChanged();
+            }
+        }
 
         /// <summary>
         /// See <see cref="IBindable{TModel}.BindPropertyGet{TPropertyValue}(Func{TModel, TPropertyValue})"/>.
@@ -48,6 +58,14 @@ namespace Guiuiui.ViewModel.Services
         /// See <see cref="INotifiable.NotifyValueHasChanged"/>.
         /// </summary>
         public void NotifyValueHasChanged()
+        {
+            this.OnValueChanged();
+        }
+
+        /// <summary>
+        /// Raises the <see cref="INotifyOnValueChanged.ValueChanged"/> event.
+        /// </summary>
+        private void OnValueChanged()
         {
             this.ValueChanged?.Invoke(this, new EventArgs());
         }

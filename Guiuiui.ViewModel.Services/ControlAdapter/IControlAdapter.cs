@@ -19,7 +19,7 @@ namespace Guiuiui.ViewModel.Services.ControlAdapter
         /// <summary>
         /// Raised whenever the value of the underlying control has changed.
         /// </summary>
-        event EventHandler<ControlValueChangedEventArgs<TValue>> ValueChanged;
+        event EventHandler<ControlValueChangedEventArgs<TValue>> ControlValueChanged;
 
         /// <summary>
         /// Gets or sets the current value of the control.

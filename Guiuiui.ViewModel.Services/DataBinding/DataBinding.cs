@@ -6,25 +6,83 @@
 
 namespace Guiuiui.ViewModel.Services.DataBinding
 {
+    using Base.RuntimeChecks;
+    using ControlAdapter;
     using System;
+    using ViewModel.DataBinding;
 
     /// <summary>
     /// See <see cref="IDataBinding"/>.
     /// </summary>
     public class DataBinding<TPropertyValue> : IDataBinding
     {
-        public DataBinding(
-            )
-        {
+        private readonly INotifyOnValueChanged _model;
+        private readonly IGetter<TPropertyValue> _modelPropertyGetter;
+        private readonly ISetter<TPropertyValue> _modelPropertySetter;
+        private readonly IControlAdapter<TPropertyValue> _controlAdapter;
 
+        private TPropertyValue _currentValue;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DataBinding{TPropertyValue}"/> class.
+        /// </summary>
+        public DataBinding(
+            INotifyOnValueChanged model,
+            IGetter<TPropertyValue> modelPropertyGetter,
+            ISetter<TPropertyValue> modelPropertySetter,
+            IControlAdapter<TPropertyValue> controlAdapter)
+        {
+            ArgumentChecks.AssertNotNull(model, nameof(model));
+            ArgumentChecks.AssertNotNull(modelPropertyGetter, nameof(modelPropertyGetter));
+            ArgumentChecks.AssertNotNull(modelPropertySetter, nameof(modelPropertySetter));
+            ArgumentChecks.AssertNotNull(controlAdapter, nameof(controlAdapter));
+
+            this._model = model;
+            this._modelPropertyGetter = modelPropertyGetter;
+            this._modelPropertySetter = modelPropertySetter;
+            this._controlAdapter = controlAdapter;
+
+            this._model.ValueChanged += this.Model_ValueChanged;
+            this._controlAdapter.ControlValueChanged += this.ControlAdapter_ControlValueChanged;
+
+            this.IsBound = true;
         }
+
+        /// <summary>
+        /// See <see cref="IDataBinding.IsBound"/>.
+        /// </summary>
+        public bool IsBound { get; private set; }
 
         /// <summary>
         /// See <see cref="IDataBinding.Unbind"/>.
         /// </summary>
         public void Unbind()
         {
-            throw new NotImplementedException();
+            if (this.IsBound)
+            {
+                // Stop observing. This will cause this instance to no longer be referenced via the
+                // event handlers, and will eventually allow it to be garbage collected.
+                this._model.ValueChanged -= this.Model_ValueChanged;
+                this._controlAdapter.ControlValueChanged -= this.ControlAdapter_ControlValueChanged;
+
+                this.IsBound = false;
+            }
+        }
+
+        private void Model_ValueChanged(object sender, EventArgs e)
+        {
+            var modelValue = this._modelPropertyGetter.Get();
+            if (!object.Equals(modelValue, this._currentValue))
+            {
+                this._currentValue = modelValue;
+                this._controlAdapter.Value = modelValue;
+            }
+        }
+
+        private void ControlAdapter_ControlValueChanged(object sender, ControlValueChangedEventArgs<TPropertyValue> e)
+        {
+            this._currentValue = this._controlAdapter.Value;
+            this._modelPropertySetter.Set(this._controlAdapter.Value);
         }
     }
 }

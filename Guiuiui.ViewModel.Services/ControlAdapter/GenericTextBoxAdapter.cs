@@ -39,9 +39,9 @@ namespace Guiuiui.ViewModel.Services.ControlAdapter
         }
 
         /// <summary>
-        /// See <see cref="IControlAdapter{TValue}.ValueChanged"/>.
+        /// See <see cref="IControlAdapter{TValue}.ControlValueChanged"/>.
         /// </summary>
-        public event EventHandler<ControlValueChangedEventArgs<TValue>> ValueChanged;
+        public event EventHandler<ControlValueChangedEventArgs<TValue>> ControlValueChanged;
 
         /// <summary>
         /// See <see cref="IControlAdapter{TValue}.Value"/>.
@@ -65,7 +65,7 @@ namespace Guiuiui.ViewModel.Services.ControlAdapter
             if (result.IsSuccessful)
             {
                 this._currentValue = result.Result;
-                this.ValueChanged?.Invoke(this, new ControlValueChangedEventArgs<TValue>(this));
+                this.ControlValueChanged?.Invoke(this, new ControlValueChangedEventArgs<TValue>(this));
                 return;
             }
 

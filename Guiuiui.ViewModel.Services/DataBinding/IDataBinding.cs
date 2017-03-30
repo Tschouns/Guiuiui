@@ -12,6 +12,11 @@ namespace Guiuiui.ViewModel.Services.DataBinding
     public interface IDataBinding
     {
         /// <summary>
+        /// Gets a value indicating whether this data binding is active, or already "unbound".
+        /// </summary>
+        bool IsBound { get; }
+
+        /// <summary>
         /// "Unbinds" the property and control, i.e. makes this data binding ineffective.
         /// </summary>
         void Unbind();
