@@ -8,6 +8,10 @@ namespace Guiuiui.ViewModel.Services
 {
     using System;
     using Guiuiui.ViewModel.DataBinding;
+    using DataBinding;
+    using System.Collections;
+    using System.Collections.Generic;
+    using Base.RuntimeChecks;
 
     /// <summary>
     /// See <see cref="IViewModel{TModel}"/>.
@@ -18,6 +22,7 @@ namespace Guiuiui.ViewModel.Services
     public class ViewModel<TModel> : IViewModel<TModel>
         where TModel : class
     {
+        private readonly IList<IDataBinding> _dataBindings = new List<IDataBinding>();
         private TModel _model = null;
 
         /// <summary>
@@ -60,6 +65,16 @@ namespace Guiuiui.ViewModel.Services
         public void NotifyValueHasChanged()
         {
             this.OnValueChanged();
+        }
+
+        /// <summary>
+        /// Call-back method, adds a new data binding.
+        /// </summary>
+        private void AddDataBidning(IDataBinding dataBinding)
+        {
+            ArgumentChecks.AssertNotNull(dataBinding, nameof(dataBinding));
+
+            this._dataBindings.Add(dataBinding);
         }
 
         /// <summary>

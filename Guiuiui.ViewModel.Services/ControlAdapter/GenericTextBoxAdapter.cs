@@ -24,6 +24,9 @@ namespace Guiuiui.ViewModel.Services.ControlAdapter
         private readonly TextBox _textBox;
         private TValue _currentValue;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GenericTextBoxAdapter{TValue}"/> class.
+        /// </summary>
         public GenericTextBoxAdapter(
             IConversion<string, TValue> textToValueConversion,
             TextBox textBox)
