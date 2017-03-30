@@ -31,6 +31,6 @@ namespace Guiuiui.ViewModel.DataBinding
         /// <typeparam name="TPropertyValue">
         /// Type of the property value
         /// </typeparam>
-        IPropertyPredicate BindPropertyGetAndSet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TPropertyValue, TModel> SetAction);
+        IPropertyPredicate BindPropertyGetAndSet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TModel, TPropertyValue> SetAction);
     }
 }
