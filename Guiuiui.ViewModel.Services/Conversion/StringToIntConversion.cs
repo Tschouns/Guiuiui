@@ -7,6 +7,7 @@
 namespace Guiuiui.ViewModel.Services.Conversion
 {
     using System;
+    using ViewModel.Conversion;
 
     /// <summary>
     /// See <see cref="IConversion{TFrom,TTo}"/>. Converts from <see cref="string"/> to <see cref="int"/>.

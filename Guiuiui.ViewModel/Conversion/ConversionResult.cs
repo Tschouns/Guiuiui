@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Guiuiui.ViewModel.Services.Conversion
+namespace Guiuiui.ViewModel.Conversion
 {
     /// <summary>
     /// Respresents the result of a conversion.

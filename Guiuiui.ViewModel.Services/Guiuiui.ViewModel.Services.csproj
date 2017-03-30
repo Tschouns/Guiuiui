@@ -44,8 +44,6 @@
     <Compile Include="ControlAdapter\ControlValueChangedEventArgs.cs" />
     <Compile Include="ControlAdapter\GenericTextBoxAdapter.cs" />
     <Compile Include="ControlAdapter\IControlAdapter.cs" />
-    <Compile Include="Conversion\ConversionResult.cs" />
-    <Compile Include="Conversion\IConversion.cs" />
     <Compile Include="Conversion\StringToIntConversion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel.cs" />

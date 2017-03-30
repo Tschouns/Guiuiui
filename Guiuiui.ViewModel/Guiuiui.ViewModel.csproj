@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conversion\ConversionResult.cs" />
+    <Compile Include="Conversion\IConversion.cs" />
     <Compile Include="CustomControls\ICustomControlAdapter.cs" />
     <Compile Include="DataBinding\IBindable.cs" />
     <Compile Include="DataBinding\IPropertyPredicate.cs" />

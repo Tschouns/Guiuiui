@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Guiuiui.ViewModel.Services.Conversion
+namespace Guiuiui.ViewModel.Conversion
 {
     /// <summary>
     /// Provides a method to convert from one type to another.
