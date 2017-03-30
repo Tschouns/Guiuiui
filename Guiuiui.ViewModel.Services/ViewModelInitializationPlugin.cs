@@ -9,6 +9,7 @@ namespace Guiuiui.ViewModel.Services
     using Guiuiui.Base.InversionOfControl;
     using Guiuiui.Base.StartUp;
     using Guiuiui.ViewModel.Services.Conversion;
+    using ViewModel.Conversion;
 
     [ProjectInitializationPlugin]
     public class ViewModelInitializationPlugin : IProjectInitializationPlugin

@@ -10,6 +10,7 @@ namespace Guiuiui.ViewModel.Services.ControlAdapter
     using System.Windows.Forms;
     using Guiuiui.Base.RuntimeChecks;
     using Guiuiui.ViewModel.Services.Conversion;
+    using ViewModel.Conversion;
 
     /// <summary>
     /// See <see cref="IControlAdapter{TValue}"/>.
