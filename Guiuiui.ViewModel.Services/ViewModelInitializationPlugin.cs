@@ -20,6 +20,12 @@ namespace Guiuiui.ViewModel.Services
 
             // Conversions
             Ioc.Container.RegisterSingleton<IConversion<string, int>, StringToIntConversion>();
+
+            Ioc.Container.RegisterSingleton<IConversion<bool, bool>, DummyConversion<bool>>();
+            Ioc.Container.RegisterSingleton<IConversion<int, int>, DummyConversion<int>>();
+            Ioc.Container.RegisterSingleton<IConversion<double, double>, DummyConversion<double>>();
+            Ioc.Container.RegisterSingleton<IConversion<decimal, decimal>, DummyConversion<decimal>>();
+            Ioc.Container.RegisterSingleton<IConversion<string, string>, DummyConversion<string>>();
         }
     }
 }

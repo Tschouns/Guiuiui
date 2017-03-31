@@ -37,6 +37,11 @@ namespace Guiuiui.ViewModel.Services.DataBinding
         /// </summary>
         public void Set(TPropertyValue value)
         {
+            if (this._viewModel.Model == null)
+            {
+                return;
+            }
+
             this._setAction(this._viewModel.Model, value);
             this._viewModel.NotifyValueHasChanged();
         }

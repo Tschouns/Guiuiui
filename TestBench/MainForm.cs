@@ -7,6 +7,7 @@
     using Guiuiui.Base.RuntimeChecks;
     using Guiuiui.ViewModel;
     using TestBench.SampleModels;
+    using System;
 
     /// <summary>
     /// Merely a little test bench for the <see cref="Guiuiui"/> namespace...
@@ -27,6 +28,7 @@
             this.InitializeComponent();
 
             this._personViewModel = viewModelFactory.CreateViewModel<Person>();
+            this.SetupDataBinding();
             this.InitializePersonListView();
         }
 
@@ -39,6 +41,12 @@
                 .FirstOrDefault();
 
             return selectedModel;
+        }
+
+        private void SetupDataBinding()
+        {
+            this._personViewModel.BindPropertyGetAndSet(p => p.FirstName, (p, v) => p.FirstName = v).ToTextBox(this.firstNameTextBox);
+            this._personViewModel.BindPropertyGetAndSet(p => p.Name, (p, v) => p.Name = v).ToTextBox(this.nameTextBox);
         }
 
         private void InitializePersonListView()

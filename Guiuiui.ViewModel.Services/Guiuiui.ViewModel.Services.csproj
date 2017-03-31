@@ -44,6 +44,7 @@
     <Compile Include="ControlAdapter\ControlValueChangedEventArgs.cs" />
     <Compile Include="ControlAdapter\GenericTextBoxAdapter.cs" />
     <Compile Include="ControlAdapter\IControlAdapter.cs" />
+    <Compile Include="Conversion\DummyConversion.cs" />
     <Compile Include="Conversion\StringToIntConversion.cs" />
     <Compile Include="DataBinding\DataBinding.cs" />
     <Compile Include="DataBinding\IDataBinding.cs" />

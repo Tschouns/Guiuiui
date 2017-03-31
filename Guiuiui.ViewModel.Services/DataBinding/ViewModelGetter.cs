@@ -37,6 +37,11 @@ namespace Guiuiui.ViewModel.Services.DataBinding
         /// </summary>
         public TPropertyValue Get()
         {
+            if (this._viewModel.Model == null)
+            {
+                return default(TPropertyValue);
+            }
+
             var value = this._getFunc(this._viewModel.Model);
 
             return value;

@@ -54,9 +54,13 @@ namespace Guiuiui.ViewModel.Services
         /// <summary>
         /// See <see cref="IBindable{TModel}.BindPropertyGetAndSet{TPropertyValue}(Func{TModel, TPropertyValue}, Action{TModel, TPropertyValue})"/>.
         /// </summary>
-        public IPropertyPredicate BindPropertyGetAndSet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TModel, TPropertyValue> SetAction)
+        public IPropertyPredicate BindPropertyGetAndSet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TModel, TPropertyValue> setAction)
         {
-            throw new NotImplementedException();
+            var getter = new ViewModelGetter<TModel, TPropertyValue>(this, getFunc);
+            var setter = new ViewModelSetter<TModel, TPropertyValue>(this, setAction);
+            var predicate = new PropertyPredicate<TModel, TPropertyValue>(this, getter, setter, this.AddDataBidning);
+
+            return predicate;
         }
 
         /// <summary>
