@@ -17,34 +17,30 @@ namespace Guiuiui.ViewModel.Services.DataBinding
     /// <summary>
     /// Implementation of the <see cref="IPropertyPredicate"/>. Creates the actual data binding.
     /// </summary>
-    public class PropertyPredicate<TModel, TPropertyValue> : IPropertyPredicate
+    public class ReadOnlyPropertyPredicate<TModel, TPropertyValue> : IPropertyPredicate
         where TModel : class
     {
         // These fields are needed to create the data binding.
         private readonly INotifyOnValueChanged _model;
         private readonly IGetter<TPropertyValue> _getter;
-        private readonly ISetter<TPropertyValue> _setter;
 
         // Call-back used to "return" the new data binding.
         private readonly Action<IDataBinding> _addDataBindingCallback;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PropertyPredicate{TModel, TPropertyValue}"/> class.
+        /// Initializes a new instance of the <see cref="TwoWayPropertyPredicate{TModel,TPropertyValue}"/> class.
         /// </summary>
-        public PropertyPredicate(
+        public ReadOnlyPropertyPredicate(
             INotifyOnValueChanged model,
             IGetter<TPropertyValue> getter,
-            ISetter<TPropertyValue> setter,
             Action<IDataBinding> addDataBindingCallback)
         {
             ArgumentChecks.AssertNotNull(model, nameof(model));
             ArgumentChecks.AssertNotNull(getter, nameof(getter));
-            ArgumentChecks.AssertNotNull(setter, nameof(setter));
             ArgumentChecks.AssertNotNull(addDataBindingCallback, nameof(addDataBindingCallback));
 
             this._model = model;
             this._getter = getter;
-            this._setter = setter;
             this._addDataBindingCallback = addDataBindingCallback;
         }
 
@@ -56,7 +52,7 @@ namespace Guiuiui.ViewModel.Services.DataBinding
             // TODO: put this in a factory:
             var comboBoxAdapter = new GenericComboBoxAdapter<TPropertyValue>(comboBox);
 
-            var dataBinding = new DataBinding<TPropertyValue>(this._model, this._getter, this._setter, comboBoxAdapter);
+            var dataBinding = new ReadOnlyDataBinding<TPropertyValue>(this._model, this._getter, comboBoxAdapter);
 
             this._addDataBindingCallback(dataBinding);
         }
@@ -72,7 +68,7 @@ namespace Guiuiui.ViewModel.Services.DataBinding
             var conversion = Ioc.Container.Resolve<IConversion<string, TPropertyValue>>();
             var textBoxAdapter = new GenericTextBoxAdapter<TPropertyValue>(conversion, textBox);
 
-            var dataBinding = new DataBinding<TPropertyValue>(this._model, this._getter, this._setter, textBoxAdapter);
+            var dataBinding = new ReadOnlyDataBinding<TPropertyValue>(this._model, this._getter, textBoxAdapter);
 
             this._addDataBindingCallback(dataBinding);
         }

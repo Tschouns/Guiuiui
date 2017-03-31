@@ -14,7 +14,7 @@ namespace Guiuiui.ViewModel.Services.DataBinding
     /// <summary>
     /// See <see cref="IDataBinding"/>.
     /// </summary>
-    public class DataBinding<TPropertyValue> : IDataBinding
+    public class TwoWayDataBinding<TPropertyValue> : IDataBinding
     {
         private readonly INotifyOnValueChanged _model;
         private readonly IGetter<TPropertyValue> _modelPropertyGetter;
@@ -22,9 +22,9 @@ namespace Guiuiui.ViewModel.Services.DataBinding
         private readonly IControlAdapter<TPropertyValue> _controlAdapter;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DataBinding{TPropertyValue}"/> class.
+        /// Initializes a new instance of the <see cref="TwoWayDataBinding{TPropertyValue}"/> class.
         /// </summary>
-        public DataBinding(
+        public TwoWayDataBinding(
             INotifyOnValueChanged model,
             IGetter<TPropertyValue> modelPropertyGetter,
             ISetter<TPropertyValue> modelPropertySetter,

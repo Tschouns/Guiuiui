@@ -48,7 +48,10 @@ namespace Guiuiui.ViewModel.Services
         /// </summary>
         public IPropertyPredicate BindPropertyGet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc)
         {
-            throw new NotImplementedException();
+            var getter = new ViewModelGetter<TModel, TPropertyValue>(this, getFunc);
+            var predicate = new ReadOnlyPropertyPredicate<TModel, TPropertyValue>(this, getter, this.AddDataBidning);
+
+            return predicate;
         }
 
         /// <summary>
@@ -58,7 +61,7 @@ namespace Guiuiui.ViewModel.Services
         {
             var getter = new ViewModelGetter<TModel, TPropertyValue>(this, getFunc);
             var setter = new ViewModelSetter<TModel, TPropertyValue>(this, setAction);
-            var predicate = new PropertyPredicate<TModel, TPropertyValue>(this, getter, setter, this.AddDataBidning);
+            var predicate = new TwoWayPropertyPredicate<TModel, TPropertyValue>(this, getter, setter, this.AddDataBidning);
 
             return predicate;
         }

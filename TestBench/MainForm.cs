@@ -45,7 +45,8 @@
         private void SetupDataBinding()
         {
             this._personViewModel.BindPropertyGetAndSet(p => p.FirstName, (p, v) => p.FirstName = v).ToTextBox(this.firstNameTextBox);
-            this._personViewModel.BindPropertyGetAndSet(p => p.Name, (p, v) => p.Name = v).ToTextBox(this.nameTextBox);
+            this._personViewModel.BindPropertyGetAndSet(p => p.LastName, (p, v) => p.LastName = v).ToTextBox(this.nameTextBox);
+            this._personViewModel.BindPropertyGet(p => p.FullName).ToTextBox(this.fullNameTextBox);
             this._personViewModel.BindPropertyGetAndSet(p => p.Age, (p, v) => p.Age = v).ToTextBox(this.ageTextBox);
             this._personViewModel.BindPropertyGetAndSet(p => p.Gender, (p, v) => p.Gender = v).ToComboBox(this.genderComboBox);
         }
@@ -60,7 +61,7 @@
         {
             var fritzMeier = new Person()
             {
-                Name = "Meier",
+                LastName = "Meier",
                 FirstName = "Fritz",
                 Age = 34,
                 Gender = Gender.Male
@@ -68,7 +69,7 @@
 
             var hugoHugentobler = new Person()
             {
-                Name = "Hugentobler",
+                LastName = "Hugentobler",
                 FirstName = "Hugo",
                 Age = 77,
                 Gender = Gender.Male
@@ -76,7 +77,7 @@
 
             var hubertStaffelbach = new Person()
             {
-                Name = "Staffelbach",
+                LastName = "Staffelbach",
                 FirstName = "Hubert",
                 Age = 50,
                 Gender = Gender.Male
@@ -84,7 +85,7 @@
 
             var gunhildeStaffelbach = new Person()
             {
-                Name = "Staffelbach",
+                LastName = "Staffelbach",
                 FirstName = "Gunhilde",
                 Age = 51,
                 Gender = Gender.Female
@@ -100,7 +101,7 @@
 
             foreach (var person in persons)
             {
-                this.personListView.Items.Add(new ListViewItem(person.FirstName + " " + person.Name)
+                this.personListView.Items.Add(new ListViewItem(person.FirstName + " " + person.LastName)
                 {
                     Tag = person
                 });

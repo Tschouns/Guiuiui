@@ -47,11 +47,13 @@
     <Compile Include="ControlAdapter\IControlAdapter.cs" />
     <Compile Include="Conversion\DummyConversion.cs" />
     <Compile Include="Conversion\StringToIntConversion.cs" />
-    <Compile Include="DataBinding\DataBinding.cs" />
+    <Compile Include="DataBinding\ReadOnlyDataBinding.cs" />
+    <Compile Include="DataBinding\ReadOnlyPropertyPredicate.cs" />
+    <Compile Include="DataBinding\TwoWayDataBinding.cs" />
     <Compile Include="DataBinding\IDataBinding.cs" />
     <Compile Include="DataBinding\IGetter.cs" />
     <Compile Include="DataBinding\ISetter.cs" />
-    <Compile Include="DataBinding\PropertyPredicate.cs" />
+    <Compile Include="DataBinding\TwoWayPropertyPredicate.cs" />
     <Compile Include="DataBinding\ViewModelGetter.cs" />
     <Compile Include="DataBinding\ViewModelSetter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
