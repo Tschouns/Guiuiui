@@ -21,6 +21,6 @@ namespace Guiuiui.ViewModel.DataBinding
         /// <summary>
         /// Binds a combo box to the property.
         /// </summary>
-        void ToComboBox(ComboBox ComboBox);
+        void ToComboBox(ComboBox comboBox);
     }
 }

@@ -4,6 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+// TODO: this is probably not needed like this... perhaps split into parser (always "from string") and string converter (always "to string")...
+
 namespace Guiuiui.ViewModel.Conversion
 {
     /// <summary>

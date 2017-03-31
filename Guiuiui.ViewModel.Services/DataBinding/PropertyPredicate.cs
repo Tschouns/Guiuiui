@@ -51,9 +51,14 @@ namespace Guiuiui.ViewModel.Services.DataBinding
         /// <summary>
         /// See <see cref="IPropertyPredicate.ToComboBox(ComboBox)"/>.
         /// </summary>
-        public void ToComboBox(ComboBox ComboBox)
+        public void ToComboBox(ComboBox comboBox)
         {
-            throw new NotImplementedException();
+            // TODO: put this in a factory:
+            var comboBoxAdapter = new GenericComboBoxAdapter<TPropertyValue>(comboBox);
+
+            var dataBinding = new DataBinding<TPropertyValue>(this._model, this._getter, this._setter, comboBoxAdapter);
+
+            this._addDataBindingCallback(dataBinding);
         }
 
         /// <summary>

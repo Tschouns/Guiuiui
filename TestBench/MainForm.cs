@@ -29,6 +29,7 @@
 
             this._personViewModel = viewModelFactory.CreateViewModel<Person>();
             this.SetupDataBinding();
+            this.FillComboBoxes();
             this.InitializePersonListView();
         }
 
@@ -47,6 +48,13 @@
         {
             this._personViewModel.BindPropertyGetAndSet(p => p.FirstName, (p, v) => p.FirstName = v).ToTextBox(this.firstNameTextBox);
             this._personViewModel.BindPropertyGetAndSet(p => p.Name, (p, v) => p.Name = v).ToTextBox(this.nameTextBox);
+            this._personViewModel.BindPropertyGetAndSet(p => p.Gender, (p, v) => p.Gender = v).ToComboBox(this.genderComboBox);
+        }
+
+        private void FillComboBoxes()
+        {
+            this.genderComboBox.Items.Add(Gender.Male);
+            this.genderComboBox.Items.Add(Gender.Female);
         }
 
         private void InitializePersonListView()
