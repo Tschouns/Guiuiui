@@ -19,7 +19,6 @@ namespace Guiuiui.ViewModel.Services.ControlAdapter
     public class GenericComboBoxAdapter<TValue> : IControlAdapter<TValue>
     {
         private readonly ComboBox _comboBox;
-        private bool _suspendControlValueChanged = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GenericComboBoxAdapter{TValue}"/> class.
@@ -50,9 +49,7 @@ namespace Guiuiui.ViewModel.Services.ControlAdapter
 
             set
             {
-                this._suspendControlValueChanged = true;
                 this._comboBox.SelectedItem = value;
-                this._suspendControlValueChanged = false;
             }
         }
 
@@ -68,11 +65,6 @@ namespace Guiuiui.ViewModel.Services.ControlAdapter
 
         private void ComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (this._suspendControlValueChanged)
-            {
-                return;
-            }
-
             this.ControlValueChanged?.Invoke(this, new ControlValueChangedEventArgs<TValue>(this));
         }
     }

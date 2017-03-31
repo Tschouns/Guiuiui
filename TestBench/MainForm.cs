@@ -1,13 +1,11 @@
 ﻿namespace TestBench
 {
-    using System.Collections.Generic;
     using System.Windows.Forms;
     using System.Linq;
     using Guiuiui.Base.InversionOfControl;
     using Guiuiui.Base.RuntimeChecks;
     using Guiuiui.ViewModel;
     using TestBench.SampleModels;
-    using System;
 
     /// <summary>
     /// Merely a little test bench for the <see cref="Guiuiui"/> namespace...
@@ -48,6 +46,7 @@
         {
             this._personViewModel.BindPropertyGetAndSet(p => p.FirstName, (p, v) => p.FirstName = v).ToTextBox(this.firstNameTextBox);
             this._personViewModel.BindPropertyGetAndSet(p => p.Name, (p, v) => p.Name = v).ToTextBox(this.nameTextBox);
+            this._personViewModel.BindPropertyGetAndSet(p => p.Age, (p, v) => p.Age = v).ToTextBox(this.ageTextBox);
             this._personViewModel.BindPropertyGetAndSet(p => p.Gender, (p, v) => p.Gender = v).ToComboBox(this.genderComboBox);
         }
 
@@ -63,6 +62,7 @@
             {
                 Name = "Meier",
                 FirstName = "Fritz",
+                Age = 34,
                 Gender = Gender.Male
             };
 
@@ -70,6 +70,7 @@
             {
                 Name = "Hugentobler",
                 FirstName = "Hugo",
+                Age = 77,
                 Gender = Gender.Male
             };
 
@@ -77,6 +78,7 @@
             {
                 Name = "Staffelbach",
                 FirstName = "Hubert",
+                Age = 50,
                 Gender = Gender.Male
             };
 
@@ -84,6 +86,7 @@
             {
                 Name = "Staffelbach",
                 FirstName = "Gunhilde",
+                Age = 51,
                 Gender = Gender.Female
             };
 

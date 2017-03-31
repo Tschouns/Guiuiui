@@ -22,7 +22,6 @@ namespace Guiuiui.ViewModel.Services.ControlAdapter
         private readonly IConversion<string, TValue> _textToValueConversion;
         private readonly TextBox _textBox;
         private TValue _currentValue;
-        private bool _suspendControlValueChanged = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GenericTextBoxAdapter{TValue}"/> class.
@@ -59,19 +58,12 @@ namespace Guiuiui.ViewModel.Services.ControlAdapter
             {
                 this._currentValue = value;
 
-                this._suspendControlValueChanged = true;
                 this._textBox.Text = this._currentValue?.ToString();
-                this._suspendControlValueChanged = false;
             }
         }
 
         private void TextBox_TextChanged(object sender, EventArgs e)
         {
-            if (this._suspendControlValueChanged)
-            {
-                return;
-            }
-
             var result = this._textToValueConversion.TryConvert(this._textBox.Text);
             if (result.IsSuccessful)
             {

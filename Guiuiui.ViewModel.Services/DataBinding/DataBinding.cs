@@ -21,8 +21,6 @@ namespace Guiuiui.ViewModel.Services.DataBinding
         private readonly ISetter<TPropertyValue> _modelPropertySetter;
         private readonly IControlAdapter<TPropertyValue> _controlAdapter;
 
-        private TPropertyValue _currentValue;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="DataBinding{TPropertyValue}"/> class.
         /// </summary>
@@ -46,6 +44,8 @@ namespace Guiuiui.ViewModel.Services.DataBinding
             this._controlAdapter.ControlValueChanged += this.ControlAdapter_ControlValueChanged;
 
             this.IsBound = true;
+
+            this.InitializeControl();
         }
 
         /// <summary>
@@ -69,19 +69,23 @@ namespace Guiuiui.ViewModel.Services.DataBinding
             }
         }
 
+        private void InitializeControl()
+        {
+            var modelValue = this._modelPropertyGetter.Get();
+            this._controlAdapter.Value = modelValue;
+        }
+
         private void Model_ValueChanged(object sender, EventArgs e)
         {
             var modelValue = this._modelPropertyGetter.Get();
-            if (!object.Equals(modelValue, this._currentValue))
+            if (!object.Equals(modelValue, this._controlAdapter.Value))
             {
-                this._currentValue = modelValue;
                 this._controlAdapter.Value = modelValue;
             }
         }
 
         private void ControlAdapter_ControlValueChanged(object sender, ControlValueChangedEventArgs<TPropertyValue> e)
         {
-            this._currentValue = this._controlAdapter.Value;
             this._modelPropertySetter.Set(this._controlAdapter.Value);
         }
     }
