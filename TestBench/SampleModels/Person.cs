@@ -1,7 +1,5 @@
 ﻿namespace TestBench.SampleModels
 {
-    using System.Collections.Specialized;
-
     public class Person
     {
         public string LastName { get; set; }
@@ -9,6 +7,7 @@
         public string FullName => this.FirstName + " " + this.LastName ;
         public int Age { get; set; }
         public Gender Gender { get; set; }
+        public string Summary => $"{this.FirstName} {this.LastName} ({this.Gender}, {this.Age})";
     }
 
     public enum Gender

@@ -55,7 +55,8 @@
     <Compile Include="DataBinding\IBindable.cs" />
     <Compile Include="DataBinding\INotifiable.cs" />
     <Compile Include="DataBinding\INotifyOnValuesChanged.cs" />
-    <Compile Include="DataBinding\IPropertyPredicate.cs" />
+    <Compile Include="DataBinding\IReadOnlyPropertyPredicate.cs" />
+    <Compile Include="DataBinding\ITwoWayPropertyPredicate.cs" />
     <Compile Include="IViewModel.cs" />
     <Compile Include="IViewModelFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

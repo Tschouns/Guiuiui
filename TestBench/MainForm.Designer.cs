@@ -32,6 +32,8 @@
             this.personListView = new System.Windows.Forms.ListView();
             this.nameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.personTable = new System.Windows.Forms.TableLayoutPanel();
+            this.fullNameTextBox = new System.Windows.Forms.TextBox();
+            this.fullNameLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.firstNameLabel = new System.Windows.Forms.Label();
             this.genderLabel = new System.Windows.Forms.Label();
@@ -40,8 +42,7 @@
             this.genderComboBox = new System.Windows.Forms.ComboBox();
             this.ageLagel = new System.Windows.Forms.Label();
             this.ageTextBox = new System.Windows.Forms.TextBox();
-            this.fullNameLabel = new System.Windows.Forms.Label();
-            this.fullNameTextBox = new System.Windows.Forms.TextBox();
+            this.summaryLabel = new System.Windows.Forms.Label();
             this.layoutTable.SuspendLayout();
             this.personTable.SuspendLayout();
             this.SuspendLayout();
@@ -100,6 +101,7 @@
             this.personTable.Controls.Add(this.genderComboBox, 1, 5);
             this.personTable.Controls.Add(this.ageLagel, 0, 4);
             this.personTable.Controls.Add(this.ageTextBox, 1, 4);
+            this.personTable.Controls.Add(this.summaryLabel, 1, 7);
             this.personTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.personTable.Location = new System.Drawing.Point(323, 17);
             this.personTable.Name = "personTable";
@@ -115,6 +117,25 @@
             this.personTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.personTable.Size = new System.Drawing.Size(456, 250);
             this.personTable.TabIndex = 1;
+            // 
+            // fullNameTextBox
+            // 
+            this.fullNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fullNameTextBox.Location = new System.Drawing.Point(231, 84);
+            this.fullNameTextBox.Name = "fullNameTextBox";
+            this.fullNameTextBox.Size = new System.Drawing.Size(222, 20);
+            this.fullNameTextBox.TabIndex = 5;
+            // 
+            // fullNameLabel
+            // 
+            this.fullNameLabel.AutoSize = true;
+            this.fullNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fullNameLabel.Location = new System.Drawing.Point(3, 81);
+            this.fullNameLabel.Name = "fullNameLabel";
+            this.fullNameLabel.Size = new System.Drawing.Size(222, 27);
+            this.fullNameLabel.TabIndex = 4;
+            this.fullNameLabel.Text = "Full name (read only)";
+            this.fullNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // nameLabel
             // 
@@ -134,7 +155,7 @@
             this.firstNameLabel.Location = new System.Drawing.Point(3, 54);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(222, 27);
-            this.firstNameLabel.TabIndex = 1;
+            this.firstNameLabel.TabIndex = 2;
             this.firstNameLabel.Text = "First Name";
             this.firstNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -145,7 +166,7 @@
             this.genderLabel.Location = new System.Drawing.Point(3, 135);
             this.genderLabel.Name = "genderLabel";
             this.genderLabel.Size = new System.Drawing.Size(222, 27);
-            this.genderLabel.TabIndex = 2;
+            this.genderLabel.TabIndex = 8;
             this.genderLabel.Text = "Gender";
             this.genderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -155,7 +176,7 @@
             this.nameTextBox.Location = new System.Drawing.Point(231, 30);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(222, 20);
-            this.nameTextBox.TabIndex = 3;
+            this.nameTextBox.TabIndex = 1;
             // 
             // firstNameTextBox
             // 
@@ -163,7 +184,7 @@
             this.firstNameTextBox.Location = new System.Drawing.Point(231, 57);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(222, 20);
-            this.firstNameTextBox.TabIndex = 4;
+            this.firstNameTextBox.TabIndex = 3;
             // 
             // genderComboBox
             // 
@@ -172,7 +193,7 @@
             this.genderComboBox.Location = new System.Drawing.Point(231, 138);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(222, 21);
-            this.genderComboBox.TabIndex = 5;
+            this.genderComboBox.TabIndex = 9;
             // 
             // ageLagel
             // 
@@ -193,24 +214,15 @@
             this.ageTextBox.Size = new System.Drawing.Size(222, 20);
             this.ageTextBox.TabIndex = 7;
             // 
-            // fullNameLabel
+            // summaryLabel
             // 
-            this.fullNameLabel.AutoSize = true;
-            this.fullNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fullNameLabel.Location = new System.Drawing.Point(3, 81);
-            this.fullNameLabel.Name = "fullNameLabel";
-            this.fullNameLabel.Size = new System.Drawing.Size(222, 27);
-            this.fullNameLabel.TabIndex = 8;
-            this.fullNameLabel.Text = "Full name (read only)";
-            this.fullNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // fullNameTextBox
-            // 
-            this.fullNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fullNameTextBox.Location = new System.Drawing.Point(231, 84);
-            this.fullNameTextBox.Name = "fullNameTextBox";
-            this.fullNameTextBox.Size = new System.Drawing.Size(222, 20);
-            this.fullNameTextBox.TabIndex = 9;
+            this.summaryLabel.AutoSize = true;
+            this.summaryLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.summaryLabel.Location = new System.Drawing.Point(231, 189);
+            this.summaryLabel.Name = "summaryLabel";
+            this.summaryLabel.Size = new System.Drawing.Size(222, 30);
+            this.summaryLabel.TabIndex = 10;
+            this.summaryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MainForm
             // 
@@ -243,6 +255,7 @@
         private System.Windows.Forms.TextBox ageTextBox;
         private System.Windows.Forms.Label fullNameLabel;
         private System.Windows.Forms.TextBox fullNameTextBox;
+        private System.Windows.Forms.Label summaryLabel;
     }
 }
 

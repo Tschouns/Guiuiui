@@ -23,7 +23,7 @@ namespace Guiuiui.ViewModel.DataBinding
         /// <typeparam name="TPropertyValue">
         /// Type of the property value
         /// </typeparam>
-        IPropertyPredicate BindPropertyGet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc);
+        IReadOnlyPropertyPredicate BindPropertyGet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc);
 
         /// <summary>
         /// Binds a property two-way.
@@ -31,6 +31,6 @@ namespace Guiuiui.ViewModel.DataBinding
         /// <typeparam name="TPropertyValue">
         /// Type of the property value
         /// </typeparam>
-        IPropertyPredicate BindPropertyGetAndSet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TModel, TPropertyValue> setAction);
+        ITwoWayPropertyPredicate BindPropertyGetAndSet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TModel, TPropertyValue> setAction);
     }
 }

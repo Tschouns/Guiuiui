@@ -46,7 +46,7 @@ namespace Guiuiui.ViewModel.Services
         /// <summary>
         /// See <see cref="IBindable{TModel}.BindPropertyGet{TPropertyValue}(Func{TModel, TPropertyValue})"/>.
         /// </summary>
-        public IPropertyPredicate BindPropertyGet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc)
+        public IReadOnlyPropertyPredicate BindPropertyGet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc)
         {
             var getter = new ViewModelGetter<TModel, TPropertyValue>(this, getFunc);
             var predicate = new ReadOnlyPropertyPredicate<TModel, TPropertyValue>(this, getter, this.AddDataBidning);
@@ -57,7 +57,7 @@ namespace Guiuiui.ViewModel.Services
         /// <summary>
         /// See <see cref="IBindable{TModel}.BindPropertyGetAndSet{TPropertyValue}(Func{TModel, TPropertyValue}, Action{TModel, TPropertyValue})"/>.
         /// </summary>
-        public IPropertyPredicate BindPropertyGetAndSet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TModel, TPropertyValue> setAction)
+        public ITwoWayPropertyPredicate BindPropertyGetAndSet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TModel, TPropertyValue> setAction)
         {
             var getter = new ViewModelGetter<TModel, TPropertyValue>(this, getFunc);
             var setter = new ViewModelSetter<TModel, TPropertyValue>(this, setAction);

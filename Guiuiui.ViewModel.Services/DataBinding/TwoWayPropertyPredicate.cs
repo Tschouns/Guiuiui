@@ -15,9 +15,9 @@ namespace Guiuiui.ViewModel.Services.DataBinding
     using ViewModel.Conversion;
 
     /// <summary>
-    /// Implementation of the <see cref="IPropertyPredicate"/>. Creates the actual data binding.
+    /// Implementation of the <see cref="IReadOnlyPropertyPredicate"/>. Creates the actual data binding.
     /// </summary>
-    public class TwoWayPropertyPredicate<TModel, TPropertyValue> : IPropertyPredicate
+    public class TwoWayPropertyPredicate<TModel, TPropertyValue> : ITwoWayPropertyPredicate
         where TModel : class
     {
         // These fields are needed to create the data binding.
@@ -49,7 +49,7 @@ namespace Guiuiui.ViewModel.Services.DataBinding
         }
 
         /// <summary>
-        /// See <see cref="IPropertyPredicate.ToComboBox(ComboBox)"/>.
+        /// See <see cref="IReadOnlyPropertyPredicate.ToComboBox(ComboBox)"/>.
         /// </summary>
         public void ToComboBox(ComboBox comboBox)
         {
@@ -62,7 +62,7 @@ namespace Guiuiui.ViewModel.Services.DataBinding
         }
 
         /// <summary>
-        /// See <see cref="IPropertyPredicate.ToTextBox(TextBox)"/>.
+        /// See <see cref="IReadOnlyPropertyPredicate.ToTextBox(TextBox)"/>.
         /// </summary>
         public void ToTextBox(TextBox textBox)
         {

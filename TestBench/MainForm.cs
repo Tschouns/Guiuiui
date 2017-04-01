@@ -49,6 +49,7 @@
             this._personViewModel.BindPropertyGet(p => p.FullName).ToTextBox(this.fullNameTextBox);
             this._personViewModel.BindPropertyGetAndSet(p => p.Age, (p, v) => p.Age = v).ToTextBox(this.ageTextBox);
             this._personViewModel.BindPropertyGetAndSet(p => p.Gender, (p, v) => p.Gender = v).ToComboBox(this.genderComboBox);
+            this._personViewModel.BindPropertyGet(p => p.Summary).ToLabel(this.summaryLabel);
         }
 
         private void FillComboBoxes()
@@ -72,7 +73,7 @@
                 LastName = "Hugentobler",
                 FirstName = "Hugo",
                 Age = 77,
-                Gender = Gender.Male
+                Gender = Gender.Undefined
             };
 
             var hubertStaffelbach = new Person()

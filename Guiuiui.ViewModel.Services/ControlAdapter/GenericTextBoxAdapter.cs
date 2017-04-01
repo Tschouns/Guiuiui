@@ -58,12 +58,14 @@ namespace Guiuiui.ViewModel.Services.ControlAdapter
             {
                 this._currentValue = value;
 
+                // TODO: create and use a "ITextConverter"
                 this._textBox.Text = this._currentValue?.ToString();
             }
         }
 
         private void TextBox_TextChanged(object sender, EventArgs e)
         {
+            // TODO: create and use a "IParser"
             var result = this._textToValueConversion.TryConvert(this._textBox.Text);
             if (result.IsSuccessful)
             {
@@ -73,6 +75,7 @@ namespace Guiuiui.ViewModel.Services.ControlAdapter
             }
 
             // If the conversion failed, the text is restored.
+            // TODO: create and use a "ITextConverter"
             this._textBox.Text = this._currentValue?.ToString();
         }
     }

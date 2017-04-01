@@ -15,9 +15,9 @@ namespace Guiuiui.ViewModel.Services.DataBinding
     using ViewModel.Conversion;
 
     /// <summary>
-    /// Implementation of the <see cref="IPropertyPredicate"/>. Creates the actual data binding.
+    /// Implementation of the <see cref="IReadOnlyPropertyPredicate"/>. Creates the actual data binding.
     /// </summary>
-    public class ReadOnlyPropertyPredicate<TModel, TPropertyValue> : IPropertyPredicate
+    public class ReadOnlyPropertyPredicate<TModel, TPropertyValue> : IReadOnlyPropertyPredicate
         where TModel : class
     {
         // These fields are needed to create the data binding.
@@ -45,20 +45,35 @@ namespace Guiuiui.ViewModel.Services.DataBinding
         }
 
         /// <summary>
-        /// See <see cref="IPropertyPredicate.ToComboBox(ComboBox)"/>.
+        /// See <see cref="IReadOnlyPropertyPredicate.ToLabel(Label)"/>.
+        /// </summary>
+        public void ToLabel(Label label)
+        {
+            ArgumentChecks.AssertNotNull(label, nameof(label));
+
+            // TODO: put this in a factory:
+            var labelAdapter = new GenericLabelAdapter<TPropertyValue>(label);
+            var dataBinding = new ReadOnlyDataBinding<TPropertyValue>(this._model, this._getter, labelAdapter);
+
+            this._addDataBindingCallback(dataBinding);
+        }
+
+        /// <summary>
+        /// See <see cref="IReadOnlyPropertyPredicate.ToComboBox(ComboBox)"/>.
         /// </summary>
         public void ToComboBox(ComboBox comboBox)
         {
+            ArgumentChecks.AssertNotNull(comboBox, nameof(comboBox));
+
             // TODO: put this in a factory:
             var comboBoxAdapter = new GenericComboBoxAdapter<TPropertyValue>(comboBox);
-
             var dataBinding = new ReadOnlyDataBinding<TPropertyValue>(this._model, this._getter, comboBoxAdapter);
 
             this._addDataBindingCallback(dataBinding);
         }
 
         /// <summary>
-        /// See <see cref="IPropertyPredicate.ToTextBox(TextBox)"/>.
+        /// See <see cref="IReadOnlyPropertyPredicate.ToTextBox(TextBox)"/>.
         /// </summary>
         public void ToTextBox(TextBox textBox)
         {
@@ -67,7 +82,6 @@ namespace Guiuiui.ViewModel.Services.DataBinding
             // TODO: put this in a factory:
             var conversion = Ioc.Container.Resolve<IConversion<string, TPropertyValue>>();
             var textBoxAdapter = new GenericTextBoxAdapter<TPropertyValue>(conversion, textBox);
-
             var dataBinding = new ReadOnlyDataBinding<TPropertyValue>(this._model, this._getter, textBoxAdapter);
 
             this._addDataBindingCallback(dataBinding);

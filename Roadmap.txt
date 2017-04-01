@@ -1,13 +1,13 @@
 === Guiuiui Mini Roadmap ===
-* Implement "Get only" data binding
+X Implement "Get only" data binding
 * Complete WinForms ControlAdapters for
   * Label
-  * TextBox
-  * ComboBox
+  X TextBox
+  X ComboBox
   * CheckBox
   * DatePicker
   * "Child List Controls"
-* Offer API for custom control extensions ("BBT Money Control", "BBT Data Selector", and such...)
-* Offer API for custom "to string" converters
+* Offer API for custom text converters
 * Offer API for custom parser
+* Offer API for custom control extensions ("BBT Money Control", "BBT Data Selector", and such...)
 * Offer data binding/view model/adapters etc. in separate projects for WinForms and WPF
