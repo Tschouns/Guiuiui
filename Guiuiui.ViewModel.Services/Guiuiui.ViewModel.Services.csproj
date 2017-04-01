@@ -46,8 +46,6 @@
     <Compile Include="ControlAdapter\GenericLabelAdapter.cs" />
     <Compile Include="ControlAdapter\GenericTextBoxAdapter.cs" />
     <Compile Include="ControlAdapter\IControlAdapter.cs" />
-    <Compile Include="Conversion\DummyConversion.cs" />
-    <Compile Include="Conversion\StringToIntConversion.cs" />
     <Compile Include="DataBinding\ReadOnlyDataBinding.cs" />
     <Compile Include="DataBinding\ReadOnlyPropertyPredicate.cs" />
     <Compile Include="DataBinding\TwoWayDataBinding.cs" />
@@ -60,6 +58,7 @@
     <Compile Include="Parser\IntParser.cs" />
     <Compile Include="Parser\StringDummyParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextConverter\DefaultTextConverter.cs" />
     <Compile Include="ViewModel.cs" />
     <Compile Include="ViewModelFactory.cs" />
     <Compile Include="ViewModelInitializationPlugin.cs" />
