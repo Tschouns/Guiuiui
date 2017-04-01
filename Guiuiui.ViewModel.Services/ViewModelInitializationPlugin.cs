@@ -9,7 +9,9 @@ namespace Guiuiui.ViewModel.Services
     using Guiuiui.Base.InversionOfControl;
     using Guiuiui.Base.StartUp;
     using Guiuiui.ViewModel.Services.Conversion;
+    using Parser;
     using ViewModel.Conversion;
+    using ViewModel.Parser;
 
     [ProjectInitializationPlugin]
     public class ViewModelInitializationPlugin : IProjectInitializationPlugin
@@ -17,6 +19,10 @@ namespace Guiuiui.ViewModel.Services
         public void PerformIocContainerRegistrations()
         {
             Ioc.Container.RegisterSingleton<IViewModelFactory, ViewModelFactory>();
+
+            // Parser
+            Ioc.Container.RegisterSingleton<IParser<int>, IntParser>();
+            Ioc.Container.RegisterSingleton<IParser<string>, StringDummyParser>();
 
             // Conversions
             Ioc.Container.RegisterSingleton<IConversion<string, int>, StringToIntConversion>();

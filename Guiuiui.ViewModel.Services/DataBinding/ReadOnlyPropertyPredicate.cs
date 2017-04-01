@@ -12,7 +12,7 @@ namespace Guiuiui.ViewModel.Services.DataBinding
     using Guiuiui.ViewModel.DataBinding;
     using System;
     using System.Windows.Forms;
-    using ViewModel.Conversion;
+    using ViewModel.Parser;
 
     /// <summary>
     /// Implementation of the <see cref="IReadOnlyPropertyPredicate"/>. Creates the actual data binding.
@@ -80,8 +80,8 @@ namespace Guiuiui.ViewModel.Services.DataBinding
             ArgumentChecks.AssertNotNull(textBox, nameof(textBox));
 
             // TODO: put this in a factory:
-            var conversion = Ioc.Container.Resolve<IConversion<string, TPropertyValue>>();
-            var textBoxAdapter = new GenericTextBoxAdapter<TPropertyValue>(conversion, textBox);
+            var parser = Ioc.Container.Resolve<IParser<TPropertyValue>>();
+            var textBoxAdapter = new GenericTextBoxAdapter<TPropertyValue>(parser, textBox);
             var dataBinding = new ReadOnlyDataBinding<TPropertyValue>(this._model, this._getter, textBoxAdapter);
 
             this._addDataBindingCallback(dataBinding);

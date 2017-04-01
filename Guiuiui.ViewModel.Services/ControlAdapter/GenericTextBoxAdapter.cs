@@ -9,7 +9,7 @@ namespace Guiuiui.ViewModel.Services.ControlAdapter
     using System;
     using System.Windows.Forms;
     using Guiuiui.Base.RuntimeChecks;
-    using ViewModel.Conversion;
+    using ViewModel.Parser;
 
     /// <summary>
     /// See <see cref="IControlAdapter{TValue}"/>.
@@ -19,7 +19,7 @@ namespace Guiuiui.ViewModel.Services.ControlAdapter
     /// </typeparam>
     public class GenericTextBoxAdapter<TValue> : IControlAdapter<TValue>
     {
-        private readonly IConversion<string, TValue> _textToValueConversion;
+        private readonly IParser<TValue> _parser;
         private readonly TextBox _textBox;
         private TValue _currentValue;
 
@@ -27,15 +27,15 @@ namespace Guiuiui.ViewModel.Services.ControlAdapter
         /// Initializes a new instance of the <see cref="GenericTextBoxAdapter{TValue}"/> class.
         /// </summary>
         public GenericTextBoxAdapter(
-            IConversion<string, TValue> textToValueConversion,
+            IParser<TValue> parser,
             TextBox textBox)
         {
-            ArgumentChecks.AssertNotNull(textToValueConversion, nameof(textToValueConversion));
+            ArgumentChecks.AssertNotNull(parser, nameof(parser));
             ArgumentChecks.AssertNotNull(textBox, nameof(textBox));
 
-            this._textToValueConversion = textToValueConversion;
+            this._parser = parser;
             this._textBox = textBox;
-            this._currentValue = this._textToValueConversion.TryConvert(textBox.Text).Result;
+            this._currentValue = this._parser.TryParse(textBox.Text).Result;
 
             this._textBox.TextChanged += this.TextBox_TextChanged;
         }
@@ -52,7 +52,7 @@ namespace Guiuiui.ViewModel.Services.ControlAdapter
         {
             get
             {
-                return this._textToValueConversion.TryConvert(this._textBox.Text).Result;
+                return this._parser.TryParse(this._textBox.Text).Result;
             }
             set
             {
@@ -65,8 +65,7 @@ namespace Guiuiui.ViewModel.Services.ControlAdapter
 
         private void TextBox_TextChanged(object sender, EventArgs e)
         {
-            // TODO: create and use a "IParser"
-            var result = this._textToValueConversion.TryConvert(this._textBox.Text);
+            var result = this._parser.TryParse(this._textBox.Text);
             if (result.IsSuccessful)
             {
                 this._currentValue = result.Result;
