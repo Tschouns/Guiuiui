@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guiuiui.ViewModel", "Guiuiu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guiuiui.ViewModel.Services", "Guiuiui.ViewModel.Services\Guiuiui.ViewModel.Services.csproj", "{E43D5F08-2293-49EF-861B-AA7E7FED669B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guiuiui.Tools", "Guiuiui.Tools\Guiuiui.Tools.csproj", "{2EB12FEB-2469-4729-95BD-FEE3A7C8433A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guiuiui.Tools.Impl", "Guiuiui.Tools.Impl\Guiuiui.Tools.Impl.csproj", "{F606BB2B-90A1-49EE-8B72-BFFB0D85DF2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +40,14 @@ Global
 		{E43D5F08-2293-49EF-861B-AA7E7FED669B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E43D5F08-2293-49EF-861B-AA7E7FED669B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E43D5F08-2293-49EF-861B-AA7E7FED669B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EB12FEB-2469-4729-95BD-FEE3A7C8433A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EB12FEB-2469-4729-95BD-FEE3A7C8433A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EB12FEB-2469-4729-95BD-FEE3A7C8433A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EB12FEB-2469-4729-95BD-FEE3A7C8433A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F606BB2B-90A1-49EE-8B72-BFFB0D85DF2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F606BB2B-90A1-49EE-8B72-BFFB0D85DF2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F606BB2B-90A1-49EE-8B72-BFFB0D85DF2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F606BB2B-90A1-49EE-8B72-BFFB0D85DF2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
