@@ -10,6 +10,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
     using System.Windows.Forms;
     using Guiuiui.Base.RuntimeChecks;
     using Tools.Parser;
+    using Tools.TextConverter;
 
     /// <summary>
     /// See <see cref="IControlAdapter{TValue}"/>.
@@ -19,6 +20,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
     /// </typeparam>
     public class GenericTextBoxAdapter<TValue> : IControlAdapter<TValue>
     {
+        private readonly ITextConverter<TValue> _textConverter;
         private readonly IParser<TValue> _parser;
         private readonly TextBox _textBox;
         private TValue _currentValue;
@@ -27,12 +29,15 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
         /// Initializes a new instance of the <see cref="GenericTextBoxAdapter{TValue}"/> class.
         /// </summary>
         public GenericTextBoxAdapter(
+            ITextConverter<TValue> textConverter,
             IParser<TValue> parser,
             TextBox textBox)
         {
+            ArgumentChecks.AssertNotNull(textConverter, nameof(textConverter));
             ArgumentChecks.AssertNotNull(parser, nameof(parser));
             ArgumentChecks.AssertNotNull(textBox, nameof(textBox));
 
+            this._textConverter = textConverter;
             this._parser = parser;
             this._textBox = textBox;
             this._currentValue = this._parser.TryParse(textBox.Text).Result;
@@ -58,8 +63,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
             {
                 this._currentValue = value;
 
-                // TODO: create and use a "ITextConverter"
-                this._textBox.Text = this._currentValue?.ToString();
+                this._textBox.Text = this._textConverter.GetText(this._currentValue);
             }
         }
 
@@ -74,8 +78,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
             }
 
             // If the conversion failed, the text is restored.
-            // TODO: create and use a "ITextConverter"
-            this._textBox.Text = this._currentValue?.ToString();
+            this._textBox.Text = this._textConverter.GetText(this._currentValue);
         }
     }
 }

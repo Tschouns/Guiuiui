@@ -14,7 +14,6 @@ namespace Guiuiui.Tools.Impl
     using Parser;
     using Tools.TextConverter;
     using TextConverter;
-    using System;
 
     [ProjectInitializationPlugin]
     public class ToolsInitializationPlugin : IProjectInitializationPlugin

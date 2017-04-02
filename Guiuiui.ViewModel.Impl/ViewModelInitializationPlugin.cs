@@ -6,15 +6,16 @@
 
 namespace Guiuiui.ViewModel.Impl
 {
-    using System;
     using Guiuiui.Base.InversionOfControl;
     using Guiuiui.Base.StartUp;
+    using ControlAdapter;
 
     [ProjectInitializationPlugin]
     public class ViewModelInitializationPlugin : IProjectInitializationPlugin
     {
         public void PerformIocContainerRegistrations()
         {
+            Ioc.Container.RegisterSingleton<IControlAdapterFactory, ControlAdapterFactory>();
             Ioc.Container.RegisterSingleton<IViewModelFactory, ViewModelFactory>();
         }
         

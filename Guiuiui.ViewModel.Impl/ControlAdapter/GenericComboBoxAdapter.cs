@@ -9,6 +9,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
     using Guiuiui.Base.RuntimeChecks;
     using System;
     using System.Windows.Forms;
+    using Tools.TextConverter;
 
     /// <summary>
     /// See <see cref="IControlAdapter{TValue}"/>.
@@ -18,15 +19,21 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
     /// </typeparam>
     public class GenericComboBoxAdapter<TValue> : IControlAdapter<TValue>
     {
+        // TODO: create a "wrapper item" which contains the value and overrides "ToString".
+        private readonly ITextConverter<TValue> _textConverter;
         private readonly ComboBox _comboBox;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GenericComboBoxAdapter{TValue}"/> class.
         /// </summary>
-        public GenericComboBoxAdapter(ComboBox comboBox)
+        public GenericComboBoxAdapter(
+            ITextConverter<TValue> textConverter,
+            ComboBox comboBox)
         {
+            ArgumentChecks.AssertNotNull(textConverter, nameof(textConverter));
             ArgumentChecks.AssertNotNull(comboBox, nameof(comboBox));
 
+            this._textConverter = textConverter;
             this._comboBox = comboBox;
 
             this._comboBox.SelectedValueChanged += this.ComboBox_SelectedValueChanged;

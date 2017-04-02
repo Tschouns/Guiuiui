@@ -20,6 +20,8 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
     public class TwoWayPropertyPredicate<TModel, TPropertyValue> : ITwoWayPropertyPredicate
         where TModel : class
     {
+        private readonly IControlAdapterFactory _controlAdapterFactory;
+
         // These fields are needed to create the data binding.
         private readonly INotifyOnValueChanged _model;
         private readonly IGetter<TPropertyValue> _getter;
@@ -32,16 +34,19 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
         /// Initializes a new instance of the <see cref="TwoWayPropertyPredicate{TModel,TPropertyValue}"/> class.
         /// </summary>
         public TwoWayPropertyPredicate(
+            IControlAdapterFactory controlAdapterFactory,
             INotifyOnValueChanged model,
             IGetter<TPropertyValue> getter,
             ISetter<TPropertyValue> setter,
             Action<IDataBinding> addDataBindingCallback)
         {
+            ArgumentChecks.AssertNotNull(controlAdapterFactory, nameof(controlAdapterFactory));
             ArgumentChecks.AssertNotNull(model, nameof(model));
             ArgumentChecks.AssertNotNull(getter, nameof(getter));
             ArgumentChecks.AssertNotNull(setter, nameof(setter));
             ArgumentChecks.AssertNotNull(addDataBindingCallback, nameof(addDataBindingCallback));
 
+            this._controlAdapterFactory = controlAdapterFactory;
             this._model = model;
             this._getter = getter;
             this._setter = setter;
@@ -53,8 +58,7 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
         /// </summary>
         public void ToComboBox(ComboBox comboBox)
         {
-            // TODO: put this in a factory:
-            var comboBoxAdapter = new GenericComboBoxAdapter<TPropertyValue>(comboBox);
+            var comboBoxAdapter = this._controlAdapterFactory.CreateComboBoxAdapter<TPropertyValue>(comboBox);
             var dataBinding = new TwoWayDataBinding<TPropertyValue>(this._model, this._getter, this._setter, comboBoxAdapter);
 
             this._addDataBindingCallback(dataBinding);
@@ -67,9 +71,7 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
         {
             ArgumentChecks.AssertNotNull(textBox, nameof(textBox));
 
-            // TODO: put this in a factory:
-            var parser = Ioc.Container.Resolve<IParser<TPropertyValue>>();
-            var textBoxAdapter = new GenericTextBoxAdapter<TPropertyValue>(parser, textBox);
+            var textBoxAdapter = this._controlAdapterFactory.CreateTextBoxAdapter<TPropertyValue>(textBox);
             var dataBinding = new TwoWayDataBinding<TPropertyValue>(this._model, this._getter, this._setter, textBoxAdapter);
 
             this._addDataBindingCallback(dataBinding);

@@ -9,9 +9,9 @@ namespace Guiuiui.ViewModel.Impl
     using System;
     using Guiuiui.ViewModel.DataBinding;
     using DataBinding;
-    using System.Collections;
     using System.Collections.Generic;
     using Base.RuntimeChecks;
+    using ControlAdapter;
 
     /// <summary>
     /// See <see cref="IViewModel{TModel}"/>.
@@ -22,6 +22,7 @@ namespace Guiuiui.ViewModel.Impl
     public class ViewModel<TModel> : IViewModel<TModel>
         where TModel : class
     {
+        private readonly IControlAdapterFactory _controlAdapterFactory;
         private readonly IList<IDataBinding> _dataBindings = new List<IDataBinding>();
         private TModel _model = null;
 
@@ -29,6 +30,16 @@ namespace Guiuiui.ViewModel.Impl
         /// See <see cref="INotifyOnValueChanged.ValueChanged"/>.
         /// </summary>
         public event EventHandler ValueChanged;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ViewModel{TModel}"/> class.
+        /// </summary>
+        public ViewModel(IControlAdapterFactory controlAdapterFactory)
+        {
+            ArgumentChecks.AssertNotNull(controlAdapterFactory, nameof(controlAdapterFactory));
+
+            this._controlAdapterFactory = controlAdapterFactory;
+        }
 
         /// <summary>
         /// See <see cref="IViewModel{TModel}.Model"/>.
@@ -49,7 +60,7 @@ namespace Guiuiui.ViewModel.Impl
         public IReadOnlyPropertyPredicate BindPropertyGet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc)
         {
             var getter = new ViewModelGetter<TModel, TPropertyValue>(this, getFunc);
-            var predicate = new ReadOnlyPropertyPredicate<TModel, TPropertyValue>(this, getter, this.AddDataBidning);
+            var predicate = new ReadOnlyPropertyPredicate<TModel, TPropertyValue>(this._controlAdapterFactory, this, getter, this.AddDataBidning);
 
             return predicate;
         }
@@ -61,7 +72,7 @@ namespace Guiuiui.ViewModel.Impl
         {
             var getter = new ViewModelGetter<TModel, TPropertyValue>(this, getFunc);
             var setter = new ViewModelSetter<TModel, TPropertyValue>(this, setAction);
-            var predicate = new TwoWayPropertyPredicate<TModel, TPropertyValue>(this, getter, setter, this.AddDataBidning);
+            var predicate = new TwoWayPropertyPredicate<TModel, TPropertyValue>(this._controlAdapterFactory, this, getter, setter, this.AddDataBidning);
 
             return predicate;
         }

@@ -6,11 +6,26 @@
 
 namespace Guiuiui.ViewModel.Impl
 {
+    using Guiuiui.Base.RuntimeChecks;
+    using Guiuiui.ViewModel.Impl.ControlAdapter;
+
     /// <summary>
     /// See <see cref="IViewModelFactory"/>.
     /// </summary>
     public class ViewModelFactory : IViewModelFactory
     {
+        private readonly IControlAdapterFactory _controlAdapterFactory;
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ViewModelFactory"/> class.
+        /// </summary>
+        public ViewModelFactory(IControlAdapterFactory controlAdapterFactory)
+        {
+            ArgumentChecks.AssertNotNull(controlAdapterFactory, nameof(controlAdapterFactory));
+
+            this._controlAdapterFactory = controlAdapterFactory;
+        }
+
         /// <summary>
         /// See <see cref="IViewModelFactory.CreateViewModel{TModel}"/>.
         /// </summary>
@@ -20,7 +35,7 @@ namespace Guiuiui.ViewModel.Impl
         public IViewModel<TModel> CreateViewModel<TModel>()
             where TModel : class
         {
-            return new ViewModel<TModel>();
+            return new ViewModel<TModel>(this._controlAdapterFactory);
         }
     }
 }

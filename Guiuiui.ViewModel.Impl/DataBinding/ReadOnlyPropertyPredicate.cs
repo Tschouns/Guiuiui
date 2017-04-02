@@ -6,15 +6,11 @@
 
 namespace Guiuiui.ViewModel.Impl.DataBinding
 {
-    using Base.InversionOfControl;
     using Base.RuntimeChecks;
     using ControlAdapter;
     using Guiuiui.ViewModel.DataBinding;
     using System;
     using System.Windows.Forms;
-    using Tools;
-    using Tools.Parser;
-    using Tools.TextConverter;
 
     /// <summary>
     /// Implementation of the <see cref="IReadOnlyPropertyPredicate"/>. Creates the actual data binding.
@@ -22,6 +18,8 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
     public class ReadOnlyPropertyPredicate<TModel, TPropertyValue> : IReadOnlyPropertyPredicate
         where TModel : class
     {
+        private readonly IControlAdapterFactory _controlAdapterFactory;
+
         // These fields are needed to create the data binding.
         private readonly INotifyOnValueChanged _model;
         private readonly IGetter<TPropertyValue> _getter;
@@ -33,14 +31,17 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
         /// Initializes a new instance of the <see cref="TwoWayPropertyPredicate{TModel,TPropertyValue}"/> class.
         /// </summary>
         public ReadOnlyPropertyPredicate(
+            IControlAdapterFactory controlAdapterFactory,
             INotifyOnValueChanged model,
             IGetter<TPropertyValue> getter,
             Action<IDataBinding> addDataBindingCallback)
         {
+            ArgumentChecks.AssertNotNull(controlAdapterFactory, nameof(controlAdapterFactory));
             ArgumentChecks.AssertNotNull(model, nameof(model));
             ArgumentChecks.AssertNotNull(getter, nameof(getter));
             ArgumentChecks.AssertNotNull(addDataBindingCallback, nameof(addDataBindingCallback));
 
+            this._controlAdapterFactory = controlAdapterFactory;
             this._model = model;
             this._getter = getter;
             this._addDataBindingCallback = addDataBindingCallback;
@@ -53,24 +54,8 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
         {
             ArgumentChecks.AssertNotNull(label, nameof(label));
 
-            // TODO: put this in a factory:
-            var textConverter = Converter.TextConverterProvider.GetTextConverter<TPropertyValue>();
-            var labelAdapter = new GenericLabelAdapter<TPropertyValue>(textConverter, label);
+            var labelAdapter = this._controlAdapterFactory.CreateLabelAdapter<TPropertyValue>(label);
             var dataBinding = new ReadOnlyDataBinding<TPropertyValue>(this._model, this._getter, labelAdapter);
-
-            this._addDataBindingCallback(dataBinding);
-        }
-
-        /// <summary>
-        /// See <see cref="IReadOnlyPropertyPredicate.ToComboBox(ComboBox)"/>.
-        /// </summary>
-        public void ToComboBox(ComboBox comboBox)
-        {
-            ArgumentChecks.AssertNotNull(comboBox, nameof(comboBox));
-
-            // TODO: put this in a factory:
-            var comboBoxAdapter = new GenericComboBoxAdapter<TPropertyValue>(comboBox);
-            var dataBinding = new ReadOnlyDataBinding<TPropertyValue>(this._model, this._getter, comboBoxAdapter);
 
             this._addDataBindingCallback(dataBinding);
         }
@@ -82,10 +67,21 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
         {
             ArgumentChecks.AssertNotNull(textBox, nameof(textBox));
 
-            // TODO: put this in a factory:
-            var parser = Ioc.Container.Resolve<IParser<TPropertyValue>>();
-            var textBoxAdapter = new GenericTextBoxAdapter<TPropertyValue>(parser, textBox);
+            var textBoxAdapter = this._controlAdapterFactory.CreateTextBoxAdapter<TPropertyValue>(textBox);
             var dataBinding = new ReadOnlyDataBinding<TPropertyValue>(this._model, this._getter, textBoxAdapter);
+
+            this._addDataBindingCallback(dataBinding);
+        }
+
+        /// <summary>
+        /// See <see cref="IReadOnlyPropertyPredicate.ToComboBox(ComboBox)"/>.
+        /// </summary>
+        public void ToComboBox(ComboBox comboBox)
+        {
+            ArgumentChecks.AssertNotNull(comboBox, nameof(comboBox));
+
+            var comboBoxAdapter = this._controlAdapterFactory.CreateComboBoxAdapter<TPropertyValue>(comboBox);
+            var dataBinding = new ReadOnlyDataBinding<TPropertyValue>(this._model, this._getter, comboBoxAdapter);
 
             this._addDataBindingCallback(dataBinding);
         }
