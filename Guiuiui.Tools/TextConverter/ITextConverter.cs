@@ -12,7 +12,7 @@ namespace Guiuiui.Tools.TextConverter
     /// <typeparam name="TValue">
     /// Type of the value which is converted
     /// </typeparam>
-    public interface ITextConverter<TValue>
+    public interface ITextConverter<in TValue>
     {
         /// <summary>
         /// Convert a <typeparamref name="TValue"/> to a user-readable text.

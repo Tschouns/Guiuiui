@@ -12,8 +12,13 @@ namespace Guiuiui.Base.StartUp
     public interface IProjectInitializationPlugin
     {
         /// <summary>
-        /// Performs all the necessary IOC container registrations for the project.
+        /// Performs all the necessary IOC container registrations for the project. Is called first.
         /// </summary>
         void PerformIocContainerRegistrations();
+
+        /// <summary>
+        /// Performs any additional setup. Is called second.
+        /// </summary>
+        void PerformAdditionalSetup();
     }
 }

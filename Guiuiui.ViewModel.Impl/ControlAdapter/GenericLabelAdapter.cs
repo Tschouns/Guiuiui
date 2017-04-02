@@ -9,6 +9,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
     using Base.RuntimeChecks;
     using System;
     using System.Windows.Forms;
+    using Tools.TextConverter;
 
     /// <summary>
     /// See <see cref="IControlAdapter{TValue}"/>.
@@ -18,15 +19,20 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
     /// </typeparam>
     public class GenericLabelAdapter<TValue> : IControlAdapter<TValue>
     {
+        private readonly ITextConverter<TValue> _textConverter;
         private readonly Label _label;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GenericComboBoxAdapter{TValue}"/> class.
         /// </summary>
-        public GenericLabelAdapter(Label label)
+        public GenericLabelAdapter(
+            ITextConverter<TValue> textConverter,
+            Label label)
         {
+            ArgumentChecks.AssertNotNull(textConverter, nameof(textConverter));
             ArgumentChecks.AssertNotNull(label, nameof(label));
 
+            this._textConverter = textConverter;
             this._label = label;
         }
 
@@ -44,8 +50,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
 
             set
             {
-                // TODO: create and use a "ITextConverter"
-                this._label.Text = value?.ToString();
+                this._label.Text = this._textConverter.GetText(value);
             }
         }
     }

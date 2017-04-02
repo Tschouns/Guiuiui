@@ -6,6 +6,7 @@
 
 namespace Guiuiui.ViewModel.Impl
 {
+    using System;
     using Guiuiui.Base.InversionOfControl;
     using Guiuiui.Base.StartUp;
 
@@ -15,6 +16,10 @@ namespace Guiuiui.ViewModel.Impl
         public void PerformIocContainerRegistrations()
         {
             Ioc.Container.RegisterSingleton<IViewModelFactory, ViewModelFactory>();
+        }
+        
+        public void PerformAdditionalSetup()
+        {
         }
     }
 }

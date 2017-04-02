@@ -12,7 +12,9 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
     using Guiuiui.ViewModel.DataBinding;
     using System;
     using System.Windows.Forms;
+    using Tools;
     using Tools.Parser;
+    using Tools.TextConverter;
 
     /// <summary>
     /// Implementation of the <see cref="IReadOnlyPropertyPredicate"/>. Creates the actual data binding.
@@ -52,7 +54,8 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
             ArgumentChecks.AssertNotNull(label, nameof(label));
 
             // TODO: put this in a factory:
-            var labelAdapter = new GenericLabelAdapter<TPropertyValue>(label);
+            var textConverter = Converter.TextConverterProvider.GetTextConverter<TPropertyValue>();
+            var labelAdapter = new GenericLabelAdapter<TPropertyValue>(textConverter, label);
             var dataBinding = new ReadOnlyDataBinding<TPropertyValue>(this._model, this._getter, labelAdapter);
 
             this._addDataBindingCallback(dataBinding);

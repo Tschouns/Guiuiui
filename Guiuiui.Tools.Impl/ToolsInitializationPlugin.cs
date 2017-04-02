@@ -12,6 +12,9 @@ namespace Guiuiui.Tools.Impl
     using Reflection;
     using Tools.Parser;
     using Parser;
+    using Tools.TextConverter;
+    using TextConverter;
+    using System;
 
     [ProjectInitializationPlugin]
     public class ToolsInitializationPlugin : IProjectInitializationPlugin
@@ -19,10 +22,16 @@ namespace Guiuiui.Tools.Impl
         public void PerformIocContainerRegistrations()
         {
             Ioc.Container.RegisterSingleton<ITypeHelper, TypeHelper>();
+            Ioc.Container.RegisterSingleton<ITextConverterProvider, TextConverterRegistry>();
+            Ioc.Container.RegisterSingleton<ITextConverterRegistry, TextConverterRegistry>();
 
             // Parser
             Ioc.Container.RegisterSingleton<IParser<int>, IntParser>();
             Ioc.Container.RegisterSingleton<IParser<string>, StringDummyParser>();
+        }
+
+        public void PerformAdditionalSetup()
+        {
         }
     }
 }

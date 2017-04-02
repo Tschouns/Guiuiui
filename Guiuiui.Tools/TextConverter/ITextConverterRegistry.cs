@@ -4,20 +4,19 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Guiuiui.ViewModel
+namespace Guiuiui.Tools.TextConverter
 {
     /// <summary>
-    /// Creates new instances of <see cref="IViewModel{TModel}"/>.
+    /// Provides a method to register a text converter for a specific type.
     /// </summary>
-    public interface IViewModelFactory
+    public interface ITextConverterRegistry
     {
         /// <summary>
-        /// Creates a <see cref="IViewModel{TModel}"/>.
+        /// Registers a text converter for <typeparamref name="TValue"/>.
         /// </summary>
-        /// <typeparam name="TModel">
-        /// Type of the underlying data model
+        /// <typeparam name="TValue">
+        /// Type of the value which is converted
         /// </typeparam>
-        IViewModel<TModel> CreateViewModel<TModel>()
-            where TModel : class;
+        void RegisterTextConverter<TValue>(ITextConverter<TValue> textConverter);
     }
 }

@@ -12,12 +12,12 @@ namespace Guiuiui.Tools.Impl.TextConverter
     /// See <see cref="ITextConverter{TValue}"/>. Default converter which can be used as a
     /// fall-back for anything.
     /// </summary>
-    public class DefaultTextConverter : ITextConverter<object>
+    public class GenericDefaultTextConverter<TValue> : ITextConverter<TValue>
     {
         /// <summary>
         /// See <see cref="ITextConverter{TValue}.GetText(TValue)"/>.
         /// </summary>
-        public string GetText(object value)
+        public string GetText(TValue value)
         {
             if (value == null)
             {

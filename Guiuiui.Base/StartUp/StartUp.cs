@@ -30,6 +30,11 @@ namespace Guiuiui.Base.StartUp
             {
                 plugin.PerformIocContainerRegistrations();
             }
+
+            foreach (var plugin in projectInitializationPlugins)
+            {
+                plugin.PerformAdditionalSetup();
+            }
         }
 
         /// <summary>

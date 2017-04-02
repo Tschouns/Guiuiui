@@ -45,7 +45,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\TypeComparer.cs" />
     <Compile Include="Reflection\TypeHelper.cs" />
-    <Compile Include="TextConverter\DefaultTextConverter.cs" />
+    <Compile Include="TextConverter\GenericDefaultTextConverter.cs" />
+    <Compile Include="TextConverter\TextConverterRegistry.cs" />
     <Compile Include="ToolsInitializationPlugin.cs" />
   </ItemGroup>
   <ItemGroup>
