@@ -38,6 +38,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
             this._comboBox = comboBox;
 
             this._comboBox.SelectedValueChanged += this.ComboBox_SelectedValueChanged;
+            this._comboBox.TextChanged += this.ComboBox_TextChanged;
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
 
             set
             {
-                this.SetSelectedItem(value);
+                this.TrySetSelectedItem(value);
                 this.SetText();
             }
         }
@@ -72,7 +73,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
             return default(TValue);
         }
 
-        private void SetSelectedItem(TValue value)
+        private void TrySetSelectedItem(TValue value)
         {
             if (this._comboBox.Items.OfType<TValue>().Contains(value))
             {
@@ -86,12 +87,40 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
 
         private void SetText()
         {
+            this._comboBox.TextChanged -= this.ComboBox_TextChanged;
             this._comboBox.Text = this._textConverter.GetText(this.Value);
+            this._comboBox.TextChanged += this.ComboBox_TextChanged;
         }
 
         private void ComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             this.ControlValueChanged?.Invoke(this, new EventArgs());
+        }
+
+        private void ComboBox_TextChanged(object sender, EventArgs e)
+        {
+            var itemsMatchingText = this._comboBox.Items
+                .OfType<TValue>()
+                .Where(v => this._textConverter.GetText(v).ToLower() == this._comboBox.Text.ToLower())
+                .ToList();
+
+            if (itemsMatchingText.Count == 1)
+            {
+                this.TrySetSelectedItem(itemsMatchingText.Single());
+                this.SetText();
+                return;
+            }
+
+            var itemsContainingText = this._comboBox.Items
+                .OfType<TValue>()
+                .Where(v => this._textConverter.GetText(v).ToLower().Contains(this._comboBox.Text.ToLower()))
+                .ToList();
+
+            if (itemsContainingText.Count == 1)
+            {
+                this.TrySetSelectedItem(itemsContainingText.Single());
+                this.SetText();
+            }
         }
     }
 }
