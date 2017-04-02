@@ -8,8 +8,6 @@ namespace Guiuiui.ViewModel.Impl
 {
     using Guiuiui.Base.InversionOfControl;
     using Guiuiui.Base.StartUp;
-    using Parser;
-    using ViewModel.Parser;
 
     [ProjectInitializationPlugin]
     public class ViewModelInitializationPlugin : IProjectInitializationPlugin
@@ -17,10 +15,6 @@ namespace Guiuiui.ViewModel.Impl
         public void PerformIocContainerRegistrations()
         {
             Ioc.Container.RegisterSingleton<IViewModelFactory, ViewModelFactory>();
-
-            // Parser
-            Ioc.Container.RegisterSingleton<IParser<int>, IntParser>();
-            Ioc.Container.RegisterSingleton<IParser<string>, StringDummyParser>();
         }
     }
 }

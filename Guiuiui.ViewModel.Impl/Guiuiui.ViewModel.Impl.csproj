@@ -55,10 +55,7 @@
     <Compile Include="DataBinding\TwoWayPropertyPredicate.cs" />
     <Compile Include="DataBinding\ViewModelGetter.cs" />
     <Compile Include="DataBinding\ViewModelSetter.cs" />
-    <Compile Include="Parser\IntParser.cs" />
-    <Compile Include="Parser\StringDummyParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextConverter\DefaultTextConverter.cs" />
     <Compile Include="ViewModel.cs" />
     <Compile Include="ViewModelFactory.cs" />
     <Compile Include="ViewModelInitializationPlugin.cs" />
@@ -67,6 +64,10 @@
     <ProjectReference Include="..\Guiuiui.Base\Guiuiui.Base.csproj">
       <Project>{c2b1a129-a67e-4e39-b921-51905ed0672a}</Project>
       <Name>Guiuiui.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Guiuiui.Tools\Guiuiui.Tools.csproj">
+      <Project>{2eb12feb-2469-4729-95bd-fee3a7c8433a}</Project>
+      <Name>Guiuiui.Tools</Name>
     </ProjectReference>
     <ProjectReference Include="..\Guiuiui.ViewModel\Guiuiui.ViewModel.csproj">
       <Project>{4be6803e-5a6a-4a5f-9ca1-fc038a99d8f0}</Project>

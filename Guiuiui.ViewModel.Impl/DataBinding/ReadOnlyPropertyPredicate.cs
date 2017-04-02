@@ -12,7 +12,7 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
     using Guiuiui.ViewModel.DataBinding;
     using System;
     using System.Windows.Forms;
-    using ViewModel.Parser;
+    using Tools.Parser;
 
     /// <summary>
     /// Implementation of the <see cref="IReadOnlyPropertyPredicate"/>. Creates the actual data binding.

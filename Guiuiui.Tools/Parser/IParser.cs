@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Guiuiui.ViewModel.Parser
+namespace Guiuiui.Tools.Parser
 {
     /// <summary>
     /// Provides a method to parse a string and convert it to <typeparamref name="TResult"/>.

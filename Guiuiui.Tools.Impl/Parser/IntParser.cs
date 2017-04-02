@@ -4,9 +4,9 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Guiuiui.ViewModel.Impl.Parser
+namespace Guiuiui.Tools.Impl.Parser
 {
-    using ViewModel.Parser;
+    using Tools.Parser;
 
     /// <summary>
     /// See <see cref="IParser{TResult}"/>. Converts to <see cref="int"/>.

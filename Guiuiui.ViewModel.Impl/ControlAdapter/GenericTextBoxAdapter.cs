@@ -9,7 +9,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
     using System;
     using System.Windows.Forms;
     using Guiuiui.Base.RuntimeChecks;
-    using ViewModel.Parser;
+    using Tools.Parser;
 
     /// <summary>
     /// See <see cref="IControlAdapter{TValue}"/>.

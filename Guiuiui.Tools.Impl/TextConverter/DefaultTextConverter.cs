@@ -4,9 +4,9 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Guiuiui.ViewModel.Impl.TextConverter
+namespace Guiuiui.Tools.Impl.TextConverter
 {
-    using Guiuiui.ViewModel.TextConverter;
+    using Guiuiui.Tools.TextConverter;
 
     /// <summary>
     /// See <see cref="ITextConverter{TValue}"/>. Default converter which can be used as a

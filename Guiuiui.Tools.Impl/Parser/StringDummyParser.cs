@@ -4,10 +4,10 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Guiuiui.ViewModel.Impl.Parser
+namespace Guiuiui.Tools.Impl.Parser
 {
     using System;
-    using Guiuiui.ViewModel.Parser;
+    using Guiuiui.Tools.Parser;
 
     /// <summary>
     /// See <see cref="IParser{TResult}"/>. "Converts" to a string... or really doesn't do anything.

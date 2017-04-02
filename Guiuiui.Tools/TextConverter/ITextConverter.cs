@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Guiuiui.ViewModel.TextConverter
+namespace Guiuiui.Tools.TextConverter
 {
     /// <summary>
     /// Provides a method to convert a <typeparamref name="TValue"/> to a user-readable text.

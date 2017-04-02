@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Guiuiui.ViewModel.Parser
+namespace Guiuiui.Tools.Parser
 {
     /// <summary>
     /// Respresents the result of a parsing operation.

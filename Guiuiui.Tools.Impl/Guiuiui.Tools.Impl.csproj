@@ -40,9 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Parser\IntParser.cs" />
+    <Compile Include="Parser\StringDummyParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\TypeComparer.cs" />
     <Compile Include="Reflection\TypeHelper.cs" />
+    <Compile Include="TextConverter\DefaultTextConverter.cs" />
     <Compile Include="ToolsInitializationPlugin.cs" />
   </ItemGroup>
   <ItemGroup>

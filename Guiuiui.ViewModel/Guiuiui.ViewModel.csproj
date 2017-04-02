@@ -57,10 +57,7 @@
     <Compile Include="DataBinding\ITwoWayPropertyPredicate.cs" />
     <Compile Include="IViewModel.cs" />
     <Compile Include="IViewModelFactory.cs" />
-    <Compile Include="Parser\IParser.cs" />
-    <Compile Include="Parser\ParseResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextConverter\ITextConverter.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -8,15 +8,23 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestBench", "TestBench\TestBench.csproj", "{65579D44-1EF7-4B63-8F2C-94A14CA3F2FC}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E43D5F08-2293-49EF-861B-AA7E7FED669B} = {E43D5F08-2293-49EF-861B-AA7E7FED669B}
+		{F606BB2B-90A1-49EE-8B72-BFFB0D85DF2A} = {F606BB2B-90A1-49EE-8B72-BFFB0D85DF2A}
+		{2EB12FEB-2469-4729-95BD-FEE3A7C8433A} = {2EB12FEB-2469-4729-95BD-FEE3A7C8433A}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guiuiui.ViewModel", "Guiuiui.ViewModel\Guiuiui.ViewModel.csproj", "{4BE6803E-5A6A-4A5F-9CA1-FC038A99D8F0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guiuiui.Tools", "Guiuiui.Tools\Guiuiui.Tools.csproj", "{2EB12FEB-2469-4729-95BD-FEE3A7C8433A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C2B1A129-A67E-4E39-B921-51905ED0672A} = {C2B1A129-A67E-4E39-B921-51905ED0672A}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guiuiui.Tools.Impl", "Guiuiui.Tools.Impl\Guiuiui.Tools.Impl.csproj", "{F606BB2B-90A1-49EE-8B72-BFFB0D85DF2A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guiuiui.ViewModel.Impl", "Guiuiui.ViewModel.Impl\Guiuiui.ViewModel.Impl.csproj", "{E43D5F08-2293-49EF-861B-AA7E7FED669B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F606BB2B-90A1-49EE-8B72-BFFB0D85DF2A} = {F606BB2B-90A1-49EE-8B72-BFFB0D85DF2A}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -72,6 +72,7 @@
             this.personListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.nameColumn});
             this.personListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.personListView.FullRowSelect = true;
             this.personListView.GridLines = true;
             this.personListView.Location = new System.Drawing.Point(23, 17);
             this.personListView.Name = "personListView";
