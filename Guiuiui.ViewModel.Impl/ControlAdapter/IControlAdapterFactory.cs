@@ -36,5 +36,13 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
         /// Type of the value represented by the control
         /// </typeparam>
         IControlAdapter<TValue> CreateComboBoxAdapter<TValue>(ComboBox comboBox);
+
+        /// <summary>
+        /// Creates a control adapter for a <see cref="CheckBox"/>.
+        /// </summary>
+        /// <typeparam name="TValue">
+        /// Type of the value represented by the control
+        /// </typeparam>
+        IControlAdapter<TValue> CreateCheckBoxAdapter<TValue>(CheckBox checkBox);
     }
 }

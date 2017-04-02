@@ -6,6 +6,8 @@
     using Guiuiui.Base.RuntimeChecks;
     using Guiuiui.ViewModel;
     using TestBench.SampleModels;
+    using Guiuiui.Tools;
+    using SampleTextConverters;
 
     /// <summary>
     /// Merely a little test bench for the <see cref="Guiuiui"/> namespace...
@@ -25,7 +27,10 @@
 
             this.InitializeComponent();
 
+            GuiuiuiToolBox.TextConverterRegistry.RegisterTextConverter(new GenderTextConverter());
+
             this._personViewModel = viewModelFactory.CreateViewModel<Person>();
+
             this.SetupDataBinding();
             this.FillComboBoxes();
             this.InitializePersonListView();
@@ -49,6 +54,7 @@
             this._personViewModel.BindPropertyGet(p => p.FullName).ToTextBox(this.fullNameTextBox);
             this._personViewModel.BindPropertyGetAndSet(p => p.Age, (p, v) => p.Age = v).ToTextBox(this.ageTextBox);
             this._personViewModel.BindPropertyGetAndSet(p => p.Gender, (p, v) => p.Gender = v).ToComboBox(this.genderComboBox);
+            this._personViewModel.BindPropertyGetAndSet(p => p.IsVegetarian, (p, v) => p.IsVegetarian = v).ToCheckBox(this.isVegetarianCheckBox);
             this._personViewModel.BindPropertyGet(p => p.Summary).ToLabel(this.summaryLabel);
         }
 
@@ -65,7 +71,8 @@
                 LastName = "Meier",
                 FirstName = "Fritz",
                 Age = 34,
-                Gender = Gender.Male
+                Gender = Gender.Male,
+                IsVegetarian = true
             };
 
             var hugoHugentobler = new Person()

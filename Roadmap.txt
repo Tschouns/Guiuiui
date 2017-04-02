@@ -1,14 +1,14 @@
 === Guiuiui Mini Roadmap ===
 X Implement "Get only" data binding
 * Complete WinForms ControlAdapters for
-  * Label
+  X Label
   X TextBox
   X ComboBox
   * CheckBox
   * DatePicker
   * "Child List Controls"
-* Provide API for custom text converters
+X Provide API for custom text converters
 * Provide API for custom parsers
-* Provide method overloads to bind a control with a specific parser
+* Provide method overloads to bind a control with a specific text converter / parser
 * Provide API for custom control extensions ("BBT Money Control", "BBT Data Selector", and such...)
 * Provide data binding/view model/adapters etc. in separate projects for WinForms and WPF

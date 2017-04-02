@@ -84,7 +84,7 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
             }
         }
 
-        private void ControlAdapter_ControlValueChanged(object sender, ControlValueChangedEventArgs<TPropertyValue> e)
+        private void ControlAdapter_ControlValueChanged(object sender, EventArgs e)
         {
             this._modelPropertySetter.Set(this._controlAdapter.Value);
         }

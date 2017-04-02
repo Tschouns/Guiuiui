@@ -6,11 +6,12 @@
 
 namespace Guiuiui.ViewModel.Impl.ControlAdapter
 {
-    using Base.InversionOfControl;
     using Base.RuntimeChecks;
     using System.Windows.Forms;
     using Tools;
-    using Tools.Parser;
+    using System;
+    using ViewModel.DataBinding;
+    using System.Globalization;
 
     /// <summary>
     /// See <see cref="IControlAdapterFactory"/>.
@@ -52,6 +53,25 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
             var textConverter = GuiuiuiToolBox.TextConverters.GetTextConverter<TValue>();
 
             return new GenericComboBoxAdapter<TValue>(textConverter, comboBox);
+        }
+
+        /// <summary>
+        /// See <see cref="IControlAdapterFactory.CreateComboBoxAdapter{TValue}(ComboBox)"/>.
+        /// </summary>
+        public IControlAdapter<TValue> CreateCheckBoxAdapter<TValue>(CheckBox checkBox)
+        {
+            ArgumentChecks.AssertNotNull(checkBox, nameof(checkBox));
+
+            if (typeof(TValue) == typeof(bool))
+            {
+                var checkBoxAdapter = new CheckBoxAdapter(checkBox);
+                return (IControlAdapter<TValue>)checkBoxAdapter;
+            }
+
+            // There is no suitable check box adapter for TValue.
+            var message = string.Format(CultureInfo.CurrentCulture, ErrorMessages.PropertyTypeNotSupportedByCheckBox, typeof(TValue).ToString());
+
+            throw new DataBindingErrorException(message);
         }
     }
 }

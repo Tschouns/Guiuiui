@@ -37,9 +37,9 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
         }
 
         /// <summary>
-        /// See <see cref="IControlAdapter{TValue}.Value"/>. With labels this is never raised.
+        /// See <see cref="IControlAdapter{TValue}.ControlValueChanged"/>. With labels this is never raised.
         /// </summary>
-        public event EventHandler<ControlValueChangedEventArgs<TValue>> ControlValueChanged;
+        public event EventHandler ControlValueChanged;
 
         /// <summary>
         /// See <see cref="IControlAdapter{TValue}.Value"/>.

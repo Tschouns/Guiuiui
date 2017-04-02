@@ -85,5 +85,18 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
 
             this._addDataBindingCallback(dataBinding);
         }
+
+        /// <summary>
+        /// See <see cref="IReadOnlyPropertyPredicate.ToCheckBox(CheckBox)"/>.
+        /// </summary>
+        public void ToCheckBox(CheckBox checkBox)
+        {
+            ArgumentChecks.AssertNotNull(checkBox, nameof(checkBox));
+
+            var checkBoxAdapter = this._controlAdapterFactory.CreateCheckBoxAdapter<TPropertyValue>(checkBox);
+            var dataBinding = new ReadOnlyDataBinding<TPropertyValue>(this._model, this._getter, checkBoxAdapter);
+
+            this._addDataBindingCallback(dataBinding);
+        }
     }
 }

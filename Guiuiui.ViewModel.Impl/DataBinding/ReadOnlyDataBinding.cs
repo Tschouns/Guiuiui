@@ -85,7 +85,7 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
             this.ModelToControl();
         }
 
-        private void ControlAdapter_ControlValueChanged(object sender, ControlValueChangedEventArgs<TPropertyValue> e)
+        private void ControlAdapter_ControlValueChanged(object sender, EventArgs e)
         {
             // Prevent changes being made to the control.
             this.ModelToControl();

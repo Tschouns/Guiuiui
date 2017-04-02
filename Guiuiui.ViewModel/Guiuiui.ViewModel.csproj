@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomControls\ICustomControlAdapter.cs" />
+    <Compile Include="DataBinding\DataBindingErrorException.cs" />
     <Compile Include="DataBinding\IBindable.cs" />
     <Compile Include="DataBinding\INotifiable.cs" />
     <Compile Include="DataBinding\INotifyOnValuesChanged.cs" />

@@ -43,6 +43,8 @@
             this.ageLagel = new System.Windows.Forms.Label();
             this.ageTextBox = new System.Windows.Forms.TextBox();
             this.summaryLabel = new System.Windows.Forms.Label();
+            this.isVegetarianLabel = new System.Windows.Forms.Label();
+            this.isVegetarianCheckBox = new System.Windows.Forms.CheckBox();
             this.layoutTable.SuspendLayout();
             this.personTable.SuspendLayout();
             this.SuspendLayout();
@@ -103,6 +105,8 @@
             this.personTable.Controls.Add(this.ageLagel, 0, 4);
             this.personTable.Controls.Add(this.ageTextBox, 1, 4);
             this.personTable.Controls.Add(this.summaryLabel, 1, 7);
+            this.personTable.Controls.Add(this.isVegetarianLabel, 0, 6);
+            this.personTable.Controls.Add(this.isVegetarianCheckBox, 1, 6);
             this.personTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.personTable.Location = new System.Drawing.Point(323, 17);
             this.personTable.Name = "personTable";
@@ -225,6 +229,27 @@
             this.summaryLabel.TabIndex = 10;
             this.summaryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // isVegetarianLabel
+            // 
+            this.isVegetarianLabel.AutoSize = true;
+            this.isVegetarianLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.isVegetarianLabel.Location = new System.Drawing.Point(3, 162);
+            this.isVegetarianLabel.Name = "isVegetarianLabel";
+            this.isVegetarianLabel.Size = new System.Drawing.Size(222, 27);
+            this.isVegetarianLabel.TabIndex = 11;
+            this.isVegetarianLabel.Text = "Vegetarian";
+            this.isVegetarianLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // isVegetarianCheckBox
+            // 
+            this.isVegetarianCheckBox.AutoSize = true;
+            this.isVegetarianCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.isVegetarianCheckBox.Location = new System.Drawing.Point(231, 165);
+            this.isVegetarianCheckBox.Name = "isVegetarianCheckBox";
+            this.isVegetarianCheckBox.Size = new System.Drawing.Size(222, 21);
+            this.isVegetarianCheckBox.TabIndex = 12;
+            this.isVegetarianCheckBox.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -257,6 +282,8 @@
         private System.Windows.Forms.Label fullNameLabel;
         private System.Windows.Forms.TextBox fullNameTextBox;
         private System.Windows.Forms.Label summaryLabel;
+        private System.Windows.Forms.Label isVegetarianLabel;
+        private System.Windows.Forms.CheckBox isVegetarianCheckBox;
     }
 }
 

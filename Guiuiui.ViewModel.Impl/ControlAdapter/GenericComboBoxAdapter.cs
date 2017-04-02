@@ -42,7 +42,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
         /// <summary>
         /// See <see cref="IControlAdapter{TValue}.ControlValueChanged"/>.
         /// </summary>
-        public event EventHandler<ControlValueChangedEventArgs<TValue>> ControlValueChanged;
+        public event EventHandler ControlValueChanged;
 
         /// <summary>
         /// See <see cref="IControlAdapter{TValue}.Value"/>.
@@ -72,7 +72,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
 
         private void ComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            this.ControlValueChanged?.Invoke(this, new ControlValueChangedEventArgs<TValue>(this));
+            this.ControlValueChanged?.Invoke(this, new EventArgs());
         }
     }
 }

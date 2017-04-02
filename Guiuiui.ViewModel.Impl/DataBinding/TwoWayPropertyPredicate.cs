@@ -54,17 +54,6 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
         }
 
         /// <summary>
-        /// See <see cref="IReadOnlyPropertyPredicate.ToComboBox(ComboBox)"/>.
-        /// </summary>
-        public void ToComboBox(ComboBox comboBox)
-        {
-            var comboBoxAdapter = this._controlAdapterFactory.CreateComboBoxAdapter<TPropertyValue>(comboBox);
-            var dataBinding = new TwoWayDataBinding<TPropertyValue>(this._model, this._getter, this._setter, comboBoxAdapter);
-
-            this._addDataBindingCallback(dataBinding);
-        }
-
-        /// <summary>
         /// See <see cref="IReadOnlyPropertyPredicate.ToTextBox(TextBox)"/>.
         /// </summary>
         public void ToTextBox(TextBox textBox)
@@ -73,6 +62,32 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
 
             var textBoxAdapter = this._controlAdapterFactory.CreateTextBoxAdapter<TPropertyValue>(textBox);
             var dataBinding = new TwoWayDataBinding<TPropertyValue>(this._model, this._getter, this._setter, textBoxAdapter);
+
+            this._addDataBindingCallback(dataBinding);
+        }
+
+        /// <summary>
+        /// See <see cref="IReadOnlyPropertyPredicate.ToComboBox(ComboBox)"/>.
+        /// </summary>
+        public void ToComboBox(ComboBox comboBox)
+        {
+            ArgumentChecks.AssertNotNull(comboBox, nameof(comboBox));
+
+            var comboBoxAdapter = this._controlAdapterFactory.CreateComboBoxAdapter<TPropertyValue>(comboBox);
+            var dataBinding = new TwoWayDataBinding<TPropertyValue>(this._model, this._getter, this._setter, comboBoxAdapter);
+
+            this._addDataBindingCallback(dataBinding);
+        }
+
+        /// <summary>
+        /// See <see cref="IReadOnlyPropertyPredicate.ToCheckBox(CheckBox)"/>.
+        /// </summary>
+        public void ToCheckBox(CheckBox checkBox)
+        {
+            ArgumentChecks.AssertNotNull(checkBox, nameof(checkBox));
+
+            var checkBoxAdapter = this._controlAdapterFactory.CreateCheckBoxAdapter<TPropertyValue>(checkBox);
+            var dataBinding = new TwoWayDataBinding<TPropertyValue>(this._model, this._getter, this._setter, checkBoxAdapter);
 
             this._addDataBindingCallback(dataBinding);
         }

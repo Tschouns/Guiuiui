@@ -27,5 +27,11 @@ namespace Guiuiui.ViewModel.DataBinding
         /// Binds a combo box to the property.
         /// </summary>
         void ToComboBox(ComboBox comboBox);
+
+        /// <summary>
+        /// Binds a check box to the property.
+        /// </summary>
+        /// <param name="checkBox"></param>
+        void ToCheckBox(CheckBox checkBox);
     }
 }

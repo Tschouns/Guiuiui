@@ -56,6 +56,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleModels\Address.cs" />
     <Compile Include="SampleModels\Person.cs" />
+    <Compile Include="SampleTextConverters\GenderTextConverter.cs" />
+    <Compile Include="SampleTextConverters\Text.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Text.resx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -68,6 +74,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SampleTextConverters\Text.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Text.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -85,6 +95,10 @@
     <ProjectReference Include="..\Guiuiui.Base\Guiuiui.Base.csproj">
       <Project>{c2b1a129-a67e-4e39-b921-51905ed0672a}</Project>
       <Name>Guiuiui.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Guiuiui.Tools\Guiuiui.Tools.csproj">
+      <Project>{2EB12FEB-2469-4729-95BD-FEE3A7C8433A}</Project>
+      <Name>Guiuiui.Tools</Name>
     </ProjectReference>
     <ProjectReference Include="..\Guiuiui.ViewModel\Guiuiui.ViewModel.csproj">
       <Project>{4be6803e-5a6a-4a5f-9ca1-fc038a99d8f0}</Project>

@@ -41,8 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlAdapter\CheckBoxAdapter.cs" />
     <Compile Include="ControlAdapter\ControlAdapterFactory.cs" />
-    <Compile Include="ControlAdapter\ControlValueChangedEventArgs.cs" />
+    <Compile Include="ControlAdapter\ErrorMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorMessages.resx</DependentUpon>
+    </Compile>
     <Compile Include="ControlAdapter\GenericComboBoxAdapter.cs" />
     <Compile Include="ControlAdapter\GenericLabelAdapter.cs" />
     <Compile Include="ControlAdapter\GenericTextBoxAdapter.cs" />
@@ -76,7 +81,12 @@
       <Name>Guiuiui.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="ControlAdapter\ErrorMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
