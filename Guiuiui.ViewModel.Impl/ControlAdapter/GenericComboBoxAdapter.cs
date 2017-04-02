@@ -8,6 +8,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
 {
     using Guiuiui.Base.RuntimeChecks;
     using System;
+    using System.Linq;
     using System.Windows.Forms;
     using Tools.TextConverter;
 
@@ -56,7 +57,8 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
 
             set
             {
-                this._comboBox.SelectedItem = value;
+                this.SetSelectedItem(value);
+                this.SetText();
             }
         }
 
@@ -68,6 +70,23 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
             }
 
             return default(TValue);
+        }
+
+        private void SetSelectedItem(TValue value)
+        {
+            if (this._comboBox.Items.OfType<TValue>().Contains(value))
+            {
+                this._comboBox.SelectedItem = value;
+            }
+            else
+            {
+                this._comboBox.SelectedItem = null;
+            }
+        }
+
+        private void SetText()
+        {
+            this._comboBox.Text = this._textConverter.GetText(this.Value);
         }
 
         private void ComboBox_SelectedValueChanged(object sender, EventArgs e)
