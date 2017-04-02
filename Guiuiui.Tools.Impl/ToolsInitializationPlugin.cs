@@ -21,8 +21,9 @@ namespace Guiuiui.Tools.Impl
         public void PerformIocContainerRegistrations()
         {
             Ioc.Container.RegisterSingleton<ITypeHelper, TypeHelper>();
-            Ioc.Container.RegisterSingleton<ITextConverterProvider, TextConverterRegistry>();
             Ioc.Container.RegisterSingleton<ITextConverterRegistry, TextConverterRegistry>();
+            Ioc.Container.RegisterSingleton<ITextConverterProvider, TextConverterRegistry>();
+            Ioc.Container.RegisterSingleton<IParserProvider, ParserProvider>();
 
             // Parser
             Ioc.Container.RegisterSingleton<IParser<int>, IntParser>();

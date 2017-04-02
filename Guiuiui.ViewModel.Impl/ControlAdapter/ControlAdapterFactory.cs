@@ -8,7 +8,6 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
 {
     using Base.InversionOfControl;
     using Base.RuntimeChecks;
-    using System;
     using System.Windows.Forms;
     using Tools;
     using Tools.Parser;
@@ -25,7 +24,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
         {
             ArgumentChecks.AssertNotNull(label, nameof(label));
 
-            var textConverter = Converter.TextConverterProvider.GetTextConverter<TValue>();
+            var textConverter = GuiuiuiToolBox.TextConverters.GetTextConverter<TValue>();
 
             return new GenericLabelAdapter<TValue>(textConverter, label);
         }
@@ -37,9 +36,8 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
         {
             ArgumentChecks.AssertNotNull(textBox, nameof(textBox));
 
-            var textConverter = Converter.TextConverterProvider.GetTextConverter<TValue>();
-            // TODO: Add a better parser provider interface to "Tools".
-            var parser = Ioc.Container.Resolve<IParser<TValue>>();
+            var textConverter = GuiuiuiToolBox.TextConverters.GetTextConverter<TValue>();
+            var parser = GuiuiuiToolBox.Parsers.GetParser<TValue>();
 
             return new GenericTextBoxAdapter<TValue>(textConverter, parser, textBox);
         }
@@ -51,7 +49,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
         {
             ArgumentChecks.AssertNotNull(comboBox, nameof(comboBox));
 
-            var textConverter = Converter.TextConverterProvider.GetTextConverter<TValue>();
+            var textConverter = GuiuiuiToolBox.TextConverters.GetTextConverter<TValue>();
 
             return new GenericComboBoxAdapter<TValue>(textConverter, comboBox);
         }

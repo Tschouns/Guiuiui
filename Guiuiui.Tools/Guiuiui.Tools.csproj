@@ -41,13 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Parser\IParser.cs" />
+    <Compile Include="Parser\IParserProvider.cs" />
     <Compile Include="Parser\ParseResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\ITypeHelper.cs" />
     <Compile Include="TextConverter\ITextConverter.cs" />
     <Compile Include="TextConverter\ITextConverterProvider.cs" />
     <Compile Include="TextConverter\ITextConverterRegistry.cs" />
-    <Compile Include="Converter.cs" />
+    <Compile Include="GuiuiuiToolBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Guiuiui.Base\Guiuiui.Base.csproj">
