@@ -10,6 +10,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
     using System;
     using System.Linq;
     using System.Windows.Forms;
+    using Tools;
     using Tools.TextConverter;
 
     /// <summary>
@@ -39,6 +40,11 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
 
             this._comboBox.SelectedValueChanged += this.ComboBox_SelectedValueChanged;
             this._comboBox.TextChanged += this.ComboBox_TextChanged;
+
+            // Hack-a-doodle...
+            this._comboBox.FormatInfo = GuiuiuiToolBox.CustomFormatProviders.CreateCustomFormatProvider<TValue>(
+                GuiuiuiToolBox.Parsers.GetParser<TValue>(),
+                this._textConverter);
         }
 
         /// <summary>
