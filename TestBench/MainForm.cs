@@ -109,10 +109,16 @@
 
             foreach (var person in persons)
             {
-                this.personListView.Items.Add(new ListViewItem(person.FirstName + " " + person.LastName)
+                var item = new ListViewItem()
                 {
+                    //Text = person.FirstName + " " + person.LastName,
                     Tag = person
-                });
+                };
+
+                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, person.FirstName));
+                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, person.LastName));
+
+                this.personListView.Items.Add(item);
             }
         }
 

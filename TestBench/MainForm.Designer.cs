@@ -30,7 +30,7 @@
         {
             this.layoutTable = new System.Windows.Forms.TableLayoutPanel();
             this.personListView = new System.Windows.Forms.ListView();
-            this.nameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.firstNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.personTable = new System.Windows.Forms.TableLayoutPanel();
             this.fullNameTextBox = new System.Windows.Forms.TextBox();
             this.fullNameLabel = new System.Windows.Forms.Label();
@@ -45,6 +45,7 @@
             this.summaryLabel = new System.Windows.Forms.Label();
             this.isVegetarianLabel = new System.Windows.Forms.Label();
             this.isVegetarianCheckBox = new System.Windows.Forms.CheckBox();
+            this.LastNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.layoutTable.SuspendLayout();
             this.personTable.SuspendLayout();
             this.SuspendLayout();
@@ -72,7 +73,8 @@
             // personListView
             // 
             this.personListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.nameColumn});
+            this.firstNameColumn,
+            this.LastNameColumn});
             this.personListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.personListView.FullRowSelect = true;
             this.personListView.GridLines = true;
@@ -84,10 +86,10 @@
             this.personListView.View = System.Windows.Forms.View.Details;
             this.personListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.personListView_ItemSelectionChanged);
             // 
-            // nameColumn
+            // firstNameColumn
             // 
-            this.nameColumn.Text = "Name";
-            this.nameColumn.Width = 200;
+            this.firstNameColumn.Text = "First Name";
+            this.firstNameColumn.Width = 100;
             // 
             // personTable
             // 
@@ -250,6 +252,11 @@
             this.isVegetarianCheckBox.TabIndex = 12;
             this.isVegetarianCheckBox.UseVisualStyleBackColor = true;
             // 
+            // LastNameColumn
+            // 
+            this.LastNameColumn.Text = "Last Name";
+            this.LastNameColumn.Width = 100;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,7 +276,7 @@
 
         private System.Windows.Forms.TableLayoutPanel layoutTable;
         private System.Windows.Forms.ListView personListView;
-        private System.Windows.Forms.ColumnHeader nameColumn;
+        private System.Windows.Forms.ColumnHeader firstNameColumn;
         private System.Windows.Forms.TableLayoutPanel personTable;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label firstNameLabel;
@@ -284,6 +291,7 @@
         private System.Windows.Forms.Label summaryLabel;
         private System.Windows.Forms.Label isVegetarianLabel;
         private System.Windows.Forms.CheckBox isVegetarianCheckBox;
+        private System.Windows.Forms.ColumnHeader LastNameColumn;
     }
 }
 
