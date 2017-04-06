@@ -27,7 +27,7 @@
 
             this.InitializeComponent();
 
-            GuiuiuiToolBox.TextConverterRegistry.RegisterTextConverter(new GenderTextConverter());
+            BaseToolBox.TextConverterRegistry.RegisterTextConverter(new GenderTextConverter());
 
             this._personViewModel = viewModelFactory.CreateViewModel<Person>();
 

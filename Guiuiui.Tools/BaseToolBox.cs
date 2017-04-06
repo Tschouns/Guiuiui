@@ -14,7 +14,7 @@ namespace Guiuiui.Tools
     /// <summary>
     /// Provides access to text converters and parsers.
     /// </summary>
-    public static class GuiuiuiToolBox
+    public static class BaseToolBox
     {
         private static readonly Lazy<ITextConverterRegistry> _lazyTextConverterRegistry = new Lazy<ITextConverterRegistry>(GetTextConverterRegistryInstance, true);
         private static readonly Lazy<ITextConverterProvider> _lazyTextConverterProvider = new Lazy<ITextConverterProvider>(GetTextConverterProviderInstance, true);
