@@ -14,8 +14,6 @@ namespace Guiuiui.Tools.Impl
     using Parser;
     using Tools.TextConverter;
     using TextConverter;
-    using Tools.CustomFormatProvider;
-    using CustomFormatProvider;
 
     [ProjectInitializationPlugin]
     public class ToolsInitializationPlugin : IProjectInitializationPlugin
@@ -26,7 +24,6 @@ namespace Guiuiui.Tools.Impl
             Ioc.Container.RegisterSingleton<ITextConverterRegistry, TextConverterRegistry>();
             Ioc.Container.RegisterSingleton<ITextConverterProvider, TextConverterRegistry>();
             Ioc.Container.RegisterSingleton<IParserProvider, ParserProvider>();
-            Ioc.Container.RegisterSingleton<ICustomFormatProviderFactory, CustomFormatProviderFactory>();
 
             // Parser
             Ioc.Container.RegisterSingleton<IParser<int>, IntParser>();

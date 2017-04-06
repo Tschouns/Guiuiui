@@ -40,8 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomFormatProvider\CustomFormatProvider.cs" />
-    <Compile Include="CustomFormatProvider\CustomFormatProviderFactory.cs" />
     <Compile Include="Parser\GenericDefaultParser.cs" />
     <Compile Include="Parser\IntParser.cs" />
     <Compile Include="Parser\ParserProvider.cs" />

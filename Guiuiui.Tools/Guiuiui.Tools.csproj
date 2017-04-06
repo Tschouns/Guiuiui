@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomFormatProvider\ICustomFormatProviderFactory.cs" />
     <Compile Include="Parser\IParser.cs" />
     <Compile Include="Parser\IParserProvider.cs" />
     <Compile Include="Parser\ParseResult.cs" />
