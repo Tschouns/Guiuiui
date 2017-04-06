@@ -61,7 +61,7 @@ namespace TestBench.SampleTextConverters {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to femalE.
+        ///   Looks up a localized string similar to female.
         /// </summary>
         internal static string GenderFemale {
             get {
@@ -70,7 +70,7 @@ namespace TestBench.SampleTextConverters {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to malE.
+        ///   Looks up a localized string similar to male.
         /// </summary>
         internal static string GenderMale {
             get {

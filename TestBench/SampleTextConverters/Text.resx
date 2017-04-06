@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="GenderFemale" xml:space="preserve">
-    <value>femalE</value>
+    <value>female</value>
   </data>
   <data name="GenderMale" xml:space="preserve">
-    <value>malE</value>
+    <value>male</value>
   </data>
   <data name="GenderUndefined" xml:space="preserve">
     <value>-</value>
