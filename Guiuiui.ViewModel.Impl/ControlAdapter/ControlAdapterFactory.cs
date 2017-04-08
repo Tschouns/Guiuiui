@@ -25,7 +25,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
         {
             ArgumentChecks.AssertNotNull(label, nameof(label));
 
-            var textConverter = GuiuiuiToolBox.TextConverters.GetTextConverter<TValue>();
+            var textConverter = BaseToolBox.TextConverters.GetTextConverter<TValue>();
 
             return new GenericLabelAdapter<TValue>(textConverter, label);
         }
@@ -37,8 +37,8 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
         {
             ArgumentChecks.AssertNotNull(textBox, nameof(textBox));
 
-            var textConverter = GuiuiuiToolBox.TextConverters.GetTextConverter<TValue>();
-            var parser = GuiuiuiToolBox.Parsers.GetParser<TValue>();
+            var textConverter = BaseToolBox.TextConverters.GetTextConverter<TValue>();
+            var parser = BaseToolBox.Parsers.GetParser<TValue>();
 
             return new GenericTextBoxAdapter<TValue>(textConverter, parser, textBox);
         }
@@ -50,7 +50,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
         {
             ArgumentChecks.AssertNotNull(comboBox, nameof(comboBox));
 
-            var textConverter = GuiuiuiToolBox.TextConverters.GetTextConverter<TValue>();
+            var textConverter = BaseToolBox.TextConverters.GetTextConverter<TValue>();
 
             return new GenericComboBoxAdapter<TValue>(textConverter, comboBox);
         }

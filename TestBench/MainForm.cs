@@ -2,7 +2,6 @@
 {
     using System.Windows.Forms;
     using System.Linq;
-    using Guiuiui.Base.InversionOfControl;
     using Guiuiui.Base.RuntimeChecks;
     using Guiuiui.ViewModel;
     using TestBench.SampleModels;
@@ -17,19 +16,12 @@
         private readonly IViewModel<Person> _personViewModel;
 
         public MainForm()
-            : this(Ioc.Container.Resolve<IViewModelFactory>())
         {
-        }
-
-        public MainForm(IViewModelFactory viewModelFactory)
-        {
-            ArgumentChecks.AssertNotNull(viewModelFactory, nameof(viewModelFactory));
-
             this.InitializeComponent();
 
-            GuiuiuiToolBox.TextConverterRegistry.RegisterTextConverter(new GenderTextConverter());
+            BaseToolBox.TextConverterRegistry.RegisterTextConverter(new GenderTextConverter());
 
-            this._personViewModel = viewModelFactory.CreateViewModel<Person>();
+            this._personViewModel = ViewModelToolBox.ViewModelFactory.CreateViewModel<Person>();
 
             this.SetupDataBinding();
             this.FillComboBoxes();

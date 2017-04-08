@@ -38,13 +38,9 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
             this._textConverter = textConverter;
             this._comboBox = comboBox;
 
+            this._comboBox.Format += this.ComboBox_Format;
             this._comboBox.SelectedValueChanged += this.ComboBox_SelectedValueChanged;
             this._comboBox.TextChanged += this.ComboBox_TextChanged;
-
-            // Hack-a-doodle...
-            this._comboBox.FormatInfo = GuiuiuiToolBox.CustomFormatProviders.CreateCustomFormatProvider<TValue>(
-                GuiuiuiToolBox.Parsers.GetParser<TValue>(),
-                this._textConverter);
         }
 
         /// <summary>
@@ -65,7 +61,6 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
             set
             {
                 this.TrySetSelectedItem(value);
-                this.SetText();
             }
         }
 
@@ -91,11 +86,12 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
             }
         }
 
-        private void SetText()
+        private void ComboBox_Format(object sender, ListControlConvertEventArgs e)
         {
-            this._comboBox.TextChanged -= this.ComboBox_TextChanged;
-            this._comboBox.Text = this._textConverter.GetText(this.Value);
-            this._comboBox.TextChanged += this.ComboBox_TextChanged;
+            if (e.Value == null || e.Value is TValue)
+            {
+                e.Value = this._textConverter.GetText((TValue)e.Value);
+            }
         }
 
         private void ComboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -113,7 +109,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
             if (itemsMatchingText.Count == 1)
             {
                 this.TrySetSelectedItem(itemsMatchingText.Single());
-                this.SetText();
+
                 return;
             }
 
@@ -125,7 +121,6 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
             if (itemsContainingText.Count == 1)
             {
                 this.TrySetSelectedItem(itemsContainingText.Single());
-                this.SetText();
             }
         }
     }
