@@ -101,13 +101,11 @@
 
             foreach (var person in persons)
             {
-                var item = new ListViewItem()
+                var item = new ListViewItem(Text = person.FirstName)
                 {
-                    //Text = person.FirstName + " " + person.LastName,
                     Tag = person
                 };
 
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, person.FirstName));
                 item.SubItems.Add(new ListViewItem.ListViewSubItem(item, person.LastName));
 
                 this.personListView.Items.Add(item);

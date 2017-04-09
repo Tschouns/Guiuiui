@@ -11,6 +11,7 @@ namespace Guiuiui.ViewModel.DataBinding
     /// <summary>
     /// Represents error that occur during data binding setup.
     /// </summary>
+    [Serializable]
     public class DataBindingErrorException : Exception
     {
         /// <summary>
