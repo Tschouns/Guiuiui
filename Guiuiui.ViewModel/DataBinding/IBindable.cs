@@ -7,6 +7,7 @@
 namespace Guiuiui.ViewModel.DataBinding
 {
     using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Provides an interface to bind properties of <typeparamref name="TModel"/> to controls.
@@ -32,5 +33,13 @@ namespace Guiuiui.ViewModel.DataBinding
         /// Type of the property value
         /// </typeparam>
         ITwoWayPropertyPredicate BindPropertyGetAndSet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TModel, TPropertyValue> setAction);
+
+        /// <summary>
+        /// Binds a list property.
+        /// </summary>
+        /// <typeparam name="TListItem">
+        /// Type of the list item
+        /// </typeparam>
+        IListPropertyPredicate<TListItem> BindListProperty<TListItem>(Func<TModel, IEnumerable<TListItem>> getFunc);
     }
 }

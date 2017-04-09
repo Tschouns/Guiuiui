@@ -28,7 +28,7 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
         private readonly Action<IDataBinding> _addDataBindingCallback;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TwoWayPropertyPredicate{TModel,TPropertyValue}"/> class.
+        /// Initializes a new instance of the <see cref="ReadOnlyPropertyPredicate{TModel, TPropertyValue}"/> class.
         /// </summary>
         public ReadOnlyPropertyPredicate(
             IControlAdapterFactory controlAdapterFactory,

@@ -12,6 +12,8 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
     using System;
     using ViewModel.DataBinding;
     using System.Globalization;
+    using List;
+    using System.Collections.Generic;
 
     /// <summary>
     /// See <see cref="IControlAdapterFactory"/>.
@@ -72,6 +74,16 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
             var message = string.Format(CultureInfo.CurrentCulture, ErrorMessages.PropertyTypeNotSupportedByCheckBox, typeof(TValue).ToString());
 
             throw new DataBindingErrorException(message);
+        }
+
+        /// <summary>
+        /// See <see cref="IControlAdapterFactory.CreateListControlAdapter{TListItem}(IListControl{TListItem})"/>.
+        /// </summary>
+        public IControlAdapter<IEnumerable<TListItem>> CreateListControlAdapter<TListItem>(IListControl<TListItem> listControl)
+        {
+            ArgumentChecks.AssertNotNull(listControl, nameof(listControl));
+
+            throw new NotImplementedException();
         }
     }
 }

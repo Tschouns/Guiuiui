@@ -52,12 +52,14 @@
     <Compile Include="CustomControls\ICustomControlAdapter.cs" />
     <Compile Include="DataBinding\DataBindingErrorException.cs" />
     <Compile Include="DataBinding\IBindable.cs" />
+    <Compile Include="DataBinding\IListPropertyPredicate.cs" />
     <Compile Include="DataBinding\INotifiable.cs" />
     <Compile Include="DataBinding\INotifyOnValuesChanged.cs" />
     <Compile Include="DataBinding\IReadOnlyPropertyPredicate.cs" />
     <Compile Include="DataBinding\ITwoWayPropertyPredicate.cs" />
     <Compile Include="IViewModel.cs" />
     <Compile Include="IViewModelFactory.cs" />
+    <Compile Include="List\IListControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModelToolBox.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

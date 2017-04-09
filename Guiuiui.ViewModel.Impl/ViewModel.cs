@@ -59,6 +59,8 @@ namespace Guiuiui.ViewModel.Impl
         /// </summary>
         public IReadOnlyPropertyPredicate BindPropertyGet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc)
         {
+            ArgumentChecks.AssertNotNull(getFunc, nameof(getFunc));
+
             var getter = new ViewModelGetter<TModel, TPropertyValue>(this, getFunc);
             var predicate = new ReadOnlyPropertyPredicate<TModel, TPropertyValue>(this._controlAdapterFactory, this, getter, this.AddDataBidning);
 
@@ -70,9 +72,25 @@ namespace Guiuiui.ViewModel.Impl
         /// </summary>
         public ITwoWayPropertyPredicate BindPropertyGetAndSet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TModel, TPropertyValue> setAction)
         {
+            ArgumentChecks.AssertNotNull(getFunc, nameof(getFunc));
+            ArgumentChecks.AssertNotNull(setAction, nameof(setAction));
+
             var getter = new ViewModelGetter<TModel, TPropertyValue>(this, getFunc);
             var setter = new ViewModelSetter<TModel, TPropertyValue>(this, setAction);
             var predicate = new TwoWayPropertyPredicate<TModel, TPropertyValue>(this._controlAdapterFactory, this, getter, setter, this.AddDataBidning);
+
+            return predicate;
+        }
+
+        /// <summary>
+        /// See <see cref="IBindable{TModel}.BindListProperty{TListItem}(Func{TModel, IEnumerable{TListItem}})"/>.
+        /// </summary>
+        IListPropertyPredicate<TListItem> IBindable<TModel>.BindListProperty<TListItem>(Func<TModel, IEnumerable<TListItem>> getFunc)
+        {
+            ArgumentChecks.AssertNotNull(getFunc, nameof(getFunc));
+
+            var getter = new ViewModelGetter<TModel, IEnumerable<TListItem>>(this, getFunc);
+            var predicate = new ListPropertyPredicate<TModel, TListItem>(this._controlAdapterFactory, this, getter, this.AddDataBidning);
 
             return predicate;
         }

@@ -6,6 +6,8 @@
 
 namespace Guiuiui.ViewModel.Impl.ControlAdapter
 {
+    using List;
+    using System.Collections.Generic;
     using System.Windows.Forms;
 
     /// <summary>
@@ -44,5 +46,13 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
         /// Type of the value represented by the control
         /// </typeparam>
         IControlAdapter<TValue> CreateCheckBoxAdapter<TValue>(CheckBox checkBox);
+
+        /// <summary>
+        /// Creates a control adapter for a <see cref="IListControl{TListItem}"/>.
+        /// </summary>
+        /// <typeparam name="TListItem">
+        /// Type of the list item
+        /// </typeparam>
+        IControlAdapter<IEnumerable<TListItem>> CreateListControlAdapter<TListItem>(IListControl<TListItem> listControl);
     }
 }

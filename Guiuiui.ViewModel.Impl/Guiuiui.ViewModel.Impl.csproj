@@ -50,9 +50,11 @@
     </Compile>
     <Compile Include="ControlAdapter\GenericComboBoxAdapter.cs" />
     <Compile Include="ControlAdapter\GenericLabelAdapter.cs" />
+    <Compile Include="ControlAdapter\GenericListControlAdapter.cs" />
     <Compile Include="ControlAdapter\GenericTextBoxAdapter.cs" />
     <Compile Include="ControlAdapter\IControlAdapter.cs" />
     <Compile Include="ControlAdapter\IControlAdapterFactory.cs" />
+    <Compile Include="DataBinding\ListPropertyPredicate.cs" />
     <Compile Include="DataBinding\ReadOnlyDataBinding.cs" />
     <Compile Include="DataBinding\ReadOnlyPropertyPredicate.cs" />
     <Compile Include="DataBinding\TwoWayDataBinding.cs" />
