@@ -10,7 +10,7 @@ namespace Guiuiui.ViewModel
 
     /// <summary>
     /// Represents a view model. Contains the actual data model. Allows to set up MVVM-style data binding
-    /// for control.
+    /// for controls.
     /// Whenever a value of <see cref="IViewModel{TModel}.Model"/> is changed by the client code, the view
     /// model must be notified via <see cref="INotifiable.NotifyValueHasChanged"/>.
     /// </summary>
