@@ -40,8 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataBinding\IBindableColumns.cs" />
     <Compile Include="IListView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Guiuiui.ViewModel\Guiuiui.ViewModel.csproj">
+      <Project>{4be6803e-5a6a-4a5f-9ca1-fc038a99d8f0}</Project>
+      <Name>Guiuiui.ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

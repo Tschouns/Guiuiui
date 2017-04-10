@@ -14,22 +14,22 @@ namespace Guiuiui.ViewModel.DataBinding
     public interface IReadOnlyPropertyPredicate
     {
         /// <summary>
-        /// Binds a label to the property.
+        /// Binds the specified label to the property.
         /// </summary>
         void ToLabel(Label label);
 
         /// <summary>
-        /// Binds a text box to the property.
+        /// Binds the specified text box to the property.
         /// </summary>
         void ToTextBox(TextBox textBox);
 
         /// <summary>
-        /// Binds a combo box to the property.
+        /// Binds the specified combo box to the property.
         /// </summary>
         void ToComboBox(ComboBox comboBox);
 
         /// <summary>
-        /// Binds a check box to the property.
+        /// Binds the specified check box to the property.
         /// </summary>
         /// <param name="checkBox"></param>
         void ToCheckBox(CheckBox checkBox);

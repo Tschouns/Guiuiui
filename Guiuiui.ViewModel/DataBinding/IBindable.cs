@@ -19,7 +19,7 @@ namespace Guiuiui.ViewModel.DataBinding
         where TModel : class
     {
         /// <summary>
-        /// Binds a property read-only.
+        /// Binds the specified property read-only.
         /// </summary>
         /// <typeparam name="TPropertyValue">
         /// Type of the property value
@@ -27,7 +27,7 @@ namespace Guiuiui.ViewModel.DataBinding
         IReadOnlyPropertyPredicate BindPropertyGet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc);
 
         /// <summary>
-        /// Binds a property two-way.
+        /// Binds the specified property two-way.
         /// </summary>
         /// <typeparam name="TPropertyValue">
         /// Type of the property value
@@ -35,7 +35,7 @@ namespace Guiuiui.ViewModel.DataBinding
         ITwoWayPropertyPredicate BindPropertyGetAndSet<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TModel, TPropertyValue> setAction);
 
         /// <summary>
-        /// Binds a list property.
+        /// Binds the specified list property.
         /// </summary>
         /// <typeparam name="TListItem">
         /// Type of the list item

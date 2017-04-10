@@ -4,36 +4,21 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Guiuiui.Tools.Impl
+namespace Guiuiui.ListView.Impl
 {
     using Guiuiui.Base.StartUp;
-    using Base.InversionOfControl;
-    using Tools.Reflection;
-    using Reflection;
-    using Tools.Parser;
-    using Parser;
-    using Tools.TextConverter;
-    using TextConverter;
 
     /// <summary>
     /// See <see cref="IProjectInitializationPlugin"/>.
     /// </summary>
     [ProjectInitializationPlugin]
-    public class ToolsInitializationPlugin : IProjectInitializationPlugin
+    public class ListViewInitializationPlugin : IProjectInitializationPlugin
     {
         /// <summary>
         /// See <see cref="IProjectInitializationPlugin.PerformIocContainerRegistrations"/>.
         /// </summary>
         public void PerformIocContainerRegistrations()
         {
-            Ioc.Container.RegisterSingleton<ITypeHelper, TypeHelper>();
-            Ioc.Container.RegisterSingleton<ITextConverterRegistry, TextConverterRegistry>();
-            Ioc.Container.RegisterSingleton<ITextConverterProvider, TextConverterRegistry>();
-            Ioc.Container.RegisterSingleton<IParserProvider, ParserProvider>();
-
-            // Parser
-            Ioc.Container.RegisterSingleton<IParser<int>, IntParser>();
-            Ioc.Container.RegisterSingleton<IParser<string>, StringDummyParser>();
         }
 
         /// <summary>

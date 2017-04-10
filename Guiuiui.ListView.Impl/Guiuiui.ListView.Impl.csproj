@@ -40,7 +40,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ListView.cs" />
+    <Compile Include="ListViewInitializationPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Guiuiui.Base\Guiuiui.Base.csproj">
+      <Project>{c2b1a129-a67e-4e39-b921-51905ed0672a}</Project>
+      <Name>Guiuiui.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Guiuiui.ListView\Guiuiui.ListView.csproj">
+      <Project>{ea5ec808-bb74-4dd6-b699-bd32959d2e51}</Project>
+      <Name>Guiuiui.ListView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Guiuiui.Tools\Guiuiui.Tools.csproj">
+      <Project>{2eb12feb-2469-4729-95bd-fee3a7c8433a}</Project>
+      <Name>Guiuiui.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Guiuiui.ViewModel\Guiuiui.ViewModel.csproj">
+      <Project>{4be6803e-5a6a-4a5f-9ca1-fc038a99d8f0}</Project>
+      <Name>Guiuiui.ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
