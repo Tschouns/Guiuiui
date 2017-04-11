@@ -19,6 +19,6 @@ namespace Guiuiui.ViewModel.List
         /// <summary>
         /// Sets the items which are to be displayed in the list.
         /// </summary>
-        void SetItemsToDisplay(IEnumerable<TListItem> items);
+        void SetListItemsToDisplay(IEnumerable<TListItem> items);
     }
 }

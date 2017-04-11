@@ -35,12 +35,11 @@ namespace Guiuiui.ListView.Impl.DataBinding
         /// <summary>
         /// See <see cref="ICellBindingFactory{TListItem}.CreateCellBindingForItem(TListItem, ICell)"/>.
         /// </summary>
-        public ICellBinding CreateCellBindingForItem(TListItem listItem, ICell cell)
+        public ICellBinding CreateCellBindingForItem(TListItem listItemNullsafe, ICell cell)
         {
-            ArgumentChecks.AssertNotNull(listItem, nameof(listItem));
             ArgumentChecks.AssertNotNull(cell, nameof(cell));
 
-            var getter = new ListItemGetter<TListItem, TPropertyValue>(listItem, this._getFunc);
+            var getter = new ListItemGetter<TListItem, TPropertyValue>(listItemNullsafe, this._getFunc);
             var cellBinding = new CellBinding<TPropertyValue>(this._textConverter, getter, cell);
 
             return cellBinding;

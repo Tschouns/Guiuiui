@@ -8,11 +8,13 @@ namespace Guiuiui.ListView.Impl
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows.Forms;
     using Guiuiui.Base.RuntimeChecks;
     using Guiuiui.ListView.DataBinding;
     using DataBinding;
     using Tools;
+    using static System.Windows.Forms.ListViewItem;
 
     /// <summary>
     /// See <see cref="IListView{TListItem}"/>.
@@ -23,7 +25,11 @@ namespace Guiuiui.ListView.Impl
     public class ListView<TListItem> : IListView<TListItem>
     {
         private readonly ListView _listView;
+
+        private readonly ICellBindingFactory<TListItem> _defaultColumnBinding;
         private readonly IList<ICellBindingFactory<TListItem>> _columnBindings = new List<ICellBindingFactory<TListItem>>();
+
+        private readonly IList<IItemBinder> _itemBinders = new List<IItemBinder>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ListView{TListItem}"/> class.
@@ -33,16 +39,34 @@ namespace Guiuiui.ListView.Impl
             ArgumentChecks.AssertNotNull(listView, nameof(listView));
 
             this._listView = listView;
+
+            // The "default column binding" is used, if no specific column bindins are defined.
+            var textConverter = BaseToolBox.TextConverters.GetTextConverter<TListItem>();
+            this._defaultColumnBinding = new CellBindingFactory<TListItem, TListItem>(textConverter, i => i);
         }
 
         /// <summary>
         /// See <see cref="IListControl{TListItem}.SetItemsToDisplay"/>.
         /// </summary>
-        public void SetItemsToDisplay(IEnumerable<TListItem> items)
+        public void SetListItemsToDisplay(IEnumerable<TListItem> listItems)
         {
-            ArgumentChecks.AssertNotNull(items, nameof(items));
+            ArgumentChecks.AssertNotNull(listItems, nameof(listItems));
 
-            throw new NotImplementedException();
+            // TODO: Perhaps optimize this... so that the list is not cleared entirely...
+            var selectedIndices = this._listView.SelectedIndices.Cast<int>().ToList();
+
+            this._listView.Items.Clear();
+            this._itemBinders.Clear();
+
+            foreach(var listItem in listItems)
+            {
+                this.AddListViewItemWithSubItems(listItem);
+            }
+
+            foreach (var itemBinder in this._itemBinders)
+            {
+                itemBinder.UpdateCells();
+            }
         }
 
         /// <summary>
@@ -57,6 +81,69 @@ namespace Guiuiui.ListView.Impl
             this._columnBindings.Add(cellBindingFactory);
 
             return this;
+        }
+
+        /// <summary>
+        /// See <see cref="IBindableColumns{TListItem}.UnbindAll"/>.
+        /// </summary>
+        public void UnbindAll()
+        {
+            this._columnBindings.Clear();
+            this._itemBinders.Clear();
+            this._listView.Items.Clear();
+        }
+
+        private void AddListViewItemWithSubItems(TListItem listItemNullsafe)
+        {
+            var listViewItem = new ListViewItem();
+
+            // The actual item is stored in the ListViewItem tag.
+            listViewItem.Tag = listItemNullsafe;
+
+            var cellBindings = this.CreateCellBindings(listItemNullsafe, listViewItem);
+            var itemBinder = new ItemBinder(cellBindings);
+
+            this._listView.Items.Add(listViewItem);
+            this._itemBinders.Add(itemBinder);
+        }
+
+        private IEnumerable<ICellBinding> CreateCellBindings(
+            TListItem listItemNullsafe,
+            ListViewItem listViewItem)
+        {
+            ArgumentChecks.AssertNotNull(listViewItem, nameof(listViewItem));
+
+            // The first column displays the ListViewItem.
+            var firstCell = new ListViewItemCell(listViewItem);
+
+            var cellBindings = new List<ICellBinding>();
+            if (this._columnBindings.Any())
+            {
+                var firstCellBinding = this._columnBindings.First().CreateCellBindingForItem(listItemNullsafe, firstCell);
+
+                cellBindings.Add(firstCellBinding);
+
+                // The subsequent columns (if there are any) display a ListViewSubItem each.
+                var subsequentColumnBindings = this._columnBindings.Skip(1).ToList();
+                foreach (var columnBinding in subsequentColumnBindings)
+                {
+                    var listViewSubItem = new ListViewSubItem(listViewItem, string.Empty);
+                    listViewItem.SubItems.Add(listViewSubItem);
+
+                    var cell = new ListViewSubItemCell(listViewSubItem);
+                    var cellBinding = columnBinding.CreateCellBindingForItem(listItemNullsafe, cell);
+
+                    cellBindings.Add(cellBinding);
+                }
+            }
+            else
+            {
+                var firstCellBinding = this._defaultColumnBinding.CreateCellBindingForItem(listItemNullsafe, firstCell);
+
+                cellBindings.Add(firstCellBinding);
+            }
+
+            return cellBindings;
         }
     }
 }

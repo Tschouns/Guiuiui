@@ -41,5 +41,10 @@ namespace Guiuiui.ViewModel.DataBinding
         /// Type of the list item
         /// </typeparam>
         IListPropertyPredicate<TListItem> BindListProperty<TListItem>(Func<TModel, IEnumerable<TListItem>> getFunc);
+
+        /// <summary>
+        /// "Unbinds" all properties and controls.
+        /// </summary>
+        void UnbindAll();
     }
 }

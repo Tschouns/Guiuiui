@@ -85,7 +85,7 @@ namespace Guiuiui.ViewModel.Impl
         /// <summary>
         /// See <see cref="IBindable{TModel}.BindListProperty{TListItem}(Func{TModel, IEnumerable{TListItem}})"/>.
         /// </summary>
-        IListPropertyPredicate<TListItem> IBindable<TModel>.BindListProperty<TListItem>(Func<TModel, IEnumerable<TListItem>> getFunc)
+        public IListPropertyPredicate<TListItem> BindListProperty<TListItem>(Func<TModel, IEnumerable<TListItem>> getFunc)
         {
             ArgumentChecks.AssertNotNull(getFunc, nameof(getFunc));
 
@@ -93,6 +93,19 @@ namespace Guiuiui.ViewModel.Impl
             var predicate = new ListPropertyPredicate<TModel, TListItem>(this._controlAdapterFactory, this, getter, this.AddDataBidning);
 
             return predicate;
+        }
+
+        /// <summary>
+        /// See <see cref="IBindable{TModel}.UnbindAll"/>.
+        /// </summary>
+        public void UnbindAll()
+        {
+            foreach(var dataBinding in this._dataBindings)
+            {
+                dataBinding.Unbind();
+            }
+
+            this._dataBindings.Clear();
         }
 
         /// <summary>

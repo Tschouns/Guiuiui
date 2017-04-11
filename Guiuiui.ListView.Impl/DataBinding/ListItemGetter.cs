@@ -20,20 +20,19 @@ namespace Guiuiui.ListView.Impl.DataBinding
     /// </typeparam>
     public class ListItemGetter<TListItem, TPropertyValue> : IGetter<TPropertyValue>
     {
-        private readonly TListItem _listItem;
+        private readonly TListItem _listItemNullsafe;
         private readonly Func<TListItem, TPropertyValue> _getFunc;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ListItemGetter"/> class.
         /// </summary>
         public ListItemGetter(
-            TListItem listItem,
+            TListItem listItemNullsafe,
             Func<TListItem, TPropertyValue> getFunc)
         {
-            ArgumentChecks.AssertNotNull(listItem, nameof(listItem));
             ArgumentChecks.AssertNotNull(getFunc, nameof(getFunc));
 
-            this._listItem = listItem;
+            this._listItemNullsafe = listItemNullsafe;
             this._getFunc = getFunc;
         }
 
@@ -42,7 +41,12 @@ namespace Guiuiui.ListView.Impl.DataBinding
         /// </summary>
         public TPropertyValue Get()
         {
-            var value = this._getFunc(this._listItem);
+            if (this._listItemNullsafe == null)
+            {
+                return default(TPropertyValue);
+            }
+
+            var value = this._getFunc(this._listItemNullsafe);
 
             return value;
         }

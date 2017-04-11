@@ -50,11 +50,11 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
             {
                 if (value == null)
                 {
-                    this._listControl.SetItemsToDisplay(new TListItem[0]);
+                    this._listControl.SetListItemsToDisplay(new TListItem[0]);
                 }
                 else
                 {
-                    this._listControl.SetItemsToDisplay(value);
+                    this._listControl.SetListItemsToDisplay(value);
                 }
             }
         }

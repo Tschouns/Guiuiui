@@ -19,11 +19,17 @@ namespace Guiuiui.ListView.DataBinding
         /// <summary>
         /// Adds a (read-only) data binding to a column for the specified property. The columns are assigned
         /// by the order in which this method is called.
-        /// If this method is not called at all,
+        /// By default, if this method is not called at all, the list items will be displayed in the first
+        /// column.
         /// </summary>
         /// <typeparam name="TPropertyValue">
         /// Type of the property value
         /// </typeparam>
         IBindableColumns<TListItem> AddColumnBindingForProperty<TPropertyValue>(Func<TListItem, TPropertyValue> getFunc);
+
+        /// <summary>
+        /// "Unbinds" all properties and columns.
+        /// </summary>
+        void UnbindAll();
     }
 }
