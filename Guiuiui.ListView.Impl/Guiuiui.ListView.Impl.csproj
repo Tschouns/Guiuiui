@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataBinding\IColumnBinding.cs" />
     <Compile Include="DataBinding\IItemBinder.cs" />
+    <Compile Include="DataBinding\ItemBinder.cs" />
     <Compile Include="ListView.cs" />
     <Compile Include="ListViewInitializationPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
