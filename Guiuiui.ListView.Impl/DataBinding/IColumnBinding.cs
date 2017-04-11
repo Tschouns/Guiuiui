@@ -4,22 +4,27 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Guiuiui.ViewModel.Impl.DataBinding
+namespace Guiuiui.ListView.Impl.DataBinding
 {
     /// <summary>
-    /// Represents a single binding between a property and a control.
+    /// Represents a single binding between a property and a column.
     /// </summary>
-    public interface IDataBinding
+    public interface IColumnBinding
     {
         /// <summary>
-        /// Gets a value indicating whether this data binding is active, or already "unbound".
+        /// Gets a value indicating whether this column binding is active, or already "unbound".
         /// </summary>
         bool IsBound { get; }
 
         /// <summary>
-        /// "Unbinds" the property and control, i.e. makes this data binding ineffective. Unregisters
+        /// "Unbinds" the property and column, i.e. makes this column binding ineffective. Unregisters
         /// any event handlers.
         /// </summary>
         void Unbind();
+
+        /// <summary>
+        /// Updates value displayed int the column.
+        /// </summary>
+        void Update();
     }
 }
