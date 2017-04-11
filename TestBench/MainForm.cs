@@ -2,11 +2,11 @@
 {
     using System.Windows.Forms;
     using System.Linq;
-    using Guiuiui.Base.RuntimeChecks;
     using Guiuiui.ViewModel;
     using TestBench.SampleModels;
     using Guiuiui.Tools;
     using SampleTextConverters;
+    using Guiuiui.ListView;
 
     /// <summary>
     /// Merely a little test bench for the <see cref="Guiuiui"/> namespace...
@@ -14,6 +14,7 @@
     public partial class MainForm : Form
     {
         private readonly IViewModel<Person> _personViewModel;
+        private readonly IListView<Address> _addressListViewWrapper;
 
         public MainForm()
         {
@@ -22,6 +23,7 @@
             BaseToolBox.TextConverterRegistry.RegisterTextConverter(new GenderTextConverter());
 
             this._personViewModel = ViewModelToolBox.ViewModelFactory.CreateViewModel<Person>();
+            this._addressListViewWrapper = ListViewToolBox.ListViewFactory.CreateListView<Address>(this.addressListView);
 
             this.SetupDataBinding();
             this.FillComboBoxes();
@@ -41,13 +43,24 @@
 
         private void SetupDataBinding()
         {
+            // "Person" view model
+            this._personViewModel.BindPropertyGet(p => p.Summary).ToLabel(this.summaryLabel);
+
             this._personViewModel.BindPropertyGetAndSet(p => p.FirstName, (p, v) => p.FirstName = v).ToTextBox(this.firstNameTextBox);
             this._personViewModel.BindPropertyGetAndSet(p => p.LastName, (p, v) => p.LastName = v).ToTextBox(this.nameTextBox);
             this._personViewModel.BindPropertyGet(p => p.FullName).ToTextBox(this.fullNameTextBox);
+
             this._personViewModel.BindPropertyGetAndSet(p => p.Age, (p, v) => p.Age = v).ToTextBox(this.ageTextBox);
             this._personViewModel.BindPropertyGetAndSet(p => p.Gender, (p, v) => p.Gender = v).ToComboBox(this.genderComboBox);
             this._personViewModel.BindPropertyGetAndSet(p => p.IsVegetarian, (p, v) => p.IsVegetarian = v).ToCheckBox(this.isVegetarianCheckBox);
-            this._personViewModel.BindPropertyGet(p => p.Summary).ToLabel(this.summaryLabel);
+
+            this._personViewModel.BindListProperty(p => p.Addresses).ToListControl(this._addressListViewWrapper);
+
+            // "Addresses" list view
+            this._addressListViewWrapper
+                .AddColumnBindingForProperty(i => i.Street)
+                .AddColumnBindingForProperty(i => i.PostalCode)
+                .AddColumnBindingForProperty(i => i.City);
         }
 
         private void FillComboBoxes()
@@ -75,6 +88,13 @@
                 Gender = Gender.Undefined
             };
 
+            hugoHugentobler.Addresses.Add(new Address
+            {
+                Street = "Tobelstrasse 15",
+                PostalCode = 1234,
+                City = "Staffelheim"
+            });
+
             var hubertStaffelbach = new Person()
             {
                 LastName = "Staffelbach",
@@ -82,6 +102,13 @@
                 Age = 50,
                 Gender = Gender.Male
             };
+
+            hubertStaffelbach.Addresses.Add(new Address
+            {
+                Street = "Staffelweg 12",
+                PostalCode = 1234,
+                City = "Staffelheim"
+            });
 
             var gunhildeStaffelbach = new Person()
             {

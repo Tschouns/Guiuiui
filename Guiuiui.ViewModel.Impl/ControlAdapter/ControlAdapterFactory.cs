@@ -83,7 +83,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
         {
             ArgumentChecks.AssertNotNull(listControl, nameof(listControl));
 
-            throw new NotImplementedException();
+            return new GenericListControlAdapter<TListItem>(listControl);
         }
     }
 }
