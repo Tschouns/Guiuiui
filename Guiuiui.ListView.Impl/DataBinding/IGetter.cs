@@ -7,13 +7,16 @@
 namespace Guiuiui.ListView.Impl.DataBinding
 {
     /// <summary>
-    /// Contains a list item, and all the cell bindings for that specific list item.
+    /// Represents an abstraction of a property getter.
     /// </summary>
-    public interface IItemBinder
+    /// <typeparam name="TPropertyValue">
+    /// Type of the property
+    /// </typeparam>
+    public interface IGetter<TPropertyValue>
     {
         /// <summary>
-        /// Updates all the cells (columns) bound to the item.
+        /// Gets the property value.
         /// </summary>
-        void UpdateCells();
+        TPropertyValue Get();
     }
 }

@@ -7,13 +7,16 @@
 namespace Guiuiui.ListView.Impl.DataBinding
 {
     /// <summary>
-    /// Contains a list item, and all the cell bindings for that specific list item.
+    /// Creates pre-defined cell bindings for specific list item instances.
     /// </summary>
-    public interface IItemBinder
+    /// <typeparam name="TListItem">
+    /// Type of the list item
+    /// </typeparam>
+    public interface ICellBindingFactory<TListItem>
     {
         /// <summary>
-        /// Updates all the cells (columns) bound to the item.
+        /// Creates a pre-defined cell binding for the specified list item and cell.
         /// </summary>
-        void UpdateCells();
+        ICellBinding CreateCellBindingForItem(TListItem listItem, ICell cell);
     }
 }

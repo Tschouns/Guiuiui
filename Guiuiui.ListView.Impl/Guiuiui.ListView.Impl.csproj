@@ -41,9 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBinding\IColumnBinding.cs" />
+    <Compile Include="DataBinding\CellBinding.cs" />
+    <Compile Include="DataBinding\CellBindingFactory.cs" />
+    <Compile Include="DataBinding\ICell.cs" />
+    <Compile Include="DataBinding\ICellBinding.cs" />
+    <Compile Include="DataBinding\ICellBindingFactory.cs" />
+    <Compile Include="DataBinding\IGetter.cs" />
     <Compile Include="DataBinding\IItemBinder.cs" />
     <Compile Include="DataBinding\ItemBinder.cs" />
+    <Compile Include="DataBinding\ListItemGetter.cs" />
+    <Compile Include="DataBinding\ListViewItemCell.cs" />
+    <Compile Include="DataBinding\ListViewSubItemCell.cs" />
     <Compile Include="ListView.cs" />
     <Compile Include="ListViewInitializationPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

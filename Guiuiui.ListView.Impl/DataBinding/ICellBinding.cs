@@ -7,13 +7,13 @@
 namespace Guiuiui.ListView.Impl.DataBinding
 {
     /// <summary>
-    /// Contains a list item, and all the cell bindings for that specific list item.
+    /// Represents a single binding between a property and a list view cell.
     /// </summary>
-    public interface IItemBinder
+    public interface ICellBinding
     {
         /// <summary>
-        /// Updates all the cells (columns) bound to the item.
+        /// Updates value displayed int the cell.
         /// </summary>
-        void UpdateCells();
+        void UpdateCell();
     }
 }

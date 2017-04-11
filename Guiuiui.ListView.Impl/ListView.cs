@@ -11,7 +11,8 @@ namespace Guiuiui.ListView.Impl
     using System.Windows.Forms;
     using Guiuiui.Base.RuntimeChecks;
     using Guiuiui.ListView.DataBinding;
-    using Guiuiui.ViewModel.List;
+    using DataBinding;
+    using Tools;
 
     /// <summary>
     /// See <see cref="IListView{TListItem}"/>.
@@ -22,6 +23,7 @@ namespace Guiuiui.ListView.Impl
     public class ListView<TListItem> : IListView<TListItem>
     {
         private readonly ListView _listView;
+        private readonly IList<ICellBindingFactory<TListItem>> _columnBindings = new List<ICellBindingFactory<TListItem>>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ListView{TListItem}"/> class.
@@ -48,7 +50,13 @@ namespace Guiuiui.ListView.Impl
         /// </summary>
         public IBindableColumns<TListItem> AddColumnBindingForProperty<TPropertyValue>(Func<TListItem, TPropertyValue> getFunc)
         {
-            throw new NotImplementedException();
+            ArgumentChecks.AssertNotNull(getFunc, nameof(getFunc));
+
+            var textConverter = BaseToolBox.TextConverters.GetTextConverter<TPropertyValue>();
+            var cellBindingFactory = new CellBindingFactory<TListItem, TPropertyValue>(textConverter, getFunc);
+            this._columnBindings.Add(cellBindingFactory);
+
+            return this;
         }
     }
 }

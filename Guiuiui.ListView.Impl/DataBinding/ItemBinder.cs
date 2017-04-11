@@ -6,59 +6,35 @@
 
 namespace Guiuiui.ListView.Impl.DataBinding
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
     using Guiuiui.Base.RuntimeChecks;
 
     /// <summary>
     /// See <see cref="IItemBinder"/>.
     /// </summary>
-    /// <typeparam name="TListItem">
-    /// Type of the list item
-    /// </typeparam>
-    public class ItemBinder<TListItem> : IItemBinder
+    public class ItemBinder : IItemBinder
     {
-        private readonly IEnumerable<IColumnBinding> _columnBindings;
+        private readonly IEnumerable<ICellBinding> _cellBindings;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ItemBinder{TListItem}"/> class.
         /// </summary>
         public ItemBinder(
-            IEnumerable<IColumnBinding> columnBindings)
+            IEnumerable<ICellBinding> cellBindings)
         {
-            ArgumentChecks.AssertNotNull(columnBindings, nameof(columnBindings));
+            ArgumentChecks.AssertNotNull(cellBindings, nameof(cellBindings));
 
-            this._columnBindings = columnBindings;
+            this._cellBindings = cellBindings;
         }
 
         /// <summary>
-        /// See <see cref="IItemBinder.IsBound"/>.
+        /// See <see cref="IItemBinder.UpdateCells"/>.
         /// </summary>
-        public bool IsBound => this._columnBindings.Any(b => b.IsBound);
-
-        /// <summary>
-        /// See <see cref="IItemBinder.UnbindAll"/>.
-        /// </summary>
-        public void UnbindAll()
+        public void UpdateCells()
         {
-            if (this.IsBound)
+            foreach (var cellBinding in this._cellBindings)
             {
-                foreach (var columnBinding in this._columnBindings)
-                {
-                    columnBinding.Unbind();
-                }
-            }
-        }
-
-        /// <summary>
-        /// See <see cref="IItemBinder.UpdateColumns"/>.
-        /// </summary>
-        public void UpdateColumns()
-        {
-            foreach (var columnBinding in this._columnBindings)
-            {
-                columnBinding.Unbind();
+                cellBinding.UpdateCell();
             }
         }
     }
