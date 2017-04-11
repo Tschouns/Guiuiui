@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,9 +43,15 @@
   <ItemGroup>
     <Compile Include="DataBinding\IBindableColumns.cs" />
     <Compile Include="IListView.cs" />
+    <Compile Include="IListViewFactory.cs" />
+    <Compile Include="ListViewToolBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Guiuiui.Base\Guiuiui.Base.csproj">
+      <Project>{C2B1A129-A67E-4E39-B921-51905ED0672A}</Project>
+      <Name>Guiuiui.Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Guiuiui.ViewModel\Guiuiui.ViewModel.csproj">
       <Project>{4be6803e-5a6a-4a5f-9ca1-fc038a99d8f0}</Project>
       <Name>Guiuiui.ViewModel</Name>

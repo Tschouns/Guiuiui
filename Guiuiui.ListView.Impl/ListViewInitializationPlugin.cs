@@ -6,6 +6,7 @@
 
 namespace Guiuiui.ListView.Impl
 {
+    using Base.InversionOfControl;
     using Guiuiui.Base.StartUp;
 
     /// <summary>
@@ -19,6 +20,7 @@ namespace Guiuiui.ListView.Impl
         /// </summary>
         public void PerformIocContainerRegistrations()
         {
+            Ioc.Container.RegisterSingleton<IListViewFactory, ListViewFactory>();
         }
 
         /// <summary>
