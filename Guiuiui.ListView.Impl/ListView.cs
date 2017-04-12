@@ -105,6 +105,8 @@ namespace Guiuiui.ListView.Impl
         {
             ArgumentChecks.AssertNotNull(viewModel, nameof(viewModel));
 
+            viewModel.ValueChanged += this.ViewModel_ValueChanged;
+
             this._selectedItemViewModels.Add(viewModel);
         }
 
@@ -161,6 +163,8 @@ namespace Guiuiui.ListView.Impl
             return cellBindings;
         }
 
+        #region event handlers
+
         private void ListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectedListItems = this._listView.SelectedItems
@@ -184,5 +188,15 @@ namespace Guiuiui.ListView.Impl
                 }
             }
         }
+
+        private void ViewModel_ValueChanged(object sender, EventArgs e)
+        {
+            foreach(var itemBinder in this._itemBinders)
+            {
+                itemBinder.UpdateCells();
+            }
+        }
+
+        #endregion
     }
 }
