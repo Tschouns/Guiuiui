@@ -9,19 +9,16 @@ namespace TestBench.SampleTextConverters
     using Guiuiui.Tools.TextConverter;
     using TestBench.SampleModels;
 
-    public class GenderTextConverter : ITextConverter<Gender>
+    public class AddressTextConverter : ITextConverter<Address>
     {
-        public string GetText(Gender value)
+        public string GetText(Address value)
         {
-            switch(value)
+            if (value == null)
             {
-                case Gender.Male:
-                    return Text.GenderMale;
-                case Gender.Female:
-                    return Text.GenderFemale;
-                default:
-                    return Text.GenderUndefined;
+                return "-";
             }
+
+            return value.Street + ", " + value.PostalCode + " " + value.City;
         }
     }
 }

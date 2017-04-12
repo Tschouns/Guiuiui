@@ -1,14 +1,28 @@
 === Guiuiui Mini Roadmap ===
+
+= "AddRemove" =
+
+= "ListView" =
+
+= "ViewModel" =
 X Implement "Get only" data binding
+* Provide method overloads to bind a control with a specific text converter / parser
+* Provide API for custom control extensions ("BBT Money Control", "BBT Data Selector", and such...)
 * Complete WinForms ControlAdapters for
   X Label
   X TextBox
   X ComboBox
-  * CheckBox
+  X CheckBox
   * DatePicker
-  * "Child List Controls"
+  X "Child List Controls"
+
+= "Tools" =
 X Provide API for custom text converters
 * Provide API for custom parsers
-* Provide method overloads to bind a control with a specific text converter / parser
-* Provide API for custom control extensions ("BBT Money Control", "BBT Data Selector", and such...)
+
 * Provide data binding/view model/adapters etc. in separate projects for WinForms and WPF
+
+=== Tech.Features ===
+* Data binding: take in Expressions instead of Func/Action, then compile them
+  * to enforce a more readable "expression-style" usage, and...
+  * to determine a "PropertyInfo" (which can then be used/evaluated by other tools -> Extendability)
