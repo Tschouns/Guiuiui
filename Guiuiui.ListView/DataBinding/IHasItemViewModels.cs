@@ -4,19 +4,22 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Guiuiui.ListView
+namespace Guiuiui.ListView.DataBinding
 {
-    using Guiuiui.ListView.DataBinding;
-    using Guiuiui.ViewModel.List;
+    using Guiuiui.ViewModel;
 
     /// <summary>
-    /// Represents a list view. Displays a list of items.
+    /// Allows to add view models, which are then used to represent selected items.
     /// </summary>
     /// <typeparam name="TListItem">
     /// Type of the list item
     /// </typeparam>
-    public interface IListView<TListItem> : IListControl<TListItem>, IBindableColumns<TListItem>, IHasItemViewModels<TListItem>
+    public interface IHasItemViewModels<TListItem>
         where TListItem : class
     {
+        /// <summary>
+        /// Adds a view model which is used to represent a selected item.
+        /// </summary>
+        void AddViewModelForSelectedItem(IViewModel<TListItem> viewModel);
     }
 }

@@ -21,6 +21,7 @@ namespace Guiuiui.ListView.Impl
         /// See <see cref="IListViewFactory.CreateListView{TListItem}(System.Windows.Forms.ListView)"/>.
         /// </typeparam>
         public IListView<TListItem> CreateListView<TListItem>(ListView listView)
+            where TListItem : class
         {
             ArgumentChecks.AssertNotNull(listView, nameof(listView));
 

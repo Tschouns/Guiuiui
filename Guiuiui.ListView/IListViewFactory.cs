@@ -19,6 +19,7 @@ namespace Guiuiui.ListView
         /// <typeparam name="TListItem">
         /// Type of the list item
         /// </typeparam>
-        IListView<TListItem> CreateListView<TListItem>(ListView listView);
+        IListView<TListItem> CreateListView<TListItem>(ListView listView)
+            where TListItem : class;
     }
 }

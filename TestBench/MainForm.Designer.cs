@@ -84,13 +84,11 @@
             this.personListView.FullRowSelect = true;
             this.personListView.GridLines = true;
             this.personListView.Location = new System.Drawing.Point(23, 17);
-            this.personListView.MultiSelect = false;
             this.personListView.Name = "personListView";
             this.personListView.Size = new System.Drawing.Size(294, 331);
             this.personListView.TabIndex = 0;
             this.personListView.UseCompatibleStateImageBehavior = false;
             this.personListView.View = System.Windows.Forms.View.Details;
-            this.personListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.personListView_ItemSelectionChanged);
             // 
             // firstNameColumn
             // 

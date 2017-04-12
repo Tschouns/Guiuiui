@@ -15,6 +15,7 @@ namespace Guiuiui.ListView.Impl
     using DataBinding;
     using Tools;
     using static System.Windows.Forms.ListViewItem;
+    using ViewModel;
 
     /// <summary>
     /// See <see cref="IListView{TListItem}"/>.
@@ -23,11 +24,14 @@ namespace Guiuiui.ListView.Impl
     /// See <see cref="IListView{TListItem}"/>.
     /// </typeparam>
     public class ListView<TListItem> : IListView<TListItem>
+        where TListItem : class
     {
         private readonly ListView _listView;
 
         private readonly ICellBindingFactory<TListItem> _defaultColumnBinding;
         private readonly IList<ICellBindingFactory<TListItem>> _columnBindings = new List<ICellBindingFactory<TListItem>>();
+
+        private readonly IList<IViewModel<TListItem>> _selectedItemViewModels = new List<IViewModel<TListItem>>();
 
         private readonly IList<IItemBinder> _itemBinders = new List<IItemBinder>();
 
@@ -39,6 +43,7 @@ namespace Guiuiui.ListView.Impl
             ArgumentChecks.AssertNotNull(listView, nameof(listView));
 
             this._listView = listView;
+            this._listView.SelectedIndexChanged += this.ListView_SelectedIndexChanged;
 
             // The "default column binding" is used, if no specific column bindins are defined.
             var textConverter = BaseToolBox.TextConverters.GetTextConverter<TListItem>();
@@ -93,6 +98,16 @@ namespace Guiuiui.ListView.Impl
             this._listView.Items.Clear();
         }
 
+        /// <summary>
+        /// See <see cref="IHasItemViewModels{TListItem}.AddViewModelForSelectedItem(IViewModel{TListItem})"/>.
+        /// </summary>
+        public void AddViewModelForSelectedItem(IViewModel<TListItem> viewModel)
+        {
+            ArgumentChecks.AssertNotNull(viewModel, nameof(viewModel));
+
+            this._selectedItemViewModels.Add(viewModel);
+        }
+
         private void AddListViewItemWithSubItems(TListItem listItemNullsafe)
         {
             var listViewItem = new ListViewItem();
@@ -144,6 +159,30 @@ namespace Guiuiui.ListView.Impl
             }
 
             return cellBindings;
+        }
+
+        private void ListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedListItems = this._listView.SelectedItems
+                .Cast<ListViewItem>()
+                .Select(i => i.Tag)
+                .OfType<TListItem>()
+                .ToList();
+
+            // Clear view model(s).
+            foreach (var viewModel in this._selectedItemViewModels)
+            {
+                viewModel.Model = null;
+            }
+
+            // Populate view model(s) with selected item(s).
+            for (var index = 0; index < selectedListItems.Count; index++)
+            {
+                if (this._selectedItemViewModels.Count > index)
+                {
+                    this._selectedItemViewModels[index].Model = selectedListItems[index];
+                }
+            }
         }
     }
 }

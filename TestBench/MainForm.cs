@@ -13,7 +13,9 @@
     /// </summary>
     public partial class MainForm : Form
     {
+        private readonly IListView<Person> _personListView;
         private readonly IViewModel<Person> _personViewModel;
+
         private readonly IListView<Address> _addressListViewWrapper;
 
         public MainForm()
@@ -22,6 +24,7 @@
 
             BaseToolBox.TextConverterRegistry.RegisterTextConverter(new GenderTextConverter());
 
+            this._personListView = ListViewToolBox.ListViewFactory.CreateListView<Person>(this.personListView);
             this._personViewModel = ViewModelToolBox.ViewModelFactory.CreateViewModel<Person>();
             this._addressListViewWrapper = ListViewToolBox.ListViewFactory.CreateListView<Address>(this.addressListView);
 
@@ -30,19 +33,15 @@
             this.InitializePersonListView();
         }
 
-        private static TModel GetSelectedModel<TModel>(ListView listView)
-        {
-            var selectedModel = listView.SelectedItems
-                .Cast<ListViewItem>()
-                .Select(i => i.Tag)
-                .Cast<TModel>()
-                .FirstOrDefault();
-
-            return selectedModel;
-        }
-
         private void SetupDataBinding()
         {
+            // "Persons" list view
+            this._personListView
+                .AddColumnBindingForProperty(p => p.FirstName)
+                .AddColumnBindingForProperty(p => p.LastName);
+
+            this._personListView.AddViewModelForSelectedItem(this._personViewModel);
+
             // "Person" view model
             this._personViewModel.BindPropertyGet(p => p.Summary).ToLabel(this.summaryLabel);
 
@@ -92,7 +91,7 @@
             {
                 Street = "Tobelstrasse 15",
                 PostalCode = 1234,
-                City = "Staffelheim"
+                City = "Staffelshausen"
             });
 
             var hubertStaffelbach = new Person()
@@ -107,7 +106,14 @@
             {
                 Street = "Staffelweg 12",
                 PostalCode = 1234,
-                City = "Staffelheim"
+                City = "Staffelshausen"
+            });
+
+            hubertStaffelbach.Addresses.Add(new Address
+            {
+                Street = "Blechheimstrasse 76",
+                PostalCode = 5432,
+                City = "Brunzilausi"
             });
 
             var gunhildeStaffelbach = new Person()
@@ -126,22 +132,7 @@
                 gunhildeStaffelbach
             };
 
-            foreach (var person in persons)
-            {
-                var item = new ListViewItem(Text = person.FirstName)
-                {
-                    Tag = person
-                };
-
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, person.LastName));
-
-                this.personListView.Items.Add(item);
-            }
-        }
-
-        private void personListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-        {
-            this._personViewModel.Model = GetSelectedModel<Person>(this.personListView);
+            this._personListView.SetListItemsToDisplay(persons);
         }
     }
 }
