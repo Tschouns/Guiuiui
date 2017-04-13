@@ -19,6 +19,13 @@ X Implement "Get only" data binding
 = "Tools" =
 X Provide API for custom text converters
 * Provide API for custom parsers
+* Complete Parsers for .Net base types
+  X int
+  * double
+  * decimal
+  * byte
+  * long
+  * ...
 
 * Provide data binding/view model/adapters etc. in separate projects for WinForms and WPF
 
