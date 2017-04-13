@@ -44,6 +44,12 @@
     <Compile Include="Parser\BuiltInTypes\CharParser.cs" />
     <Compile Include="Parser\BuiltInTypes\DecimalParser.cs" />
     <Compile Include="Parser\BuiltInTypes\DoubleParser.cs" />
+    <Compile Include="Parser\BuiltInTypes\FloatParser.cs" />
+    <Compile Include="Parser\BuiltInTypes\LongParser.cs" />
+    <Compile Include="Parser\BuiltInTypes\ShortParser.cs" />
+    <Compile Include="Parser\BuiltInTypes\UIntParser.cs" />
+    <Compile Include="Parser\BuiltInTypes\ULongParser.cs" />
+    <Compile Include="Parser\BuiltInTypes\UShortParser.cs" />
     <Compile Include="Parser\GenericDefaultParser.cs" />
     <Compile Include="Parser\BuiltInTypes\IntParser.cs" />
     <Compile Include="Parser\ParserProvider.cs" />

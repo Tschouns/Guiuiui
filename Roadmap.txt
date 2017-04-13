@@ -26,14 +26,14 @@ X Provide API for custom text converters
   X char
   X decimal
   X double
-  * float
+  X float
   X int
-  * uint
-  * long
-  * ulong
-  * short
-  * ushort
-  * string
+  X uint
+  X long
+  X ulong
+  X short
+  X ushort
+  X string
 
 * Provide data binding/view model/adapters etc. in separate projects for WinForms and WPF
 
