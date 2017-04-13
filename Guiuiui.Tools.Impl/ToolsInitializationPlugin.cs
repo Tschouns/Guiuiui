@@ -33,6 +33,7 @@ namespace Guiuiui.Tools.Impl
             Ioc.Container.RegisterSingleton<IParserProvider, ParserProvider>();
 
             // Parser
+            Ioc.Container.RegisterSingleton<IParser<bool>, BoolParser>();
             Ioc.Container.RegisterSingleton<IParser<byte>, ByteParser>();
             Ioc.Container.RegisterSingleton<IParser<char>, CharParser>();
             Ioc.Container.RegisterSingleton<IParser<decimal>, DecimalParser>();

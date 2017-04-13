@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Parser\BuiltInTypes\BoolParser.cs" />
     <Compile Include="Parser\BuiltInTypes\ByteParser.cs" />
     <Compile Include="Parser\BuiltInTypes\CharParser.cs" />
     <Compile Include="Parser\BuiltInTypes\DecimalParser.cs" />
