@@ -20,6 +20,7 @@ X Implement "Get only" data binding
 X Provide API for custom text converters
 * Provide API for custom parsers
 * Complete Parsers for .Net base types
+  * bool
   X int
   * double
   * decimal

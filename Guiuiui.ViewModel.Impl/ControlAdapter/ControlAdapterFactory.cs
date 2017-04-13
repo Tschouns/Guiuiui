@@ -67,11 +67,32 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
             if (typeof(TValue) == typeof(bool))
             {
                 var checkBoxAdapter = new CheckBoxAdapter(checkBox);
+
                 return (IControlAdapter<TValue>)checkBoxAdapter;
             }
 
             // There is no suitable check box adapter for TValue.
-            var message = string.Format(CultureInfo.CurrentCulture, ErrorMessages.PropertyTypeNotSupportedByCheckBox, typeof(TValue).ToString());
+            var message = string.Format(CultureInfo.CurrentCulture, ErrorMessages.PropertyTypeNotSupportedByCheckBox, typeof(TValue));
+
+            throw new DataBindingErrorException(message);
+        }
+
+        /// <summary>
+        /// See <see cref="IControlAdapterFactory.CreateDateTimePickerAdapter{TValue}(DateTimePicker)"/>.
+        /// </summary>
+        public IControlAdapter<TValue> CreateDateTimePickerAdapter<TValue>(DateTimePicker dateTimePicker)
+        {
+            ArgumentChecks.AssertNotNull(dateTimePicker, nameof(dateTimePicker));
+
+            if (typeof (TValue) == typeof (DateTime))
+            {
+                var dateTimePickerAdapter = new DateTimePickerAdapter(dateTimePicker);
+
+                return (IControlAdapter<TValue>)dateTimePickerAdapter;
+            }
+
+            // There is no suitable date time box adapter for TValue.
+            var message = string.Format(CultureInfo.CurrentCulture, ErrorMessages.PropertyTypeNotSupportedByDateTimePicker, typeof(TValue));
 
             throw new DataBindingErrorException(message);
         }

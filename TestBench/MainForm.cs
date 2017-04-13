@@ -1,5 +1,6 @@
 ﻿namespace TestBench
 {
+    using System;
     using System.Windows.Forms;
     using Guiuiui.ViewModel;
     using TestBench.SampleModels;
@@ -52,8 +53,8 @@
             this._personViewModel.BindPropertyGetAndSet(p => p.FirstName, (p, v) => p.FirstName = v).ToTextBox(this.firstNameTextBox);
             this._personViewModel.BindPropertyGetAndSet(p => p.LastName, (p, v) => p.LastName = v).ToTextBox(this.nameTextBox);
             this._personViewModel.BindPropertyGet(p => p.FullName).ToTextBox(this.fullNameTextBox);
-
-            this._personViewModel.BindPropertyGetAndSet(p => p.Age, (p, v) => p.Age = v).ToTextBox(this.ageTextBox);
+            
+            this._personViewModel.BindPropertyGetAndSet(p => p.DateOfBirth, (p, v) => p.DateOfBirth = v).ToDateTimePicker(this.dateOfBirthDateTimePicker);
             this._personViewModel.BindPropertyGetAndSet(p => p.Gender, (p, v) => p.Gender = v).ToComboBox(this.genderComboBox);
             this._personViewModel.BindPropertyGetAndSet(p => p.IsVegetarian, (p, v) => p.IsVegetarian = v).ToCheckBox(this.isVegetarianCheckBox);
 
@@ -86,7 +87,7 @@
             {
                 LastName = "Meier",
                 FirstName = "Fritz",
-                Age = 34,
+                DateOfBirth = new DateTime(1983, 4, 18),
                 Gender = Gender.Male,
                 IsVegetarian = true
             };
@@ -95,7 +96,7 @@
             {
                 LastName = "Hugentobler",
                 FirstName = "Hugo",
-                Age = 77,
+                DateOfBirth = new DateTime(1971, 11, 2),
                 Gender = Gender.Undefined
             };
 
@@ -110,7 +111,7 @@
             {
                 LastName = "Staffelbach",
                 FirstName = "Hubert",
-                Age = 50,
+                DateOfBirth = new DateTime(1955, 8, 30),
                 Gender = Gender.Male
             };
 
@@ -128,11 +129,18 @@
                 City = "Brunzilausi"
             });
 
+            hubertStaffelbach.Addresses.Add(new Address
+            {
+                Street = "Holzweg 4",
+                PostalCode = 8866,
+                City = "Knittlingen"
+            });
+
             var gunhildeStaffelbach = new Person
             {
                 LastName = "Staffelbach",
                 FirstName = "Gunhilde",
-                Age = 51,
+                DateOfBirth = new DateTime(1966, 3, 3),
                 Gender = Gender.Female
             };
 

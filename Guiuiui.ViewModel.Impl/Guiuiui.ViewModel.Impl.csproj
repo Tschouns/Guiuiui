@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ControlAdapter\CheckBoxAdapter.cs" />
     <Compile Include="ControlAdapter\ControlAdapterFactory.cs" />
+    <Compile Include="ControlAdapter\DateTimePickerAdapter.cs" />
     <Compile Include="ControlAdapter\ErrorMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

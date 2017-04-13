@@ -118,7 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="PropertyTypeNotSupportedByCheckBox" xml:space="preserve">
-    <value>The check box does not support the property type {0} .</value>
+    <value>The check box cannot be bound to a property of type {0} .</value>
+    <comment>{0}: property type</comment>
+  </data>
+  <data name="PropertyTypeNotSupportedByDateTimePicker" xml:space="preserve">
+    <value>The date time picker cannot be bound to a property of type {0}.</value>
     <comment>{0}: property type</comment>
   </data>
 </root>

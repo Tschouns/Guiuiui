@@ -34,8 +34,6 @@
             this.LastNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.personTable = new System.Windows.Forms.TableLayoutPanel();
             this.addressTable = new System.Windows.Forms.TableLayoutPanel();
-            this.addressListView = new System.Windows.Forms.ListView();
-            this.addressColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cityTextBox2 = new System.Windows.Forms.TextBox();
             this.cityTextBox1 = new System.Windows.Forms.TextBox();
             this.postalCodeTextBox2 = new System.Windows.Forms.TextBox();
@@ -45,6 +43,8 @@
             this.cityLabel = new System.Windows.Forms.Label();
             this.postalCodeLabel = new System.Windows.Forms.Label();
             this.address2Label = new System.Windows.Forms.Label();
+            this.addressListView = new System.Windows.Forms.ListView();
+            this.addressColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.address1Label = new System.Windows.Forms.Label();
             this.streetLabel = new System.Windows.Forms.Label();
             this.fullNameTextBox = new System.Windows.Forms.TextBox();
@@ -55,12 +55,12 @@
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.genderComboBox = new System.Windows.Forms.ComboBox();
-            this.ageLagel = new System.Windows.Forms.Label();
-            this.ageTextBox = new System.Windows.Forms.TextBox();
+            this.dateOfBirthLabel = new System.Windows.Forms.Label();
             this.summaryLabel = new System.Windows.Forms.Label();
             this.isVegetarianLabel = new System.Windows.Forms.Label();
             this.isVegetarianCheckBox = new System.Windows.Forms.CheckBox();
             this.addressesLabel = new System.Windows.Forms.Label();
+            this.dateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.layoutTable.SuspendLayout();
             this.personTable.SuspendLayout();
             this.addressTable.SuspendLayout();
@@ -117,6 +117,7 @@
             this.personTable.ColumnCount = 2;
             this.personTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.personTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.personTable.Controls.Add(this.dateOfBirthDateTimePicker, 1, 4);
             this.personTable.Controls.Add(this.addressTable, 1, 8);
             this.personTable.Controls.Add(this.fullNameTextBox, 1, 3);
             this.personTable.Controls.Add(this.fullNameLabel, 0, 3);
@@ -126,8 +127,7 @@
             this.personTable.Controls.Add(this.nameTextBox, 1, 1);
             this.personTable.Controls.Add(this.firstNameTextBox, 1, 2);
             this.personTable.Controls.Add(this.genderComboBox, 1, 5);
-            this.personTable.Controls.Add(this.ageLagel, 0, 4);
-            this.personTable.Controls.Add(this.ageTextBox, 1, 4);
+            this.personTable.Controls.Add(this.dateOfBirthLabel, 0, 4);
             this.personTable.Controls.Add(this.summaryLabel, 1, 0);
             this.personTable.Controls.Add(this.isVegetarianLabel, 0, 6);
             this.personTable.Controls.Add(this.isVegetarianCheckBox, 1, 6);
@@ -146,6 +146,7 @@
             this.personTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 14F));
             this.personTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.personTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.personTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.personTable.Size = new System.Drawing.Size(913, 569);
             this.personTable.TabIndex = 1;
             // 
@@ -181,26 +182,6 @@
             this.addressTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.addressTable.Size = new System.Drawing.Size(757, 360);
             this.addressTable.TabIndex = 2;
-            // 
-            // addressListView
-            // 
-            this.addressListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.addressColumn});
-            this.addressListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addressListView.FullRowSelect = true;
-            this.addressListView.GridLines = true;
-            this.addressListView.Location = new System.Drawing.Point(3, 3);
-            this.addressListView.Name = "addressListView";
-            this.addressTable.SetRowSpan(this.addressListView, 5);
-            this.addressListView.Size = new System.Drawing.Size(224, 354);
-            this.addressListView.TabIndex = 14;
-            this.addressListView.UseCompatibleStateImageBehavior = false;
-            this.addressListView.View = System.Windows.Forms.View.Details;
-            // 
-            // addressColumn
-            // 
-            this.addressColumn.Text = "Address";
-            this.addressColumn.Width = 200;
             // 
             // cityTextBox2
             // 
@@ -282,6 +263,26 @@
             this.address2Label.TabIndex = 16;
             this.address2Label.Text = "Address 2";
             this.address2Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // addressListView
+            // 
+            this.addressListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.addressColumn});
+            this.addressListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addressListView.FullRowSelect = true;
+            this.addressListView.GridLines = true;
+            this.addressListView.Location = new System.Drawing.Point(3, 3);
+            this.addressListView.Name = "addressListView";
+            this.addressTable.SetRowSpan(this.addressListView, 5);
+            this.addressListView.Size = new System.Drawing.Size(224, 354);
+            this.addressListView.TabIndex = 14;
+            this.addressListView.UseCompatibleStateImageBehavior = false;
+            this.addressListView.View = System.Windows.Forms.View.Details;
+            // 
+            // addressColumn
+            // 
+            this.addressColumn.Text = "Address";
+            this.addressColumn.Width = 200;
             // 
             // address1Label
             // 
@@ -382,24 +383,16 @@
             this.genderComboBox.Size = new System.Drawing.Size(757, 21);
             this.genderComboBox.TabIndex = 9;
             // 
-            // ageLagel
+            // dateOfBirthLabel
             // 
-            this.ageLagel.AutoSize = true;
-            this.ageLagel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ageLagel.Location = new System.Drawing.Point(3, 108);
-            this.ageLagel.Name = "ageLagel";
-            this.ageLagel.Size = new System.Drawing.Size(144, 27);
-            this.ageLagel.TabIndex = 6;
-            this.ageLagel.Text = "Age";
-            this.ageLagel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ageTextBox
-            // 
-            this.ageTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ageTextBox.Location = new System.Drawing.Point(153, 111);
-            this.ageTextBox.Name = "ageTextBox";
-            this.ageTextBox.Size = new System.Drawing.Size(757, 20);
-            this.ageTextBox.TabIndex = 7;
+            this.dateOfBirthLabel.AutoSize = true;
+            this.dateOfBirthLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateOfBirthLabel.Location = new System.Drawing.Point(3, 108);
+            this.dateOfBirthLabel.Name = "dateOfBirthLabel";
+            this.dateOfBirthLabel.Size = new System.Drawing.Size(144, 27);
+            this.dateOfBirthLabel.TabIndex = 6;
+            this.dateOfBirthLabel.Text = "Date of Birth";
+            this.dateOfBirthLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // summaryLabel
             // 
@@ -443,6 +436,14 @@
             this.addressesLabel.Text = "Addresses";
             this.addressesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // dateOfBirthDateTimePicker
+            // 
+            this.dateOfBirthDateTimePicker.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(153, 111);
+            this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
+            this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(757, 20);
+            this.dateOfBirthDateTimePicker.TabIndex = 27;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -472,8 +473,7 @@
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.ComboBox genderComboBox;
-        private System.Windows.Forms.Label ageLagel;
-        private System.Windows.Forms.TextBox ageTextBox;
+        private System.Windows.Forms.Label dateOfBirthLabel;
         private System.Windows.Forms.Label fullNameLabel;
         private System.Windows.Forms.TextBox fullNameTextBox;
         private System.Windows.Forms.Label summaryLabel;
@@ -495,6 +495,7 @@
         private System.Windows.Forms.TextBox postalCodeTextBox2;
         private System.Windows.Forms.TextBox cityTextBox2;
         private System.Windows.Forms.TextBox cityTextBox1;
+        private System.Windows.Forms.DateTimePicker dateOfBirthDateTimePicker;
     }
 }
 
