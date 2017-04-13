@@ -8,6 +8,7 @@ namespace Guiuiui.Tools.Impl
 {
     using Guiuiui.Base.StartUp;
     using Base.InversionOfControl;
+    using Guiuiui.Tools.Impl.Parser.BuiltInTypes;
     using Tools.Reflection;
     using Reflection;
     using Tools.Parser;
@@ -32,9 +33,12 @@ namespace Guiuiui.Tools.Impl
             Ioc.Container.RegisterSingleton<IParserProvider, ParserProvider>();
 
             // Parser
-            Ioc.Container.RegisterSingleton<IParser<int>, IntParser>();
-            Ioc.Container.RegisterSingleton<IParser<double>, DoubleParser>();
+            Ioc.Container.RegisterSingleton<IParser<byte>, ByteParser>();
+            Ioc.Container.RegisterSingleton<IParser<char>, CharParser>();
             Ioc.Container.RegisterSingleton<IParser<decimal>, DecimalParser>();
+            Ioc.Container.RegisterSingleton<IParser<double>, DoubleParser>();
+            Ioc.Container.RegisterSingleton<IParser<int>, IntParser>();
+            Ioc.Container.RegisterSingleton<IParser<sbyte>, SByteParser>();
             Ioc.Container.RegisterSingleton<IParser<string>, StringDummyParser>();
         }
 

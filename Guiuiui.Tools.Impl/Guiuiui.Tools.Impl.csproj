@@ -40,12 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Parser\DecimalParser.cs" />
-    <Compile Include="Parser\DoubleParser.cs" />
+    <Compile Include="Parser\BuiltInTypes\ByteParser.cs" />
+    <Compile Include="Parser\BuiltInTypes\CharParser.cs" />
+    <Compile Include="Parser\BuiltInTypes\DecimalParser.cs" />
+    <Compile Include="Parser\BuiltInTypes\DoubleParser.cs" />
     <Compile Include="Parser\GenericDefaultParser.cs" />
-    <Compile Include="Parser\IntParser.cs" />
+    <Compile Include="Parser\BuiltInTypes\IntParser.cs" />
     <Compile Include="Parser\ParserProvider.cs" />
-    <Compile Include="Parser\StringDummyParser.cs" />
+    <Compile Include="Parser\BuiltInTypes\SByteParser.cs" />
+    <Compile Include="Parser\BuiltInTypes\StringDummyParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\TypeComparer.cs" />
     <Compile Include="Reflection\TypeHelper.cs" />

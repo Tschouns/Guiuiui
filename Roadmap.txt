@@ -21,12 +21,19 @@ X Provide API for custom text converters
 * Provide API for custom parsers
 * Complete Parsers for .Net base types
   * bool
-  X int
-  X double
+  X byte
+  X sbyte
+  X char
   X decimal
-  * byte
+  X double
+  * float
+  X int
+  * uint
   * long
-  * ...
+  * ulong
+  * short
+  * ushort
+  * string
 
 * Provide data binding/view model/adapters etc. in separate projects for WinForms and WPF
 
