@@ -13,7 +13,7 @@ X Implement "Get only" data binding
   X TextBox
   X ComboBox
   X CheckBox
-  * DatePicker
+  X DatePicker
   X "Child List Controls"
 
 = "Tools" =
@@ -22,8 +22,8 @@ X Provide API for custom text converters
 * Complete Parsers for .Net base types
   * bool
   X int
-  * double
-  * decimal
+  X double
+  X decimal
   * byte
   * long
   * ...

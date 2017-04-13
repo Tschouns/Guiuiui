@@ -33,6 +33,8 @@ namespace Guiuiui.Tools.Impl
 
             // Parser
             Ioc.Container.RegisterSingleton<IParser<int>, IntParser>();
+            Ioc.Container.RegisterSingleton<IParser<double>, DoubleParser>();
+            Ioc.Container.RegisterSingleton<IParser<decimal>, DecimalParser>();
             Ioc.Container.RegisterSingleton<IParser<string>, StringDummyParser>();
         }
 
