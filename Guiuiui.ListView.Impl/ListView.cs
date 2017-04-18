@@ -63,6 +63,11 @@ namespace Guiuiui.ListView.Impl
             this._listView.Items.Clear();
             this._itemBinders.Clear();
 
+            foreach (var viewModel in this._selectedItemViewModels)
+            {
+                viewModel.Model = null;
+            }
+
             foreach(var listItem in listItems)
             {
                 this.AddListViewItemWithSubItems(listItem);
