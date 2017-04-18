@@ -89,5 +89,18 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
 
             this._addDataBindingCallback(dataBinding);
         }
+
+        /// <summary>
+        /// See <see cref="IReadOnlyPropertyPredicate.ToDateTimePicker(DateTimePicker)"/>.
+        /// </summary>
+        public void ToDateTimePicker(DateTimePicker dateTimePicker)
+        {
+            ArgumentChecks.AssertNotNull(dateTimePicker, nameof(dateTimePicker));
+
+            var dateTimePickerAdapter = this._controlAdapterFactory.CreateDateTimePickerAdapter<TPropertyValue>(dateTimePicker);
+            var dateBinding = new TwoWayDataBinding<TPropertyValue>(this._model, this._getter, this._setter, dateTimePickerAdapter);
+
+            this._addDataBindingCallback(dateBinding);
+        }
     }
 }

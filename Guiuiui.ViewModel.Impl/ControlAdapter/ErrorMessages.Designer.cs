@@ -61,11 +61,20 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The check box does not support the property type {0} ..
+        ///   Looks up a localized string similar to The check box cannot be bound to a property of type {0} ..
         /// </summary>
         internal static string PropertyTypeNotSupportedByCheckBox {
             get {
                 return ResourceManager.GetString("PropertyTypeNotSupportedByCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The date time picker cannot be bound to a property of type {0}..
+        /// </summary>
+        internal static string PropertyTypeNotSupportedByDateTimePicker {
+            get {
+                return ResourceManager.GetString("PropertyTypeNotSupportedByDateTimePicker", resourceCulture);
             }
         }
     }

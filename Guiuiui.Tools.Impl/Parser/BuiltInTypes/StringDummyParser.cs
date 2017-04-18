@@ -4,9 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Guiuiui.Tools.Impl.Parser
+namespace Guiuiui.Tools.Impl.Parser.BuiltInTypes
 {
-    using System;
     using Guiuiui.Tools.Parser;
 
     /// <summary>

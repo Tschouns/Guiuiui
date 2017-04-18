@@ -8,6 +8,7 @@ namespace Guiuiui.Tools.Impl
 {
     using Guiuiui.Base.StartUp;
     using Base.InversionOfControl;
+    using Guiuiui.Tools.Impl.Parser.BuiltInTypes;
     using Tools.Reflection;
     using Reflection;
     using Tools.Parser;
@@ -32,8 +33,20 @@ namespace Guiuiui.Tools.Impl
             Ioc.Container.RegisterSingleton<IParserProvider, ParserProvider>();
 
             // Parser
+            Ioc.Container.RegisterSingleton<IParser<bool>, BoolParser>();
+            Ioc.Container.RegisterSingleton<IParser<byte>, ByteParser>();
+            Ioc.Container.RegisterSingleton<IParser<char>, CharParser>();
+            Ioc.Container.RegisterSingleton<IParser<decimal>, DecimalParser>();
+            Ioc.Container.RegisterSingleton<IParser<double>, DoubleParser>();
+            Ioc.Container.RegisterSingleton<IParser<float>, FloatParser>();
             Ioc.Container.RegisterSingleton<IParser<int>, IntParser>();
+            Ioc.Container.RegisterSingleton<IParser<long>, LongParser>();
+            Ioc.Container.RegisterSingleton<IParser<sbyte>, SByteParser>();
+            Ioc.Container.RegisterSingleton<IParser<short>, ShortParser>();
             Ioc.Container.RegisterSingleton<IParser<string>, StringDummyParser>();
+            Ioc.Container.RegisterSingleton<IParser<uint>, UIntParser>();
+            Ioc.Container.RegisterSingleton<IParser<ulong>, ULongParser>();
+            Ioc.Container.RegisterSingleton<IParser<ushort>, UShortParser>();
         }
 
         /// <summary>

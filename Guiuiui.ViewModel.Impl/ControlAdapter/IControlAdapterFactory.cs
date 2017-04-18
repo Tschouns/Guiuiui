@@ -48,6 +48,14 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
         IControlAdapter<TValue> CreateCheckBoxAdapter<TValue>(CheckBox checkBox);
 
         /// <summary>
+        /// Creates a control adapter for a <see cref="DateTimePicker"/>.
+        /// </summary>
+        /// <typeparam name="TValue">
+        /// Type of the value represented by the control
+        /// </typeparam>
+        IControlAdapter<TValue> CreateDateTimePickerAdapter<TValue>(DateTimePicker dateTimePicker);
+
+        /// <summary>
         /// Creates a control adapter for a <see cref="IListControl{TListItem}"/>.
         /// </summary>
         /// <typeparam name="TListItem">

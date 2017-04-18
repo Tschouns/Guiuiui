@@ -13,12 +13,27 @@ X Implement "Get only" data binding
   X TextBox
   X ComboBox
   X CheckBox
-  * DatePicker
+  X DatePicker
   X "Child List Controls"
 
 = "Tools" =
 X Provide API for custom text converters
 * Provide API for custom parsers
+* Complete Parsers for .Net base types
+  * bool
+  X byte
+  X sbyte
+  X char
+  X decimal
+  X double
+  X float
+  X int
+  X uint
+  X long
+  X ulong
+  X short
+  X ushort
+  X string
 
 * Provide data binding/view model/adapters etc. in separate projects for WinForms and WPF
 

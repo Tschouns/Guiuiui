@@ -28,5 +28,10 @@ namespace Guiuiui.ViewModel.DataBinding
         /// </summary>
         /// <param name="checkBox"></param>
         void ToCheckBox(CheckBox checkBox);
+
+        /// <summary>
+        /// Binds a date time picker to the property.
+        /// </summary>
+        void ToDateTimePicker(DateTimePicker dateTimePicker);
     }
 }

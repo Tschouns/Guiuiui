@@ -78,7 +78,9 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
             }
 
             // If the conversion failed, the text is restored.
+            var cursorPosition = this._textBox.SelectionStart;
             this._textBox.Text = this._textConverter.GetText(this._currentValue);
+            this._textBox.Select(cursorPosition, 0);
         }
     }
 }
