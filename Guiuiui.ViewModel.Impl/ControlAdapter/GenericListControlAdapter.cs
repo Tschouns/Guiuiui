@@ -48,14 +48,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
 
             set
             {
-                if (value == null)
-                {
-                    this._listControl.SetListItemsToDisplay(new TListItem[0]);
-                }
-                else
-                {
-                    this._listControl.SetListItemsToDisplay(value);
-                }
+                this._listControl.SetListItemsToDisplay(value ?? new TListItem[0]);
             }
         }
 
