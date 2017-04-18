@@ -33,6 +33,7 @@
             this.firstNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LastNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.personTable = new System.Windows.Forms.TableLayoutPanel();
+            this.dateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.addressTable = new System.Windows.Forms.TableLayoutPanel();
             this.cityTextBox2 = new System.Windows.Forms.TextBox();
             this.cityTextBox1 = new System.Windows.Forms.TextBox();
@@ -60,7 +61,6 @@
             this.isVegetarianLabel = new System.Windows.Forms.Label();
             this.isVegetarianCheckBox = new System.Windows.Forms.CheckBox();
             this.addressesLabel = new System.Windows.Forms.Label();
-            this.dateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.layoutTable.SuspendLayout();
             this.personTable.SuspendLayout();
             this.addressTable.SuspendLayout();
@@ -150,6 +150,14 @@
             this.personTable.Size = new System.Drawing.Size(913, 569);
             this.personTable.TabIndex = 1;
             // 
+            // dateOfBirthDateTimePicker
+            // 
+            this.dateOfBirthDateTimePicker.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(153, 111);
+            this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
+            this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(757, 20);
+            this.dateOfBirthDateTimePicker.TabIndex = 8;
+            // 
             // addressTable
             // 
             this.addressTable.ColumnCount = 5;
@@ -181,7 +189,7 @@
             this.addressTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.addressTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.addressTable.Size = new System.Drawing.Size(757, 360);
-            this.addressTable.TabIndex = 2;
+            this.addressTable.TabIndex = 14;
             // 
             // cityTextBox2
             // 
@@ -189,7 +197,7 @@
             this.cityTextBox2.Location = new System.Drawing.Point(581, 84);
             this.cityTextBox2.Name = "cityTextBox2";
             this.cityTextBox2.Size = new System.Drawing.Size(173, 20);
-            this.cityTextBox2.TabIndex = 25;
+            this.cityTextBox2.TabIndex = 11;
             // 
             // cityTextBox1
             // 
@@ -197,7 +205,7 @@
             this.cityTextBox1.Location = new System.Drawing.Point(383, 84);
             this.cityTextBox1.Name = "cityTextBox1";
             this.cityTextBox1.Size = new System.Drawing.Size(172, 20);
-            this.cityTextBox1.TabIndex = 24;
+            this.cityTextBox1.TabIndex = 8;
             // 
             // postalCodeTextBox2
             // 
@@ -205,7 +213,7 @@
             this.postalCodeTextBox2.Location = new System.Drawing.Point(581, 57);
             this.postalCodeTextBox2.Name = "postalCodeTextBox2";
             this.postalCodeTextBox2.Size = new System.Drawing.Size(173, 20);
-            this.postalCodeTextBox2.TabIndex = 23;
+            this.postalCodeTextBox2.TabIndex = 10;
             // 
             // postalCodeTextBox1
             // 
@@ -213,7 +221,7 @@
             this.postalCodeTextBox1.Location = new System.Drawing.Point(383, 57);
             this.postalCodeTextBox1.Name = "postalCodeTextBox1";
             this.postalCodeTextBox1.Size = new System.Drawing.Size(172, 20);
-            this.postalCodeTextBox1.TabIndex = 22;
+            this.postalCodeTextBox1.TabIndex = 6;
             // 
             // streetTextBox2
             // 
@@ -221,7 +229,7 @@
             this.streetTextBox2.Location = new System.Drawing.Point(581, 30);
             this.streetTextBox2.Name = "streetTextBox2";
             this.streetTextBox2.Size = new System.Drawing.Size(173, 20);
-            this.streetTextBox2.TabIndex = 21;
+            this.streetTextBox2.TabIndex = 9;
             // 
             // streetTextBox1
             // 
@@ -229,7 +237,7 @@
             this.streetTextBox1.Location = new System.Drawing.Point(383, 30);
             this.streetTextBox1.Name = "streetTextBox1";
             this.streetTextBox1.Size = new System.Drawing.Size(172, 20);
-            this.streetTextBox1.TabIndex = 20;
+            this.streetTextBox1.TabIndex = 4;
             // 
             // cityLabel
             // 
@@ -238,7 +246,7 @@
             this.cityLabel.Location = new System.Drawing.Point(233, 81);
             this.cityLabel.Name = "cityLabel";
             this.cityLabel.Size = new System.Drawing.Size(144, 27);
-            this.cityLabel.TabIndex = 19;
+            this.cityLabel.TabIndex = 7;
             this.cityLabel.Text = "City";
             this.cityLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -249,7 +257,7 @@
             this.postalCodeLabel.Location = new System.Drawing.Point(233, 54);
             this.postalCodeLabel.Name = "postalCodeLabel";
             this.postalCodeLabel.Size = new System.Drawing.Size(144, 27);
-            this.postalCodeLabel.TabIndex = 18;
+            this.postalCodeLabel.TabIndex = 5;
             this.postalCodeLabel.Text = "Postal Code";
             this.postalCodeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -260,7 +268,7 @@
             this.address2Label.Location = new System.Drawing.Point(581, 0);
             this.address2Label.Name = "address2Label";
             this.address2Label.Size = new System.Drawing.Size(173, 27);
-            this.address2Label.TabIndex = 16;
+            this.address2Label.TabIndex = 2;
             this.address2Label.Text = "Address 2";
             this.address2Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -275,7 +283,7 @@
             this.addressListView.Name = "addressListView";
             this.addressTable.SetRowSpan(this.addressListView, 5);
             this.addressListView.Size = new System.Drawing.Size(224, 354);
-            this.addressListView.TabIndex = 14;
+            this.addressListView.TabIndex = 0;
             this.addressListView.UseCompatibleStateImageBehavior = false;
             this.addressListView.View = System.Windows.Forms.View.Details;
             // 
@@ -291,7 +299,7 @@
             this.address1Label.Location = new System.Drawing.Point(383, 0);
             this.address1Label.Name = "address1Label";
             this.address1Label.Size = new System.Drawing.Size(172, 27);
-            this.address1Label.TabIndex = 15;
+            this.address1Label.TabIndex = 1;
             this.address1Label.Text = "Address 1";
             this.address1Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -302,7 +310,7 @@
             this.streetLabel.Location = new System.Drawing.Point(233, 27);
             this.streetLabel.Name = "streetLabel";
             this.streetLabel.Size = new System.Drawing.Size(144, 27);
-            this.streetLabel.TabIndex = 17;
+            this.streetLabel.TabIndex = 3;
             this.streetLabel.Text = "Street";
             this.streetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -312,7 +320,7 @@
             this.fullNameTextBox.Location = new System.Drawing.Point(153, 84);
             this.fullNameTextBox.Name = "fullNameTextBox";
             this.fullNameTextBox.Size = new System.Drawing.Size(757, 20);
-            this.fullNameTextBox.TabIndex = 5;
+            this.fullNameTextBox.TabIndex = 6;
             // 
             // fullNameLabel
             // 
@@ -321,7 +329,7 @@
             this.fullNameLabel.Location = new System.Drawing.Point(3, 81);
             this.fullNameLabel.Name = "fullNameLabel";
             this.fullNameLabel.Size = new System.Drawing.Size(144, 27);
-            this.fullNameLabel.TabIndex = 4;
+            this.fullNameLabel.TabIndex = 5;
             this.fullNameLabel.Text = "Full name (read only)";
             this.fullNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -332,7 +340,7 @@
             this.nameLabel.Location = new System.Drawing.Point(3, 27);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(144, 27);
-            this.nameLabel.TabIndex = 0;
+            this.nameLabel.TabIndex = 1;
             this.nameLabel.Text = "Last Name";
             this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -343,7 +351,7 @@
             this.firstNameLabel.Location = new System.Drawing.Point(3, 54);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(144, 27);
-            this.firstNameLabel.TabIndex = 2;
+            this.firstNameLabel.TabIndex = 3;
             this.firstNameLabel.Text = "First Name";
             this.firstNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -354,7 +362,7 @@
             this.genderLabel.Location = new System.Drawing.Point(3, 135);
             this.genderLabel.Name = "genderLabel";
             this.genderLabel.Size = new System.Drawing.Size(144, 27);
-            this.genderLabel.TabIndex = 8;
+            this.genderLabel.TabIndex = 9;
             this.genderLabel.Text = "Gender";
             this.genderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -364,7 +372,7 @@
             this.nameTextBox.Location = new System.Drawing.Point(153, 30);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(757, 20);
-            this.nameTextBox.TabIndex = 1;
+            this.nameTextBox.TabIndex = 2;
             // 
             // firstNameTextBox
             // 
@@ -372,7 +380,7 @@
             this.firstNameTextBox.Location = new System.Drawing.Point(153, 57);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(757, 20);
-            this.firstNameTextBox.TabIndex = 3;
+            this.firstNameTextBox.TabIndex = 4;
             // 
             // genderComboBox
             // 
@@ -381,7 +389,7 @@
             this.genderComboBox.Location = new System.Drawing.Point(153, 138);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(757, 21);
-            this.genderComboBox.TabIndex = 9;
+            this.genderComboBox.TabIndex = 10;
             // 
             // dateOfBirthLabel
             // 
@@ -390,7 +398,7 @@
             this.dateOfBirthLabel.Location = new System.Drawing.Point(3, 108);
             this.dateOfBirthLabel.Name = "dateOfBirthLabel";
             this.dateOfBirthLabel.Size = new System.Drawing.Size(144, 27);
-            this.dateOfBirthLabel.TabIndex = 6;
+            this.dateOfBirthLabel.TabIndex = 7;
             this.dateOfBirthLabel.Text = "Date of Birth";
             this.dateOfBirthLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -401,7 +409,7 @@
             this.summaryLabel.Location = new System.Drawing.Point(153, 0);
             this.summaryLabel.Name = "summaryLabel";
             this.summaryLabel.Size = new System.Drawing.Size(757, 27);
-            this.summaryLabel.TabIndex = 10;
+            this.summaryLabel.TabIndex = 0;
             this.summaryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // isVegetarianLabel
@@ -435,14 +443,6 @@
             this.addressesLabel.TabIndex = 13;
             this.addressesLabel.Text = "Addresses";
             this.addressesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // dateOfBirthDateTimePicker
-            // 
-            this.dateOfBirthDateTimePicker.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(153, 111);
-            this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
-            this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(757, 20);
-            this.dateOfBirthDateTimePicker.TabIndex = 27;
             // 
             // MainForm
             // 
