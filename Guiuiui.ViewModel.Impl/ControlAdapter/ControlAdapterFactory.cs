@@ -8,18 +8,36 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
 {
     using Base.RuntimeChecks;
     using System.Windows.Forms;
-    using Tools;
     using System;
     using ViewModel.DataBinding;
     using System.Globalization;
     using List;
     using System.Collections.Generic;
+    using Tools.TextConverter;
+    using Tools.Parser;
 
     /// <summary>
     /// See <see cref="IControlAdapterFactory"/>.
     /// </summary>
     public class ControlAdapterFactory : IControlAdapterFactory
     {
+        private readonly ITextConverterProvider _textConverterProvider;
+        private readonly IParserProvider _parserProvider;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ControlAdapterFactory"/> class.
+        /// </summary>
+        public ControlAdapterFactory(
+            ITextConverterProvider textConverterProvider,
+            IParserProvider parserProvider)
+        {
+            ArgumentChecks.AssertNotNull(textConverterProvider, nameof(textConverterProvider));
+            ArgumentChecks.AssertNotNull(parserProvider, nameof(parserProvider));
+
+            this._textConverterProvider = textConverterProvider;
+            this._parserProvider = parserProvider;
+        }
+
         /// <summary>
         /// See <see cref="IControlAdapterFactory.CreateLabelAdapter{TValue}(Label)"/>.
         /// </summary>
@@ -27,7 +45,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
         {
             ArgumentChecks.AssertNotNull(label, nameof(label));
 
-            var textConverter = BaseToolBox.TextConverters.GetTextConverter<TValue>();
+            var textConverter = this._textConverterProvider.GetTextConverter<TValue>();
 
             return new GenericLabelAdapter<TValue>(textConverter, label);
         }
@@ -39,8 +57,8 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
         {
             ArgumentChecks.AssertNotNull(textBox, nameof(textBox));
 
-            var textConverter = BaseToolBox.TextConverters.GetTextConverter<TValue>();
-            var parser = BaseToolBox.Parsers.GetParser<TValue>();
+            var textConverter = this._textConverterProvider.GetTextConverter<TValue>();
+            var parser = this._parserProvider.GetParser<TValue>();
 
             return new GenericTextBoxAdapter<TValue>(textConverter, parser, textBox);
         }
@@ -52,7 +70,7 @@ namespace Guiuiui.ViewModel.Impl.ControlAdapter
         {
             ArgumentChecks.AssertNotNull(comboBox, nameof(comboBox));
 
-            var textConverter = BaseToolBox.TextConverters.GetTextConverter<TValue>();
+            var textConverter = this._textConverterProvider.GetTextConverter<TValue>();
 
             return new GenericComboBoxAdapter<TValue>(textConverter, comboBox);
         }

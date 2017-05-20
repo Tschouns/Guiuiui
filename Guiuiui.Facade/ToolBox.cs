@@ -4,21 +4,57 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Guiuiui.Tools
+namespace Guiuiui.Facade
 {
-    using Guiuiui.Base.InversionOfControl;
-    using Guiuiui.Tools.TextConverter;
-    using Parser;
     using System;
+    using Base.InversionOfControl;
+    using ListView;
+    using Tools.Parser;
+    using Tools.TextConverter;
+    using ViewModel;
 
     /// <summary>
-    /// Provides access to text converters and parsers.
+    /// Provides access to factories and the likes from different <see cref="Guiuiui"/> libraries.
     /// </summary>
-    public static class BaseToolBox
+    public static class ToolBox
     {
+        private static readonly Lazy<IListViewFactory> _lazyListViewFactory = new Lazy<IListViewFactory>(GetListViewFactoryInstance, true);
+        private static readonly Lazy<IViewModelFactory> _lazyViewModelFactory = new Lazy<IViewModelFactory>(GetViewModelFactoryInstance, true);
         private static readonly Lazy<ITextConverterRegistry> _lazyTextConverterRegistry = new Lazy<ITextConverterRegistry>(GetTextConverterRegistryInstance, true);
         private static readonly Lazy<ITextConverterProvider> _lazyTextConverterProvider = new Lazy<ITextConverterProvider>(GetTextConverterProviderInstance, true);
         private static readonly Lazy<IParserProvider> _lazyParserProvider = new Lazy<IParserProvider>(GetParserProviderInstance, true);
+
+        #region ListView
+
+        /// <summary>
+        /// Gets the <see cref="IListViewFactory"/>.
+        /// </summary>
+        public static IListViewFactory ListViewFactory
+        {
+            get
+            {
+                return _lazyListViewFactory.Value;
+            }
+        }
+
+        #endregion
+
+        #region ViewModel
+
+        /// <summary>
+        /// Gets the <see cref="IViewModelFactory"/>.
+        /// </summary>
+        public static IViewModelFactory ViewModelFactory
+        {
+            get
+            {
+                return _lazyViewModelFactory.Value;
+            }
+        }
+
+        #endregion
+
+        #region Tools
 
         /// <summary>
         /// Gets the <see cref="ITextConverterRegistry"/>.
@@ -51,6 +87,20 @@ namespace Guiuiui.Tools
             {
                 return _lazyParserProvider.Value;
             }
+        }
+
+        #endregion
+
+        private static IListViewFactory GetListViewFactoryInstance()
+        {
+            var instance = Ioc.Container.Resolve<IListViewFactory>();
+            return instance;
+        }
+
+        private static IViewModelFactory GetViewModelFactoryInstance()
+        {
+            var instance = Ioc.Container.Resolve<IViewModelFactory>();
+            return instance;
         }
 
         private static ITextConverterRegistry GetTextConverterRegistryInstance()

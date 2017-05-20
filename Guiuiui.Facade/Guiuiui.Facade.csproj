@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4BE6803E-5A6A-4A5F-9CA1-FC038A99D8F0}</ProjectGuid>
+    <ProjectGuid>{8263C117-0D24-4555-86B4-ECFB81BBA92D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Guiuiui.ViewModel</RootNamespace>
-    <AssemblyName>Guiuiui.ViewModel</AssemblyName>
+    <RootNamespace>Guiuiui.Facade</RootNamespace>
+    <AssemblyName>Guiuiui.Facade</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,16 +22,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -42,48 +36,29 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomControls\ICustomControlAdapter.cs" />
-    <Compile Include="DataBinding\DataBindingErrorException.cs" />
-    <Compile Include="DataBinding\IBindable.cs" />
-    <Compile Include="DataBinding\IListPropertyPredicate.cs" />
-    <Compile Include="DataBinding\INotifiable.cs" />
-    <Compile Include="DataBinding\INotifyOnValuesChanged.cs" />
-    <Compile Include="DataBinding\IReadOnlyPropertyPredicate.cs" />
-    <Compile Include="DataBinding\ITwoWayPropertyPredicate.cs" />
-    <Compile Include="IViewModel.cs" />
-    <Compile Include="IViewModelFactory.cs" />
-    <Compile Include="List\IListControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
+    <Compile Include="ToolBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Guiuiui.Base\Guiuiui.Base.csproj">
-      <Project>{c2b1a129-a67e-4e39-b921-51905ed0672a}</Project>
+      <Project>{C2B1A129-A67E-4E39-B921-51905ED0672A}</Project>
       <Name>Guiuiui.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Guiuiui.ListView\Guiuiui.ListView.csproj">
+      <Project>{ea5ec808-bb74-4dd6-b699-bd32959d2e51}</Project>
+      <Name>Guiuiui.ListView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Guiuiui.Tools\Guiuiui.Tools.csproj">
+      <Project>{2eb12feb-2469-4729-95bd-fee3a7c8433a}</Project>
+      <Name>Guiuiui.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Guiuiui.ViewModel\Guiuiui.ViewModel.csproj">
+      <Project>{4be6803e-5a6a-4a5f-9ca1-fc038a99d8f0}</Project>
+      <Name>Guiuiui.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

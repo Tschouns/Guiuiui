@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guiuiui.ListView.Impl", "Gu
 		{F606BB2B-90A1-49EE-8B72-BFFB0D85DF2A} = {F606BB2B-90A1-49EE-8B72-BFFB0D85DF2A}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guiuiui.Facade", "Guiuiui.Facade\Guiuiui.Facade.csproj", "{8263C117-0D24-4555-86B4-ECFB81BBA92D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{56CD2995-A231-483A-BB87-E5563A2AC2BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56CD2995-A231-483A-BB87-E5563A2AC2BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56CD2995-A231-483A-BB87-E5563A2AC2BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8263C117-0D24-4555-86B4-ECFB81BBA92D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8263C117-0D24-4555-86B4-ECFB81BBA92D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8263C117-0D24-4555-86B4-ECFB81BBA92D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8263C117-0D24-4555-86B4-ECFB81BBA92D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

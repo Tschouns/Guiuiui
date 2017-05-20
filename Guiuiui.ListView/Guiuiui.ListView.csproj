@@ -45,7 +45,6 @@
     <Compile Include="DataBinding\IHasItemViewModels.cs" />
     <Compile Include="IListView.cs" />
     <Compile Include="IListViewFactory.cs" />
-    <Compile Include="ListViewToolBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

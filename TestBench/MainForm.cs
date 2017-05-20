@@ -7,6 +7,7 @@
     using Guiuiui.Tools;
     using SampleTextConverters;
     using Guiuiui.ListView;
+    using Guiuiui.Facade;
 
     /// <summary>
     /// Merely a little test bench for the <see cref="Guiuiui"/> namespace...
@@ -24,14 +25,14 @@
         {
             this.InitializeComponent();
 
-            BaseToolBox.TextConverterRegistry.RegisterTextConverter(new GenderTextConverter());
-            BaseToolBox.TextConverterRegistry.RegisterTextConverter(new AddressTextConverter());
+            ToolBox.TextConverterRegistry.RegisterTextConverter(new GenderTextConverter());
+            ToolBox.TextConverterRegistry.RegisterTextConverter(new AddressTextConverter());
 
-            this._personListViewWrapper = ListViewToolBox.ListViewFactory.CreateListView<Person>(this.personListView);
-            this._personViewModel = ViewModelToolBox.ViewModelFactory.CreateViewModel<Person>();
-            this._addressListViewWrapper = ListViewToolBox.ListViewFactory.CreateListView<Address>(this.addressListView);
-            this._addressViewModel1 = ViewModelToolBox.ViewModelFactory.CreateViewModel<Address>();
-            this._addressViewModel2 = ViewModelToolBox.ViewModelFactory.CreateViewModel<Address>();
+            this._personListViewWrapper = ToolBox.ListViewFactory.CreateListView<Person>(this.personListView);
+            this._personViewModel = ToolBox.ViewModelFactory.CreateViewModel<Person>();
+            this._addressListViewWrapper = ToolBox.ListViewFactory.CreateListView<Address>(this.addressListView);
+            this._addressViewModel1 = ToolBox.ViewModelFactory.CreateViewModel<Address>();
+            this._addressViewModel2 = ToolBox.ViewModelFactory.CreateViewModel<Address>();
 
             this.SetupDataBinding();
             this.FillComboBoxes();

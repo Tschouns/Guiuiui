@@ -3,6 +3,7 @@
 = "AddRemove" =
 
 = "ListView" =
+X Basic implementation with column bindings
 
 = "ViewModel" =
 X Implement "Get only" data binding

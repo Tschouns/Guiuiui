@@ -13,9 +13,9 @@ namespace Guiuiui.ListView.Impl
     using Guiuiui.Base.RuntimeChecks;
     using Guiuiui.ListView.DataBinding;
     using DataBinding;
-    using Tools;
     using static System.Windows.Forms.ListViewItem;
     using ViewModel;
+    using Tools.TextConverter;
 
     /// <summary>
     /// See <see cref="IListView{TListItem}"/>.
@@ -28,6 +28,7 @@ namespace Guiuiui.ListView.Impl
     {
         private readonly ListView _listView;
 
+        private readonly ITextConverterProvider _textConverterProvider;
         private readonly ICellBindingFactory<TListItem> _defaultColumnBinding;
         private readonly IList<ICellBindingFactory<TListItem>> _columnBindings = new List<ICellBindingFactory<TListItem>>();
 
@@ -38,15 +39,20 @@ namespace Guiuiui.ListView.Impl
         /// <summary>
         /// Initializes a new instance of the <see cref="ListView{TListItem}"/> class.
         /// </summary>
-        public ListView(ListView listView)
+        public ListView(
+            ListView listView,
+            ITextConverterProvider textConverterProvider)
         {
             ArgumentChecks.AssertNotNull(listView, nameof(listView));
+            ArgumentChecks.AssertNotNull(textConverterProvider, nameof(textConverterProvider));
 
             this._listView = listView;
             this._listView.SelectedIndexChanged += this.ListView_SelectedIndexChanged;
 
+            this._textConverterProvider = textConverterProvider;
+
             // The "default column binding" is used, if no specific column bindins are defined.
-            var textConverter = BaseToolBox.TextConverters.GetTextConverter<TListItem>();
+            var textConverter = this._textConverterProvider.GetTextConverter<TListItem>();
             this._defaultColumnBinding = new CellBindingFactory<TListItem, TListItem>(textConverter, i => i);
         }
 
@@ -86,7 +92,7 @@ namespace Guiuiui.ListView.Impl
         {
             ArgumentChecks.AssertNotNull(getFunc, nameof(getFunc));
 
-            var textConverter = BaseToolBox.TextConverters.GetTextConverter<TPropertyValue>();
+            var textConverter = this._textConverterProvider.GetTextConverter<TPropertyValue>();
             var cellBindingFactory = new CellBindingFactory<TListItem, TPropertyValue>(textConverter, getFunc);
             this._columnBindings.Add(cellBindingFactory);
 

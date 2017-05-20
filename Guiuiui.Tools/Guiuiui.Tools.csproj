@@ -48,7 +48,6 @@
     <Compile Include="TextConverter\ITextConverter.cs" />
     <Compile Include="TextConverter\ITextConverterProvider.cs" />
     <Compile Include="TextConverter\ITextConverterRegistry.cs" />
-    <Compile Include="BaseToolBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Guiuiui.Base\Guiuiui.Base.csproj">

@@ -97,6 +97,10 @@
       <Project>{c2b1a129-a67e-4e39-b921-51905ed0672a}</Project>
       <Name>Guiuiui.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Guiuiui.Facade\Guiuiui.Facade.csproj">
+      <Project>{8263c117-0d24-4555-86b4-ecfb81bba92d}</Project>
+      <Name>Guiuiui.Facade</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Guiuiui.ListView\Guiuiui.ListView.csproj">
       <Project>{EA5EC808-BB74-4DD6-B699-BD32959D2E51}</Project>
       <Name>Guiuiui.ListView</Name>
