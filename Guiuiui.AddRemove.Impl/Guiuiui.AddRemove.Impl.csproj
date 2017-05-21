@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AddRemoveController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectionWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Guiuiui.AddRemove\Guiuiui.AddRemove.csproj">

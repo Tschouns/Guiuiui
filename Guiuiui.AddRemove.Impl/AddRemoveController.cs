@@ -10,7 +10,6 @@ namespace Guiuiui.AddRemove.Impl
     using System.Collections.Generic;
     using System.Linq;
     using Base.RuntimeChecks;
-    using ViewModel.List;
 
     /// <summary>
     /// Implements <see cref="IAddRemove"/>. Orchestrates the "add" and "remove" processes.
@@ -22,27 +21,27 @@ namespace Guiuiui.AddRemove.Impl
         where TCollectionItem : class
     {
         private readonly Func<ICollection<TCollectionItem>> _getItemCollectionFunc;
-        private readonly IItemProvider<TCollectionItem> _itemProvider;
-        private readonly ISelection<TCollectionItem> _selection;
+        private readonly IItemProvider<TCollectionItem> _addItemProvider;
+        private readonly IItemProvider<TCollectionItem> _removeItemProvider;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AddRemoveController{TItem}"/> class.
         /// </summary>
         public AddRemoveController(
             Func<ICollection<TCollectionItem>> getItemCollectionFunc,
-            IItemProvider<TCollectionItem> itemProvider,
-            ISelection<TCollectionItem> selection)
+            IItemProvider<TCollectionItem> addItemProvider,
+            IItemProvider<TCollectionItem> removeItemProvider)
         {
             ArgumentChecks.AssertNotNull(getItemCollectionFunc, nameof(getItemCollectionFunc));
-            ArgumentChecks.AssertNotNull(itemProvider, nameof(itemProvider));
-            ArgumentChecks.AssertNotNull(selection, nameof(selection));
+            ArgumentChecks.AssertNotNull(addItemProvider, nameof(addItemProvider));
+            ArgumentChecks.AssertNotNull(removeItemProvider, nameof(removeItemProvider));
 
             this._getItemCollectionFunc = getItemCollectionFunc;
-            this._itemProvider = itemProvider;
-            this._selection = selection;
+            this._addItemProvider = addItemProvider;
+            this._removeItemProvider = removeItemProvider;
 
-            this._itemProvider.StateChanged += this.ItemProvider_StateChanged;
-            this._selection.SelectedItemsChanged += this.Selection_SelectedItemsChanged;
+            this._addItemProvider.StateChanged += this.ItemProvider_StateChanged;
+            this._removeItemProvider.StateChanged += this.ItemProvider_StateChanged;
         }
 
         /// <summary>
@@ -57,7 +56,7 @@ namespace Guiuiui.AddRemove.Impl
         {
             get
             {
-                return this._itemProvider.IsRetrievePossible;
+                return this._addItemProvider.IsRetrievePossible;
             }
         }
 
@@ -68,7 +67,7 @@ namespace Guiuiui.AddRemove.Impl
         {
             get
             {
-                return this._selection.SelectedItems.Any();
+                return this._removeItemProvider.IsRetrievePossible;
             }
         }
 
@@ -78,15 +77,17 @@ namespace Guiuiui.AddRemove.Impl
         public bool TryAdd()
         {
             var collection = this._getItemCollectionFunc();
-            var items = this._itemProvider.RetrieveItems();
+            var itemsNotAlreadyInCollection = this._addItemProvider.RetrieveItems()
+                .Where(i => !collection.Contains(i))
+                .ToList();
 
-            if (!items.Any())
+            if (!itemsNotAlreadyInCollection.Any())
             {
                 return false;
             }
 
             // Add the all the items.
-            foreach(var item in items)
+            foreach(var item in itemsNotAlreadyInCollection)
             {
                 collection.Add(item);
             }
@@ -100,7 +101,7 @@ namespace Guiuiui.AddRemove.Impl
         public bool TryRemove()
         {
             var collection = this._getItemCollectionFunc();
-            var selectedItemsInCollection = this._selection.SelectedItems
+            var selectedItemsInCollection = this._removeItemProvider.RetrieveItems()
                 .Where(i => collection.Contains(i))
                 .ToList();
             
@@ -119,11 +120,6 @@ namespace Guiuiui.AddRemove.Impl
         }
 
         private void ItemProvider_StateChanged(object sender, EventArgs e)
-        {
-            this.StateChanged?.Invoke(this, new EventArgs());
-        }
-
-        private void Selection_SelectedItemsChanged(object sender, EventArgs e)
         {
             this.StateChanged?.Invoke(this, new EventArgs());
         }
