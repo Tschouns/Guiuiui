@@ -6,6 +6,7 @@
 
 namespace Guiuiui.ViewModel.List
 {
+    using System;
     using System.Collections.Generic;
 
     /// <summary>
@@ -16,6 +17,16 @@ namespace Guiuiui.ViewModel.List
     /// </typeparam>
     public interface IListControl<TListItem>
     {
+        /// <summary>
+        /// Raised when the item selection has changed.
+        /// </summary>
+        event EventHandler ItemSelectionChanged;
+
+        /// <summary>
+        /// Gets the selected items.
+        /// </summary>
+        IEnumerable<TListItem> SelectedItems { get; }
+
         /// <summary>
         /// Sets the items which are to be displayed in the list.
         /// </summary>

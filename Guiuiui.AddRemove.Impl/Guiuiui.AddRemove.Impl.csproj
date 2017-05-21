@@ -40,7 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddRemoveController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Guiuiui.AddRemove\Guiuiui.AddRemove.csproj">
+      <Project>{657f857f-b4c4-4f42-95d4-74345a0f20ae}</Project>
+      <Name>Guiuiui.AddRemove</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Guiuiui.Base\Guiuiui.Base.csproj">
+      <Project>{c2b1a129-a67e-4e39-b921-51905ed0672a}</Project>
+      <Name>Guiuiui.Base</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

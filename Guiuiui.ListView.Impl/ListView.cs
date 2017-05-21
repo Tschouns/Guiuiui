@@ -15,6 +15,7 @@ namespace Guiuiui.ListView.Impl
     using DataBinding;
     using static System.Windows.Forms.ListViewItem;
     using ViewModel;
+    using ViewModel.List;
     using Tools.TextConverter;
 
     /// <summary>
@@ -57,6 +58,28 @@ namespace Guiuiui.ListView.Impl
         }
 
         /// <summary>
+        /// See <see cref="IListControl{TListItem}.ItemSelectionChanged"/>.
+        /// </summary>
+        public event EventHandler ItemSelectionChanged;
+
+        /// <summary>
+        /// See <see cref="IListControl{TListItem}.SelectedItems"/>.
+        /// </summary>
+        public IEnumerable<TListItem> SelectedItems
+        {
+            get
+            {
+                var selectedListItems = this._listView.SelectedItems
+                    .Cast<ListViewItem>()
+                    .Select(i => i.Tag)
+                    .OfType<TListItem>()
+                    .ToList();
+
+                return selectedListItems;
+            }
+        }
+
+        /// <summary>
         /// See <see cref="IListControl{TListItem}.SetItemsToDisplay"/>.
         /// </summary>
         public void SetListItemsToDisplay(IEnumerable<TListItem> listItems)
@@ -64,7 +87,7 @@ namespace Guiuiui.ListView.Impl
             ArgumentChecks.AssertNotNull(listItems, nameof(listItems));
 
             // TODO: Perhaps optimize this... so that the list is not cleared entirely...
-            var selectedIndices = this._listView.SelectedIndices.Cast<int>().ToList();
+            //var selectedIndices = this._listView.SelectedIndices.Cast<int>().ToList();
 
             this._listView.Items.Clear();
             this._itemBinders.Clear();
@@ -178,11 +201,7 @@ namespace Guiuiui.ListView.Impl
 
         private void ListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedListItems = this._listView.SelectedItems
-                .Cast<ListViewItem>()
-                .Select(i => i.Tag)
-                .OfType<TListItem>()
-                .ToList();
+            var selectedListItems = this.SelectedItems.ToList();
 
             // Clear view model(s).
             foreach (var viewModel in this._selectedItemViewModels)
@@ -198,6 +217,8 @@ namespace Guiuiui.ListView.Impl
                     this._selectedItemViewModels[index].Model = selectedListItems[index];
                 }
             }
+
+            this.ItemSelectionChanged?.Invoke(this, new EventArgs());
         }
 
         private void ViewModel_ValueChanged(object sender, EventArgs e)
