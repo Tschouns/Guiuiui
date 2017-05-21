@@ -58,9 +58,9 @@ namespace Guiuiui.ListView.Impl
         }
 
         /// <summary>
-        /// See <see cref="IListControl{TListItem}.ItemSelectionChanged"/>.
+        /// See <see cref="ISelection{TListItem}.SelectedItemsChanged"/>.
         /// </summary>
-        public event EventHandler ItemSelectionChanged;
+        public event EventHandler SelectedItemsChanged;
 
         /// <summary>
         /// See <see cref="IListControl{TListItem}.SelectedItems"/>.
@@ -218,7 +218,7 @@ namespace Guiuiui.ListView.Impl
                 }
             }
 
-            this.ItemSelectionChanged?.Invoke(this, new EventArgs());
+            this.SelectedItemsChanged?.Invoke(this, new EventArgs());
         }
 
         private void ViewModel_ValueChanged(object sender, EventArgs e)

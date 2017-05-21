@@ -41,7 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAddRemove.cs" />
+    <Compile Include="IItemProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Guiuiui.Base\Guiuiui.Base.csproj">
+      <Project>{C2B1A129-A67E-4E39-B921-51905ED0672A}</Project>
+      <Name>Guiuiui.Base</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

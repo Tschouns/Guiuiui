@@ -60,6 +60,7 @@
     <Compile Include="IViewModel.cs" />
     <Compile Include="IViewModelFactory.cs" />
     <Compile Include="List\IListControl.cs" />
+    <Compile Include="List\ISelection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

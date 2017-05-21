@@ -6,19 +6,25 @@
 
 namespace Guiuiui.ViewModel.List
 {
+    using System;
     using System.Collections.Generic;
 
     /// <summary>
-    /// Represents a control which displayes a list of models.
+    /// Represents a selection of items.
     /// </summary>
     /// <typeparam name="TListItem">
-    /// Type of the list item
+    /// Type of the selectable list item
     /// </typeparam>
-    public interface IListControl<TListItem>
+    public interface ISelection<TListItem>
     {
         /// <summary>
-        /// Sets the items which are to be displayed in the list.
+        /// Raised when the selected items have changed.
         /// </summary>
-        void SetListItemsToDisplay(IEnumerable<TListItem> items);
+        event EventHandler SelectedItemsChanged;
+
+        /// <summary>
+        /// Gets the selected items.
+        /// </summary>
+        IEnumerable<TListItem> SelectedItems { get; }
     }
 }

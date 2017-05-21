@@ -15,7 +15,7 @@ namespace Guiuiui.ListView
     /// <typeparam name="TListItem">
     /// Type of the list item
     /// </typeparam>
-    public interface IListView<TListItem> : IListControl<TListItem>, IBindableColumns<TListItem>, IHasItemViewModels<TListItem>
+    public interface IListView<TListItem> : IListControl<TListItem>, ISelection<TListItem>, IBindableColumns<TListItem>, IHasItemViewModels<TListItem>
         where TListItem : class
     {
     }
