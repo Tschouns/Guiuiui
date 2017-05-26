@@ -27,6 +27,11 @@ namespace Guiuiui.ViewModel.Impl
         private TModel _model = null;
 
         /// <summary>
+        /// See <see cref="IViewModel{TModel}.ModelChanged"/>.
+        /// </summary>
+        public event EventHandler ModelChanged;
+
+        /// <summary>
         /// See <see cref="INotifyOnValueChanged.ValueChanged"/>.
         /// </summary>
         public event EventHandler ValueChanged;
@@ -50,6 +55,7 @@ namespace Guiuiui.ViewModel.Impl
             set
             {
                 this._model = value;
+                this.OnModelChanged();
                 this.OnValueChanged();
             }
         }
@@ -124,6 +130,14 @@ namespace Guiuiui.ViewModel.Impl
             ArgumentChecks.AssertNotNull(dataBinding, nameof(dataBinding));
 
             this._dataBindings.Add(dataBinding);
+        }
+
+        /// <summary>
+        /// Raises the <see cref="IViewModel{TModel}.ModelChanged"/> event.
+        /// </summary>
+        private void OnModelChanged()
+        {
+            this.ModelChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>

@@ -45,6 +45,7 @@
     <Compile Include="AddRemoveInitializationPlugin.cs" />
     <Compile Include="CollectionProvider\ICollectionProvider.cs" />
     <Compile Include="CollectionProvider\CustomFuncCollectionProvider.cs" />
+    <Compile Include="CollectionProvider\ParentViewModelCollectionProvider.cs" />
     <Compile Include="ItemProvider\SingleInstanceCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ItemProvider\SelectionWrapper.cs" />

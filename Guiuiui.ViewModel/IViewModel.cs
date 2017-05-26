@@ -6,6 +6,7 @@
 
 namespace Guiuiui.ViewModel
 {
+    using System;
     using Guiuiui.ViewModel.DataBinding;
 
     /// <summary>
@@ -20,6 +21,11 @@ namespace Guiuiui.ViewModel
     public interface IViewModel<TModel> : INotifyOnValueChanged, INotifiable, IBindable<TModel>
         where TModel : class
     {
+        /// <summary>
+        /// Raised when the model has changed.
+        /// </summary>
+        event EventHandler ModelChanged;
+
         /// <summary>
         /// Gets or sets the actual data model.
         /// </summary>

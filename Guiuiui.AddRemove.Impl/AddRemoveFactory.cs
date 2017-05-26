@@ -50,7 +50,10 @@ namespace Guiuiui.AddRemove.Impl
             ArgumentChecks.AssertNotNull(getItemCollectionFunc, nameof(getItemCollectionFunc));
             ArgumentChecks.AssertNotNull(removeSelection, nameof(removeSelection));
 
-            throw new NotImplementedException();
+            return new AddRemoveController<TItem>(
+                new CustomFuncCollectionProvider<TItem>(getItemCollectionFunc),
+                new SingleInstanceCreator<TItem>(),
+                new SelectionWrapper<TItem>(removeSelection));
         }
 
         /// <summary>
@@ -69,7 +72,14 @@ namespace Guiuiui.AddRemove.Impl
             ArgumentChecks.AssertNotNull(addItemProvider, nameof(addItemProvider));
             ArgumentChecks.AssertNotNull(removeSelection, nameof(removeSelection));
 
-            throw new NotImplementedException();
+            var collectionProvider = new ParentViewModelCollectionProvider<TParentItem, TItem>(
+                parentViewModel,
+                getItemCollectionPropertyFunc);
+
+            return new AddRemoveController<TItem>(
+                collectionProvider,
+                addItemProvider,
+                new SelectionWrapper<TItem>(removeSelection));
         }
 
         /// <summary>
@@ -86,7 +96,14 @@ namespace Guiuiui.AddRemove.Impl
             ArgumentChecks.AssertNotNull(getItemCollectionPropertyFunc, nameof(getItemCollectionPropertyFunc));
             ArgumentChecks.AssertNotNull(removeSelection, nameof(removeSelection));
 
-            throw new NotImplementedException();
+            var collectionProvider = new ParentViewModelCollectionProvider<TParentItem, TItem>(
+                parentViewModel,
+                getItemCollectionPropertyFunc);
+
+            return new AddRemoveController<TItem>(
+                collectionProvider,
+                new SingleInstanceCreator<TItem>(),
+                new SelectionWrapper<TItem>(removeSelection));
         }
     }
 }
