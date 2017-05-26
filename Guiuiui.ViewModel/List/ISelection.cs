@@ -16,6 +16,7 @@ namespace Guiuiui.ViewModel.List
     /// Type of the selectable list item
     /// </typeparam>
     public interface ISelection<TListItem>
+        where TListItem : class
     {
         /// <summary>
         /// Raised when the selected items have changed.

@@ -44,6 +44,10 @@
     <Compile Include="ToolBox.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Guiuiui.AddRemove\Guiuiui.AddRemove.csproj">
+      <Project>{657f857f-b4c4-4f42-95d4-74345a0f20ae}</Project>
+      <Name>Guiuiui.AddRemove</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Guiuiui.Base\Guiuiui.Base.csproj">
       <Project>{C2B1A129-A67E-4E39-B921-51905ED0672A}</Project>
       <Name>Guiuiui.Base</Name>

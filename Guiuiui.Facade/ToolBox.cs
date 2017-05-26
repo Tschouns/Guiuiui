@@ -7,6 +7,7 @@
 namespace Guiuiui.Facade
 {
     using System;
+    using AddRemove;
     using Base.InversionOfControl;
     using ListView;
     using Tools.Parser;
@@ -18,11 +19,27 @@ namespace Guiuiui.Facade
     /// </summary>
     public static class ToolBox
     {
+        private static readonly Lazy<IAddRemoveFactory> _lazyAddRemoveFactory = new Lazy<IAddRemoveFactory>(GetAddRemoveFactoryInstance, true);
         private static readonly Lazy<IListViewFactory> _lazyListViewFactory = new Lazy<IListViewFactory>(GetListViewFactoryInstance, true);
         private static readonly Lazy<IViewModelFactory> _lazyViewModelFactory = new Lazy<IViewModelFactory>(GetViewModelFactoryInstance, true);
         private static readonly Lazy<ITextConverterRegistry> _lazyTextConverterRegistry = new Lazy<ITextConverterRegistry>(GetTextConverterRegistryInstance, true);
         private static readonly Lazy<ITextConverterProvider> _lazyTextConverterProvider = new Lazy<ITextConverterProvider>(GetTextConverterProviderInstance, true);
         private static readonly Lazy<IParserProvider> _lazyParserProvider = new Lazy<IParserProvider>(GetParserProviderInstance, true);
+
+        #region AddRemove
+
+        /// <summary>
+        /// Gets the <see cref="IAddRemoveFactory"/>.
+        /// </summary>
+        public static IAddRemoveFactory AddRemoveFactory
+        {
+            get
+            {
+                return _lazyAddRemoveFactory.Value;
+            }
+        }
+
+        #endregion
 
         #region ListView
 
@@ -90,6 +107,12 @@ namespace Guiuiui.Facade
         }
 
         #endregion
+
+        private static IAddRemoveFactory GetAddRemoveFactoryInstance()
+        {
+            var instance = Ioc.Container.Resolve<IAddRemoveFactory>();
+            return instance;
+        }
 
         private static IListViewFactory GetListViewFactoryInstance()
         {
