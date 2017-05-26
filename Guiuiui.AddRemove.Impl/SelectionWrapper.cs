@@ -8,6 +8,8 @@ namespace Guiuiui.AddRemove.Impl
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using Base.RuntimeChecks;
     using Guiuiui.AddRemove;
     using ViewModel.List;
 
@@ -18,27 +20,46 @@ namespace Guiuiui.AddRemove.Impl
     public class SelectionWrapper<TItem> : IItemProvider<TItem>
         where TItem : class
     {
+        private readonly ISelection<TItem> _selection;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SelectionWrapper{TItem}"/> class.
         /// </summary>
         public SelectionWrapper(ISelection<TItem> selection)
         {
-            throw new NotImplementedException();
+            ArgumentChecks.AssertNotNull(selection, nameof(selection));
+
+            this._selection = selection;
+            this._selection.SelectedItemsChanged += this.Selection_SelectedItemsChanged;
         }
 
+        /// <summary>
+        /// See <see cref="IItemProvider{TItem}.StateChanged"/>.
+        /// </summary>
+        public event EventHandler StateChanged;
+
+        /// <summary>
+        /// See <see cref="IItemProvider{TItem}.IsRetrievePossible"/>.
+        /// </summary>
         public bool IsRetrievePossible
         {
             get
             {
-                throw new NotImplementedException();
+                return this._selection.SelectedItems.Any();
             }
         }
 
-        public event EventHandler StateChanged;
-
+        /// <summary>
+        /// See <see cref="IItemProvider{TItem}.RetrieveItems"/>.
+        /// </summary>
         public IEnumerable<TItem> RetrieveItems()
         {
-            throw new NotImplementedException();
+            return this._selection.SelectedItems;
+        }
+
+        private void Selection_SelectedItemsChanged(object sender, EventArgs e)
+        {
+            this.StateChanged?.Invoke(this, new EventArgs());
         }
     }
 }
