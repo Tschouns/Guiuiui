@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="IAddRemove.cs" />
     <Compile Include="IAddRemoveFactory.cs" />
-    <Compile Include="IItemProvider.cs" />
+    <Compile Include="ItemProvider\IItemProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

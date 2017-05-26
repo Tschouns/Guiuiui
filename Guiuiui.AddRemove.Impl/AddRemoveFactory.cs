@@ -8,7 +8,9 @@ namespace Guiuiui.AddRemove.Impl
 {
     using System;
     using System.Collections.Generic;
+    using AddRemove.ItemProvider;
     using Base.RuntimeChecks;
+    using ItemProvider;
     using ViewModel.List;
 
     /// <summary>

@@ -4,12 +4,13 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using Guiuiui.ViewModel.List;
-
 namespace Guiuiui.AddRemove
 {
+    using System;
+    using System.Collections.Generic;
+    using Guiuiui.AddRemove.ItemProvider;
+    using Guiuiui.ViewModel.List;
+
     /// <summary>
     /// Creates <see cref="IAddRemove"/> controllers.
     /// </summary>

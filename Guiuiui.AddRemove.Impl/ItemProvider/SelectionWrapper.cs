@@ -4,11 +4,12 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Guiuiui.AddRemove.Impl
+namespace Guiuiui.AddRemove.Impl.ItemProvider
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using AddRemove.ItemProvider;
     using Base.RuntimeChecks;
     using Guiuiui.AddRemove;
     using ViewModel.List;
@@ -16,7 +17,9 @@ namespace Guiuiui.AddRemove.Impl
     /// <summary>
     /// Wrapps an <see cref="ISelection{TListItem}"/> object implements <see cref="IItemProvider{TItem}"/>.
     /// </summary>
-    /// <typeparam name="TItem"></typeparam>
+    /// <typeparam name="TItem">
+    /// Type of the selectable item
+    /// </typeparam>
     public class SelectionWrapper<TItem> : IItemProvider<TItem>
         where TItem : class
     {

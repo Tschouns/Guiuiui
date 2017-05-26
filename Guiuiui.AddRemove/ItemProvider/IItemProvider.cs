@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Guiuiui.AddRemove
+namespace Guiuiui.AddRemove.ItemProvider
 {
     using System;
     using System.Collections.Generic;
