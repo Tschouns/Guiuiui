@@ -10,7 +10,7 @@ namespace Guiuiui.AddRemove.ItemProvider
     using System.Collections.Generic;
 
     /// <summary>
-    /// Provides a method to retrieve items, which can then be added to a collection.
+    /// Provides items, which can then be added to or removed from a collection.
     /// </summary>
     /// <typeparam name="TItem">
     /// Type of the items provided this interface

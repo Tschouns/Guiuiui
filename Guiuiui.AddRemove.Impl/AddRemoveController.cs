@@ -7,10 +7,10 @@
 namespace Guiuiui.AddRemove.Impl
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using AddRemove.ItemProvider;
     using Base.RuntimeChecks;
+    using CollectionProvider;
 
     /// <summary>
     /// Implements <see cref="IAddRemove"/>. Orchestrates the "add" and "remove" processes.
@@ -21,7 +21,7 @@ namespace Guiuiui.AddRemove.Impl
     public class AddRemoveController<TCollectionItem> : IAddRemove
         where TCollectionItem : class
     {
-        private readonly Func<ICollection<TCollectionItem>> _getItemCollectionFunc;
+        private readonly ICollectionProvider<TCollectionItem> _collectionProvider;
         private readonly IItemProvider<TCollectionItem> _addItemProvider;
         private readonly IItemProvider<TCollectionItem> _removeItemProvider;
 
@@ -29,18 +29,19 @@ namespace Guiuiui.AddRemove.Impl
         /// Initializes a new instance of the <see cref="AddRemoveController{TItem}"/> class.
         /// </summary>
         public AddRemoveController(
-            Func<ICollection<TCollectionItem>> getItemCollectionFunc,
+            ICollectionProvider<TCollectionItem> collectionProvider,
             IItemProvider<TCollectionItem> addItemProvider,
             IItemProvider<TCollectionItem> removeItemProvider)
         {
-            ArgumentChecks.AssertNotNull(getItemCollectionFunc, nameof(getItemCollectionFunc));
+            ArgumentChecks.AssertNotNull(collectionProvider, nameof(collectionProvider));
             ArgumentChecks.AssertNotNull(addItemProvider, nameof(addItemProvider));
             ArgumentChecks.AssertNotNull(removeItemProvider, nameof(removeItemProvider));
 
-            this._getItemCollectionFunc = getItemCollectionFunc;
+            this._collectionProvider = collectionProvider;
             this._addItemProvider = addItemProvider;
             this._removeItemProvider = removeItemProvider;
 
+            this._collectionProvider.CollectionChanged += this.CollectionProvider_CollectionChanged;
             this._addItemProvider.StateChanged += this.ItemProvider_StateChanged;
             this._removeItemProvider.StateChanged += this.ItemProvider_StateChanged;
         }
@@ -57,7 +58,9 @@ namespace Guiuiui.AddRemove.Impl
         {
             get
             {
-                return this._addItemProvider.IsRetrievePossible;
+                return
+                    this._collectionProvider.Collection != null &&
+                    this._addItemProvider.IsRetrievePossible;
             }
         }
 
@@ -68,7 +71,9 @@ namespace Guiuiui.AddRemove.Impl
         {
             get
             {
-                return this._removeItemProvider.IsRetrievePossible;
+                return
+                    this._collectionProvider.Collection != null && 
+                    this._removeItemProvider.IsRetrievePossible;
             }
         }
 
@@ -77,7 +82,12 @@ namespace Guiuiui.AddRemove.Impl
         /// </summary>
         public bool TryAdd()
         {
-            var collection = this._getItemCollectionFunc();
+            var collection = this._collectionProvider.Collection;
+            if (collection == null)
+            {
+                return false;
+            }
+
             var itemsNotAlreadyInCollection = this._addItemProvider.RetrieveItems()
                 .Where(i => !collection.Contains(i))
                 .ToList();
@@ -101,7 +111,12 @@ namespace Guiuiui.AddRemove.Impl
         /// </summary>
         public bool TryRemove()
         {
-            var collection = this._getItemCollectionFunc();
+            var collection = this._collectionProvider.Collection;
+            if (collection == null)
+            {
+                return false;
+            }
+
             var selectedItemsInCollection = this._removeItemProvider.RetrieveItems()
                 .Where(i => collection.Contains(i))
                 .ToList();
@@ -118,6 +133,11 @@ namespace Guiuiui.AddRemove.Impl
             }
 
             return true;
+        }
+
+        private void CollectionProvider_CollectionChanged(object sender, EventArgs e)
+        {
+            this.StateChanged?.Invoke(this, new EventArgs());
         }
 
         private void ItemProvider_StateChanged(object sender, EventArgs e)
