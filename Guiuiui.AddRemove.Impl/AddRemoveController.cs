@@ -11,6 +11,7 @@ namespace Guiuiui.AddRemove.Impl
     using AddRemove.ItemProvider;
     using Base.RuntimeChecks;
     using CollectionProvider;
+    using ViewModel.List;
 
     /// <summary>
     /// Implements <see cref="IAddRemove"/>. Orchestrates the "add" and "remove" processes.
@@ -24,6 +25,7 @@ namespace Guiuiui.AddRemove.Impl
         private readonly ICollectionProvider<TCollectionItem> _collectionProvider;
         private readonly IItemProvider<TCollectionItem> _addItemProvider;
         private readonly IItemProvider<TCollectionItem> _removeItemProvider;
+        private readonly IListControl<TCollectionItem> _listControl;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AddRemoveController{TItem}"/> class.
@@ -31,15 +33,18 @@ namespace Guiuiui.AddRemove.Impl
         public AddRemoveController(
             ICollectionProvider<TCollectionItem> collectionProvider,
             IItemProvider<TCollectionItem> addItemProvider,
-            IItemProvider<TCollectionItem> removeItemProvider)
+            IItemProvider<TCollectionItem> removeItemProvider,
+            IListControl<TCollectionItem> listControl)
         {
             ArgumentChecks.AssertNotNull(collectionProvider, nameof(collectionProvider));
             ArgumentChecks.AssertNotNull(addItemProvider, nameof(addItemProvider));
             ArgumentChecks.AssertNotNull(removeItemProvider, nameof(removeItemProvider));
+            ArgumentChecks.AssertNotNull(listControl, nameof(listControl));
 
             this._collectionProvider = collectionProvider;
             this._addItemProvider = addItemProvider;
             this._removeItemProvider = removeItemProvider;
+            this._listControl = listControl;
 
             this._collectionProvider.CollectionChanged += this.CollectionProvider_CollectionChanged;
             this._addItemProvider.StateChanged += this.ItemProvider_StateChanged;
@@ -103,6 +108,9 @@ namespace Guiuiui.AddRemove.Impl
                 collection.Add(item);
             }
 
+            this._listControl.SetListItemsToDisplay(collection);
+            this._listControl.SelectListItems(itemsNotAlreadyInCollection);
+
             return true;
         }
 
@@ -131,6 +139,8 @@ namespace Guiuiui.AddRemove.Impl
             {
                 collection.Remove(item);
             }
+
+            this._listControl.SetListItemsToDisplay(collection);
 
             return true;
         }

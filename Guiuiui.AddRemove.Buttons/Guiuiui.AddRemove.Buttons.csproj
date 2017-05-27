@@ -47,6 +47,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ButtonCaptions.resx</DependentUpon>
     </Compile>
+    <Compile Include="ButtonController\DummyButtonController.cs" />
     <Compile Include="IAddRemoveButtons.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StandardAddRemoveButtons.cs">

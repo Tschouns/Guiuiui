@@ -15,20 +15,20 @@ namespace Guiuiui.AddRemove.Impl.ItemProvider
     using ViewModel.List;
 
     /// <summary>
-    /// Wrapps an <see cref="ISelection{TListItem}"/> object implements <see cref="IItemProvider{TItem}"/>.
+    /// Wrapps an <see cref="IListControl{TListItem}"/> object implements <see cref="IItemProvider{TItem}"/>.
     /// </summary>
-    /// <typeparam name="TItem">
-    /// Type of the selectable item
+    /// <typeparam name="TListItem">
+    /// Type of the list item
     /// </typeparam>
-    public class SelectionWrapper<TItem> : IItemProvider<TItem>
-        where TItem : class
+    public class ListControlItemProvider<TListItem> : IItemProvider<TListItem>
+        where TListItem : class
     {
-        private readonly ISelection<TItem> _selection;
+        private readonly IListControl<TListItem> _selection;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SelectionWrapper{TItem}"/> class.
+        /// Initializes a new instance of the <see cref="ListControlItemProvider{TItem}"/> class.
         /// </summary>
-        public SelectionWrapper(ISelection<TItem> selection)
+        public ListControlItemProvider(IListControl<TListItem> selection)
         {
             ArgumentChecks.AssertNotNull(selection, nameof(selection));
 
@@ -55,7 +55,7 @@ namespace Guiuiui.AddRemove.Impl.ItemProvider
         /// <summary>
         /// See <see cref="IItemProvider{TItem}.RetrieveItems"/>.
         /// </summary>
-        public IEnumerable<TItem> RetrieveItems()
+        public IEnumerable<TListItem> RetrieveItems()
         {
             return this._selection.SelectedItems;
         }

@@ -61,6 +61,8 @@
             this.isVegetarianLabel = new System.Windows.Forms.Label();
             this.isVegetarianCheckBox = new System.Windows.Forms.CheckBox();
             this.addressesLabel = new System.Windows.Forms.Label();
+            this.personAddRemoveButtons = new Guiuiui.AddRemove.Buttons.StandardAddRemoveButtons();
+            this.addressAddRemoveButtons = new Guiuiui.AddRemove.Buttons.StandardAddRemoveButtons();
             this.layoutTable.SuspendLayout();
             this.personTable.SuspendLayout();
             this.addressTable.SuspendLayout();
@@ -73,13 +75,16 @@
             this.layoutTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 230F));
             this.layoutTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.layoutTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutTable.Controls.Add(this.personListView, 1, 1);
-            this.layoutTable.Controls.Add(this.personTable, 2, 1);
+            this.layoutTable.Controls.Add(this.personListView, 1, 2);
+            this.layoutTable.Controls.Add(this.personTable, 2, 2);
+            this.layoutTable.Controls.Add(this.personAddRemoveButtons, 1, 1);
             this.layoutTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutTable.Location = new System.Drawing.Point(0, 0);
+            this.layoutTable.Margin = new System.Windows.Forms.Padding(0);
             this.layoutTable.Name = "layoutTable";
-            this.layoutTable.RowCount = 4;
+            this.layoutTable.RowCount = 5;
             this.layoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 14F));
+            this.layoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.layoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.layoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.layoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 14F));
@@ -94,10 +99,10 @@
             this.personListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.personListView.FullRowSelect = true;
             this.personListView.GridLines = true;
-            this.personListView.Location = new System.Drawing.Point(23, 17);
+            this.personListView.Location = new System.Drawing.Point(23, 44);
             this.personListView.MultiSelect = false;
             this.personListView.Name = "personListView";
-            this.personListView.Size = new System.Drawing.Size(224, 569);
+            this.personListView.Size = new System.Drawing.Size(224, 542);
             this.personListView.TabIndex = 0;
             this.personListView.UseCompatibleStateImageBehavior = false;
             this.personListView.View = System.Windows.Forms.View.Details;
@@ -133,7 +138,7 @@
             this.personTable.Controls.Add(this.isVegetarianCheckBox, 1, 6);
             this.personTable.Controls.Add(this.addressesLabel, 0, 8);
             this.personTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.personTable.Location = new System.Drawing.Point(253, 17);
+            this.personTable.Location = new System.Drawing.Point(253, 44);
             this.personTable.Name = "personTable";
             this.personTable.RowCount = 10;
             this.personTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
@@ -147,7 +152,7 @@
             this.personTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.personTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.personTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.personTable.Size = new System.Drawing.Size(913, 569);
+            this.personTable.Size = new System.Drawing.Size(913, 542);
             this.personTable.TabIndex = 1;
             // 
             // dateOfBirthDateTimePicker
@@ -166,84 +171,87 @@
             this.addressTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.addressTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.addressTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.addressTable.Controls.Add(this.cityTextBox2, 4, 3);
-            this.addressTable.Controls.Add(this.cityTextBox1, 2, 3);
-            this.addressTable.Controls.Add(this.postalCodeTextBox2, 4, 2);
-            this.addressTable.Controls.Add(this.postalCodeTextBox1, 2, 2);
-            this.addressTable.Controls.Add(this.streetTextBox2, 4, 1);
-            this.addressTable.Controls.Add(this.streetTextBox1, 2, 1);
-            this.addressTable.Controls.Add(this.cityLabel, 1, 3);
-            this.addressTable.Controls.Add(this.postalCodeLabel, 1, 2);
-            this.addressTable.Controls.Add(this.address2Label, 4, 0);
-            this.addressTable.Controls.Add(this.addressListView, 0, 0);
-            this.addressTable.Controls.Add(this.address1Label, 2, 0);
-            this.addressTable.Controls.Add(this.streetLabel, 1, 1);
+            this.addressTable.Controls.Add(this.cityTextBox2, 4, 4);
+            this.addressTable.Controls.Add(this.cityTextBox1, 2, 4);
+            this.addressTable.Controls.Add(this.postalCodeTextBox2, 4, 3);
+            this.addressTable.Controls.Add(this.postalCodeTextBox1, 2, 3);
+            this.addressTable.Controls.Add(this.streetTextBox2, 4, 2);
+            this.addressTable.Controls.Add(this.streetTextBox1, 2, 2);
+            this.addressTable.Controls.Add(this.cityLabel, 1, 4);
+            this.addressTable.Controls.Add(this.postalCodeLabel, 1, 3);
+            this.addressTable.Controls.Add(this.address2Label, 4, 1);
+            this.addressTable.Controls.Add(this.addressListView, 0, 1);
+            this.addressTable.Controls.Add(this.address1Label, 2, 1);
+            this.addressTable.Controls.Add(this.streetLabel, 1, 2);
+            this.addressTable.Controls.Add(this.addressAddRemoveButtons, 0, 0);
             this.addressTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addressTable.Location = new System.Drawing.Point(153, 206);
+            this.addressTable.Location = new System.Drawing.Point(150, 203);
+            this.addressTable.Margin = new System.Windows.Forms.Padding(0);
             this.addressTable.Name = "addressTable";
-            this.addressTable.RowCount = 5;
+            this.addressTable.RowCount = 6;
             this.personTable.SetRowSpan(this.addressTable, 2);
             this.addressTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.addressTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.addressTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.addressTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.addressTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.addressTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.addressTable.Size = new System.Drawing.Size(757, 360);
+            this.addressTable.Size = new System.Drawing.Size(763, 339);
             this.addressTable.TabIndex = 14;
             // 
             // cityTextBox2
             // 
             this.cityTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cityTextBox2.Location = new System.Drawing.Point(581, 84);
+            this.cityTextBox2.Location = new System.Drawing.Point(584, 111);
             this.cityTextBox2.Name = "cityTextBox2";
-            this.cityTextBox2.Size = new System.Drawing.Size(173, 20);
+            this.cityTextBox2.Size = new System.Drawing.Size(176, 20);
             this.cityTextBox2.TabIndex = 11;
             // 
             // cityTextBox1
             // 
             this.cityTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cityTextBox1.Location = new System.Drawing.Point(383, 84);
+            this.cityTextBox1.Location = new System.Drawing.Point(383, 111);
             this.cityTextBox1.Name = "cityTextBox1";
-            this.cityTextBox1.Size = new System.Drawing.Size(172, 20);
+            this.cityTextBox1.Size = new System.Drawing.Size(175, 20);
             this.cityTextBox1.TabIndex = 8;
             // 
             // postalCodeTextBox2
             // 
             this.postalCodeTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.postalCodeTextBox2.Location = new System.Drawing.Point(581, 57);
+            this.postalCodeTextBox2.Location = new System.Drawing.Point(584, 84);
             this.postalCodeTextBox2.Name = "postalCodeTextBox2";
-            this.postalCodeTextBox2.Size = new System.Drawing.Size(173, 20);
+            this.postalCodeTextBox2.Size = new System.Drawing.Size(176, 20);
             this.postalCodeTextBox2.TabIndex = 10;
             // 
             // postalCodeTextBox1
             // 
             this.postalCodeTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.postalCodeTextBox1.Location = new System.Drawing.Point(383, 57);
+            this.postalCodeTextBox1.Location = new System.Drawing.Point(383, 84);
             this.postalCodeTextBox1.Name = "postalCodeTextBox1";
-            this.postalCodeTextBox1.Size = new System.Drawing.Size(172, 20);
+            this.postalCodeTextBox1.Size = new System.Drawing.Size(175, 20);
             this.postalCodeTextBox1.TabIndex = 6;
             // 
             // streetTextBox2
             // 
             this.streetTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.streetTextBox2.Location = new System.Drawing.Point(581, 30);
+            this.streetTextBox2.Location = new System.Drawing.Point(584, 57);
             this.streetTextBox2.Name = "streetTextBox2";
-            this.streetTextBox2.Size = new System.Drawing.Size(173, 20);
+            this.streetTextBox2.Size = new System.Drawing.Size(176, 20);
             this.streetTextBox2.TabIndex = 9;
             // 
             // streetTextBox1
             // 
             this.streetTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.streetTextBox1.Location = new System.Drawing.Point(383, 30);
+            this.streetTextBox1.Location = new System.Drawing.Point(383, 57);
             this.streetTextBox1.Name = "streetTextBox1";
-            this.streetTextBox1.Size = new System.Drawing.Size(172, 20);
+            this.streetTextBox1.Size = new System.Drawing.Size(175, 20);
             this.streetTextBox1.TabIndex = 4;
             // 
             // cityLabel
             // 
             this.cityLabel.AutoSize = true;
             this.cityLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cityLabel.Location = new System.Drawing.Point(233, 81);
+            this.cityLabel.Location = new System.Drawing.Point(233, 108);
             this.cityLabel.Name = "cityLabel";
             this.cityLabel.Size = new System.Drawing.Size(144, 27);
             this.cityLabel.TabIndex = 7;
@@ -254,7 +262,7 @@
             // 
             this.postalCodeLabel.AutoSize = true;
             this.postalCodeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.postalCodeLabel.Location = new System.Drawing.Point(233, 54);
+            this.postalCodeLabel.Location = new System.Drawing.Point(233, 81);
             this.postalCodeLabel.Name = "postalCodeLabel";
             this.postalCodeLabel.Size = new System.Drawing.Size(144, 27);
             this.postalCodeLabel.TabIndex = 5;
@@ -265,9 +273,9 @@
             // 
             this.address2Label.AutoSize = true;
             this.address2Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.address2Label.Location = new System.Drawing.Point(581, 0);
+            this.address2Label.Location = new System.Drawing.Point(584, 27);
             this.address2Label.Name = "address2Label";
-            this.address2Label.Size = new System.Drawing.Size(173, 27);
+            this.address2Label.Size = new System.Drawing.Size(176, 27);
             this.address2Label.TabIndex = 2;
             this.address2Label.Text = "Address 2";
             this.address2Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -279,10 +287,10 @@
             this.addressListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addressListView.FullRowSelect = true;
             this.addressListView.GridLines = true;
-            this.addressListView.Location = new System.Drawing.Point(3, 3);
+            this.addressListView.Location = new System.Drawing.Point(3, 30);
             this.addressListView.Name = "addressListView";
             this.addressTable.SetRowSpan(this.addressListView, 5);
-            this.addressListView.Size = new System.Drawing.Size(224, 354);
+            this.addressListView.Size = new System.Drawing.Size(224, 306);
             this.addressListView.TabIndex = 0;
             this.addressListView.UseCompatibleStateImageBehavior = false;
             this.addressListView.View = System.Windows.Forms.View.Details;
@@ -296,9 +304,9 @@
             // 
             this.address1Label.AutoSize = true;
             this.address1Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.address1Label.Location = new System.Drawing.Point(383, 0);
+            this.address1Label.Location = new System.Drawing.Point(383, 27);
             this.address1Label.Name = "address1Label";
-            this.address1Label.Size = new System.Drawing.Size(172, 27);
+            this.address1Label.Size = new System.Drawing.Size(175, 27);
             this.address1Label.TabIndex = 1;
             this.address1Label.Text = "Address 1";
             this.address1Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -307,7 +315,7 @@
             // 
             this.streetLabel.AutoSize = true;
             this.streetLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.streetLabel.Location = new System.Drawing.Point(233, 27);
+            this.streetLabel.Location = new System.Drawing.Point(233, 54);
             this.streetLabel.Name = "streetLabel";
             this.streetLabel.Size = new System.Drawing.Size(144, 27);
             this.streetLabel.TabIndex = 3;
@@ -444,6 +452,22 @@
             this.addressesLabel.Text = "Addresses";
             this.addressesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // personAddRemoveButtons
+            // 
+            this.personAddRemoveButtons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.personAddRemoveButtons.Location = new System.Drawing.Point(23, 17);
+            this.personAddRemoveButtons.Name = "personAddRemoveButtons";
+            this.personAddRemoveButtons.Size = new System.Drawing.Size(224, 21);
+            this.personAddRemoveButtons.TabIndex = 2;
+            // 
+            // addressAddRemoveButtons
+            // 
+            this.addressAddRemoveButtons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addressAddRemoveButtons.Location = new System.Drawing.Point(3, 3);
+            this.addressAddRemoveButtons.Name = "addressAddRemoveButtons";
+            this.addressAddRemoveButtons.Size = new System.Drawing.Size(224, 21);
+            this.addressAddRemoveButtons.TabIndex = 12;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -496,6 +520,8 @@
         private System.Windows.Forms.TextBox cityTextBox2;
         private System.Windows.Forms.TextBox cityTextBox1;
         private System.Windows.Forms.DateTimePicker dateOfBirthDateTimePicker;
+        private Guiuiui.AddRemove.Buttons.StandardAddRemoveButtons personAddRemoveButtons;
+        private Guiuiui.AddRemove.Buttons.StandardAddRemoveButtons addressAddRemoveButtons;
     }
 }
 

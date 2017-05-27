@@ -80,6 +80,37 @@ namespace Guiuiui.ListView.Impl
         }
 
         /// <summary>
+        /// See <see cref="IListControl{TListItem}.SelectedItems"/>.
+        /// </summary>
+        public void SelectListItems(IEnumerable<TListItem> items)
+        {
+            ArgumentChecks.AssertNotNull(items, nameof(items));
+
+            var itemsToSelect = this._listView.Items
+                .Cast<ListViewItem>()
+                .Where(
+                    i =>
+                        i.Tag is TListItem &&
+                        items.Contains((TListItem)i.Tag))
+                .ToList();
+
+            var itemsToUnselect = this._listView.Items
+                .Cast<ListViewItem>()
+                .Where(i => !itemsToSelect.Contains(i))
+                .ToList();
+
+            foreach (var listViewItem in itemsToUnselect)
+            {
+                listViewItem.Selected = false;
+            }
+
+            foreach (var listViewItem in itemsToSelect)
+            {
+                listViewItem.Selected = true;
+            }
+        }
+
+        /// <summary>
         /// See <see cref="IListControl{TListItem}.SetItemsToDisplay"/>.
         /// </summary>
         public void SetListItemsToDisplay(IEnumerable<TListItem> listItems)

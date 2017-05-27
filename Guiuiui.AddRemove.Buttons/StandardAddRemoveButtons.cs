@@ -8,13 +8,14 @@ namespace Guiuiui.AddRemove.Buttons
 {
     using System;
     using System.Windows.Forms;
+    using AddRemove.ButtonController;
     using Base.InversionOfControl;
     using Base.RuntimeChecks;
     using ButtonController;
 
     public partial class StandardAddRemoveButtons : UserControl, IAddRemoveButtons
     {
-        private readonly IAddRemoveFactory _addRemoveFactory;
+        private readonly IAddRemoveFactory _addRemoveFactoryOrNull;
         private IButtonController _buttonController;
 
         /// <summary>
@@ -31,9 +32,7 @@ namespace Guiuiui.AddRemove.Buttons
         public StandardAddRemoveButtons(
             IAddRemoveFactory addRemoveFactory)
         {
-            ArgumentChecks.AssertNotNull(addRemoveFactory, nameof(addRemoveFactory));
-
-            this._addRemoveFactory = addRemoveFactory;
+            this._addRemoveFactoryOrNull = addRemoveFactory;
 
             this.InitializeComponent();
 
@@ -53,7 +52,12 @@ namespace Guiuiui.AddRemove.Buttons
                 throw new InvalidOperationException("The buttons have already been initialized.");
             }
 
-            this._buttonController = this._addRemoveFactory.AttachToButtons(
+            if (this._addRemoveFactoryOrNull == null)
+            {
+                return new DummyButtonController();
+            }
+
+            this._buttonController = this._addRemoveFactoryOrNull.AttachToButtons(
                 addRemoveController,
                 this._addButton,
                 this._removeButton);

@@ -4,10 +4,11 @@
     using System.Windows.Forms;
     using Guiuiui.ViewModel;
     using TestBench.SampleModels;
-    using Guiuiui.Tools;
     using SampleTextConverters;
     using Guiuiui.ListView;
     using Guiuiui.Facade;
+    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Merely a little test bench for the <see cref="Guiuiui"/> namespace...
@@ -20,6 +21,8 @@
         private readonly IListView<Address> _addressListViewWrapper;
         private readonly IViewModel<Address> _addressViewModel1;
         private readonly IViewModel<Address> _addressViewModel2;
+
+        private readonly IList<Person> _persons;
 
         public MainForm()
         {
@@ -35,8 +38,12 @@
             this._addressViewModel2 = ToolBox.ViewModelFactory.CreateViewModel<Address>();
 
             this.SetupDataBinding();
+            this.SetupAddRemoveControllers();
             this.FillComboBoxes();
-            this.InitializePersonListView();
+
+            this._persons = this.CreatePersons();
+
+            this._personListViewWrapper.SetListItemsToDisplay(this._persons);
         }
 
         private void SetupDataBinding()
@@ -76,13 +83,34 @@
             this._addressViewModel2.BindPropertyGetAndSet(a => a.City, (a, v) => a.City = v).ToTextBox(this.cityTextBox2);
         }
 
+        private void SetupAddRemoveControllers()
+        {
+            // "Persons"
+            var personAddRemoveController = ToolBox.AddRemoveFactory.CreateAddRemoveController(
+                () => this._persons,
+                this._personListViewWrapper);
+
+            this.personAddRemoveButtons.Initialize(personAddRemoveController);
+
+            // "Addresses"
+            var addressAddRemoveController = ToolBox.AddRemoveFactory.CreateAddRemoveController(
+                this._personViewModel,
+                p => p.Addresses,
+                this._addressListViewWrapper);
+
+            this.addressAddRemoveButtons.Initialize(addressAddRemoveController);
+        }
+
         private void FillComboBoxes()
         {
             this.genderComboBox.Items.Add(Gender.Male);
             this.genderComboBox.Items.Add(Gender.Female);
         }
 
-        private void InitializePersonListView()
+        /// <summary>
+        /// Just creates some dummy data for demonstration purposes.
+        /// </summary>
+        private IList<Person> CreatePersons()
         {
             var fritzMeier = new Person
             {
@@ -153,7 +181,7 @@
                 gunhildeStaffelbach
             };
 
-            this._personListViewWrapper.SetListItemsToDisplay(persons);
+            return persons.ToList();
         }
     }
 }

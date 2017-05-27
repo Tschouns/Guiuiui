@@ -30,7 +30,7 @@ namespace Guiuiui.AddRemove
         IAddRemove CreateAddRemoveController<TItem>(
             Func<ICollection<TItem>> getItemCollectionFunc,
             IItemProvider<TItem> addItemProvider,
-            ISelection<TItem> removeSelection)
+            IListControl<TItem> listControl)
             where TItem : class;
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Guiuiui.AddRemove
         /// </typeparam>
         IAddRemove CreateAddRemoveController<TItem>(
             Func<ICollection<TItem>> getItemCollectionFunc,
-            ISelection<TItem> removeSelection)
+            IListControl<TItem> listControl)
             where TItem : class, new();
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Guiuiui.AddRemove
             IViewModel<TParentItem> parentViewModel,
             Func<TParentItem, ICollection<TItem>> getItemCollectionPropertyFunc,
             IItemProvider<TItem> addItemProvider,
-            ISelection<TItem> removeSelection)
+            IListControl<TItem> listControl)
             where TParentItem : class
             where TItem : class;
 
@@ -75,7 +75,7 @@ namespace Guiuiui.AddRemove
         IAddRemove CreateAddRemoveController<TParentItem, TItem>(
             IViewModel<TParentItem> parentViewModel,
             Func<TParentItem, ICollection<TItem>> getItemCollectionPropertyFunc,
-            ISelection<TItem> removeSelection)
+            IListControl<TItem> listControl)
             where TParentItem : class
             where TItem : class, new();
 
