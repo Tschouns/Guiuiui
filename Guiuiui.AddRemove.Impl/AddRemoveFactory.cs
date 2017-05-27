@@ -14,6 +14,9 @@ namespace Guiuiui.AddRemove.Impl
     using ItemProvider;
     using ViewModel.List;
     using CollectionProvider;
+    using AddRemove.ButtonController;
+    using System.Windows.Forms;
+    using ButtonController;
 
     /// <summary>
     /// See <see cref="IAddRemoveFactory"/>
@@ -104,6 +107,24 @@ namespace Guiuiui.AddRemove.Impl
                 collectionProvider,
                 new SingleInstanceCreator<TItem>(),
                 new SelectionWrapper<TItem>(removeSelection));
+        }
+
+        /// <summary>
+        /// See <see cref="IAddRemoveFactory.AttachToButtons(IAddRemove, Button, Button)"/>.
+        /// </summary>
+        public IButtonController AttachToButtons(
+            IAddRemove addRemoveController,
+            Button addButton,
+            Button removeButton)
+        {
+            ArgumentChecks.AssertNotNull(addRemoveController, nameof(addRemoveController));
+            ArgumentChecks.AssertNotNull(addButton, nameof(addButton));
+            ArgumentChecks.AssertNotNull(removeButton, nameof(removeButton));
+
+            return new LockButtonController(
+                addButton,
+                removeButton,
+                addRemoveController);
         }
     }
 }

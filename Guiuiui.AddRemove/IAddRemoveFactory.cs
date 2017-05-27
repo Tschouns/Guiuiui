@@ -8,6 +8,8 @@ namespace Guiuiui.AddRemove
 {
     using System;
     using System.Collections.Generic;
+    using System.Windows.Forms;
+    using ButtonController;
     using Guiuiui.AddRemove.ItemProvider;
     using Guiuiui.ViewModel.List;
     using ViewModel;
@@ -76,5 +78,13 @@ namespace Guiuiui.AddRemove
             ISelection<TItem> removeSelection)
             where TParentItem : class
             where TItem : class, new();
+
+        /// <summary>
+        /// Attaches the specified <see cref="IAddRemove"/> controller instance to the specified buttons.
+        /// </summary>
+        IButtonController AttachToButtons(
+            IAddRemove addRemoveController,
+            Button addButton,
+            Button removeButton);
     }
 }

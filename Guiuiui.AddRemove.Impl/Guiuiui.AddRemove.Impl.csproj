@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,6 +44,7 @@
     <Compile Include="AddRemoveController.cs" />
     <Compile Include="AddRemoveFactory.cs" />
     <Compile Include="AddRemoveInitializationPlugin.cs" />
+    <Compile Include="ButtonController\LockButtonController.cs" />
     <Compile Include="CollectionProvider\ICollectionProvider.cs" />
     <Compile Include="CollectionProvider\CustomFuncCollectionProvider.cs" />
     <Compile Include="CollectionProvider\ParentViewModelCollectionProvider.cs" />

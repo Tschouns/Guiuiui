@@ -4,6 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using Guiuiui.AddRemove.ButtonController;
+
 namespace Guiuiui.AddRemove.Buttons
 {
     /// <summary>
@@ -14,6 +16,6 @@ namespace Guiuiui.AddRemove.Buttons
         /// <summary>
         /// Initializes the buttons, and associates them with an <see cref="IAddRemove"/> controller.
         /// </summary>
-        void Initialize(IAddRemove addRemoveController);
+        IButtonController Initialize(IAddRemove addRemoveController);
     }
 }
