@@ -15,13 +15,16 @@
     /// </summary>
     public partial class MainForm : Form
     {
+        // Person
         private readonly IListView<Person> _personListViewWrapper;
         private readonly IViewModel<Person> _personViewModel;
 
+        // Address
         private readonly IListView<Address> _addressListViewWrapper;
         private readonly IViewModel<Address> _addressViewModel1;
         private readonly IViewModel<Address> _addressViewModel2;
 
+        // Mock data
         private readonly IList<Person> _persons;
 
         public MainForm()
@@ -31,11 +34,11 @@
             ToolBox.TextConverterRegistry.RegisterTextConverter(new GenderTextConverter());
             ToolBox.TextConverterRegistry.RegisterTextConverter(new AddressTextConverter());
 
-            this._personListViewWrapper = ToolBox.ListViewFactory.CreateListView<Person>(this.personListView);
-            this._personViewModel = ToolBox.ViewModelFactory.CreateViewModel<Person>();
-            this._addressListViewWrapper = ToolBox.ListViewFactory.CreateListView<Address>(this.addressListView);
-            this._addressViewModel1 = ToolBox.ViewModelFactory.CreateViewModel<Address>();
-            this._addressViewModel2 = ToolBox.ViewModelFactory.CreateViewModel<Address>();
+            this._personListViewWrapper = ToolBox.ListViewFactory.Create<Person>(this.personListView);
+            this._personViewModel = ToolBox.ViewModelFactory.Create<Person>();
+            this._addressListViewWrapper = ToolBox.ListViewFactory.Create<Address>(this.addressListView);
+            this._addressViewModel1 = ToolBox.ViewModelFactory.Create<Address>();
+            this._addressViewModel2 = ToolBox.ViewModelFactory.Create<Address>();
 
             this.SetupDataBinding();
             this.SetupAddRemoveControllers();

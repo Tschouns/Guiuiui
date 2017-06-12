@@ -31,12 +31,12 @@ namespace Guiuiui.ListView.Impl
         }
 
         /// <summary>
-        /// See <see cref="IListViewFactory.CreateListView{TListItem}(System.Windows.Forms.ListView)"/>.
+        /// See <see cref="IListViewFactory.Create{TListItem}"/>.
         /// </summary>
         /// <typeparam name="TListItem">
-        /// See <see cref="IListViewFactory.CreateListView{TListItem}(System.Windows.Forms.ListView)"/>.
+        /// See <see cref="IListViewFactory.Create{TListItem}"/>.
         /// </typeparam>
-        public IListView<TListItem> CreateListView<TListItem>(ListView listView)
+        public IListView<TListItem> Create<TListItem>(ListView listView)
             where TListItem : class
         {
             ArgumentChecks.AssertNotNull(listView, nameof(listView));

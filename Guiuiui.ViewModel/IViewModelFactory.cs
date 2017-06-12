@@ -17,7 +17,7 @@ namespace Guiuiui.ViewModel
         /// <typeparam name="TModel">
         /// Type of the underlying data model
         /// </typeparam>
-        IViewModel<TModel> CreateViewModel<TModel>()
+        IViewModel<TModel> Create<TModel>()
             where TModel : class;
     }
 }

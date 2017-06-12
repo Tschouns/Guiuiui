@@ -27,12 +27,12 @@ namespace Guiuiui.ViewModel.Impl
         }
 
         /// <summary>
-        /// See <see cref="IViewModelFactory.CreateViewModel{TModel}"/>.
+        /// See <see cref="IViewModelFactory.Create{TModel}"/>.
         /// </summary>
         /// <typeparam name="TModel">
-        /// See <see cref="IViewModelFactory.CreateViewModel{TModel}"/>.
+        /// See <see cref="IViewModelFactory.Create{TModel}"/>.
         /// </typeparam>
-        public IViewModel<TModel> CreateViewModel<TModel>()
+        public IViewModel<TModel> Create<TModel>()
             where TModel : class
         {
             return new ViewModel<TModel>(this._controlAdapterFactory);
