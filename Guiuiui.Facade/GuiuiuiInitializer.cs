@@ -7,6 +7,7 @@
 namespace Guiuiui.Facade
 {
     using System.Collections.Generic;
+    using Guiuiui.AddRemove.Impl;
     using Guiuiui.Base.InversionOfControl;
     using Guiuiui.Base.StartUp;
     using Guiuiui.ListView.Impl;
@@ -25,6 +26,7 @@ namespace Guiuiui.Facade
             projectInitializers.Add(new ToolsProjectInitializer());
             projectInitializers.Add(new ViewModelProjectInitializer());
             projectInitializers.Add(new ListViewProjectInitializer());
+            projectInitializers.Add(new AddRemoveProjectInitializer());
 
             foreach (var projectInitializer in projectInitializers)
             {
