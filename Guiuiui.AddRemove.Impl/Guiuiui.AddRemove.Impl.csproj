@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="AddRemoveController.cs" />
     <Compile Include="AddRemoveFactory.cs" />
-    <Compile Include="AddRemoveInitializationPlugin.cs" />
+    <Compile Include="AddRemoveProjectInitializer.cs" />
     <Compile Include="ButtonController\LockButtonController.cs" />
     <Compile Include="CollectionProvider\ICollectionProvider.cs" />
     <Compile Include="CollectionProvider\CustomFuncCollectionProvider.cs" />

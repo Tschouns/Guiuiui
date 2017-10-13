@@ -6,12 +6,16 @@
 
 namespace Guiuiui.Base.StartUp
 {
-    using System;
+    using Guiuiui.Base.InversionOfControl;
 
     /// <summary>
-    /// Used to identify <see cref="IProjectInitializationPlugin"/> classes which initialize projects.
+    /// Provides a common interface for project initializer classed.
     /// </summary>
-    public sealed class ProjectInitializationPluginAttribute : Attribute
+    public interface IProjectInitializer
     {
+        /// <summary>
+        /// Performs all the necessary IOC container registrations for the project.
+        /// </summary>
+        void PerformIocContainerRegistrations(IIocContainer aIocContainer);
     }
 }

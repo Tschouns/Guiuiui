@@ -61,7 +61,7 @@
     <Compile Include="Reflection\TypeHelper.cs" />
     <Compile Include="TextConverter\GenericDefaultTextConverter.cs" />
     <Compile Include="TextConverter\TextConverterRegistry.cs" />
-    <Compile Include="ToolsInitializationPlugin.cs" />
+    <Compile Include="ToolsProjectInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Guiuiui.Base\Guiuiui.Base.csproj">

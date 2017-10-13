@@ -68,7 +68,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel.cs" />
     <Compile Include="ViewModelFactory.cs" />
-    <Compile Include="ViewModelInitializationPlugin.cs" />
+    <Compile Include="ViewModelProjectInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Guiuiui.Base\Guiuiui.Base.csproj">

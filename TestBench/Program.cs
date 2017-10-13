@@ -8,7 +8,7 @@ namespace TestBench
 {
     using System;
     using System.Windows.Forms;
-    using Guiuiui.Base.StartUp;
+    using Guiuiui.Facade;
 
     static class Program
     {
@@ -18,7 +18,7 @@ namespace TestBench
         [STAThread]
         static void Main()
         {
-            StartUp.InitializeComponents();
+            GuiuiuiInitializer.Initialize();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

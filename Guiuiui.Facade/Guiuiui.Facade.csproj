@@ -40,10 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GuiuiuiInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ToolBox.cs" />
+    <Compile Include="GuiuiuiToolBox.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Guiuiui.AddRemove.Impl\Guiuiui.AddRemove.Impl.csproj">
+      <Project>{998fdbec-e68c-4dcc-b1f7-7c39dbca26f4}</Project>
+      <Name>Guiuiui.AddRemove.Impl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Guiuiui.AddRemove\Guiuiui.AddRemove.csproj">
       <Project>{657f857f-b4c4-4f42-95d4-74345a0f20ae}</Project>
       <Name>Guiuiui.AddRemove</Name>
@@ -52,13 +57,25 @@
       <Project>{C2B1A129-A67E-4E39-B921-51905ED0672A}</Project>
       <Name>Guiuiui.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Guiuiui.ListView.Impl\Guiuiui.ListView.Impl.csproj">
+      <Project>{56cd2995-a231-483a-bb87-e5563a2ac2ba}</Project>
+      <Name>Guiuiui.ListView.Impl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Guiuiui.ListView\Guiuiui.ListView.csproj">
       <Project>{ea5ec808-bb74-4dd6-b699-bd32959d2e51}</Project>
       <Name>Guiuiui.ListView</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Guiuiui.Tools.Impl\Guiuiui.Tools.Impl.csproj">
+      <Project>{f606bb2b-90a1-49ee-8b72-bffb0d85df2a}</Project>
+      <Name>Guiuiui.Tools.Impl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Guiuiui.Tools\Guiuiui.Tools.csproj">
       <Project>{2eb12feb-2469-4729-95bd-fee3a7c8433a}</Project>
       <Name>Guiuiui.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Guiuiui.ViewModel.Impl\Guiuiui.ViewModel.Impl.csproj">
+      <Project>{e43d5f08-2293-49ef-861b-aa7e7fed669b}</Project>
+      <Name>Guiuiui.ViewModel.Impl</Name>
     </ProjectReference>
     <ProjectReference Include="..\Guiuiui.ViewModel\Guiuiui.ViewModel.csproj">
       <Project>{4be6803e-5a6a-4a5f-9ca1-fc038a99d8f0}</Project>

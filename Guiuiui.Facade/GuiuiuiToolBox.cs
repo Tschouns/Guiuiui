@@ -17,7 +17,7 @@ namespace Guiuiui.Facade
     /// <summary>
     /// Provides access to factories and the likes from different <see cref="Guiuiui"/> libraries.
     /// </summary>
-    public static class ToolBox
+    public static class GuiuiuiToolBox
     {
         private static readonly Lazy<IAddRemoveFactory> _lazyAddRemoveFactory = new Lazy<IAddRemoveFactory>(GetAddRemoveFactoryInstance, true);
         private static readonly Lazy<IListViewFactory> _lazyListViewFactory = new Lazy<IListViewFactory>(GetListViewFactoryInstance, true);

@@ -54,7 +54,7 @@
     <Compile Include="DataBinding\ListViewSubItemCell.cs" />
     <Compile Include="ListView.cs" />
     <Compile Include="ListViewFactory.cs" />
-    <Compile Include="ListViewInitializationPlugin.cs" />
+    <Compile Include="ListViewProjectInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

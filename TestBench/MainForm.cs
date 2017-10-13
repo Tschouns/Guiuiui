@@ -31,14 +31,14 @@
         {
             this.InitializeComponent();
 
-            ToolBox.TextConverterRegistry.RegisterTextConverter(new GenderTextConverter());
-            ToolBox.TextConverterRegistry.RegisterTextConverter(new AddressTextConverter());
+            GuiuiuiToolBox.TextConverterRegistry.RegisterTextConverter(new GenderTextConverter());
+            GuiuiuiToolBox.TextConverterRegistry.RegisterTextConverter(new AddressTextConverter());
 
-            this._personListViewWrapper = ToolBox.ListViewFactory.Create<Person>(this.personListView);
-            this._personViewModel = ToolBox.ViewModelFactory.Create<Person>();
-            this._addressListViewWrapper = ToolBox.ListViewFactory.Create<Address>(this.addressListView);
-            this._addressViewModel1 = ToolBox.ViewModelFactory.Create<Address>();
-            this._addressViewModel2 = ToolBox.ViewModelFactory.Create<Address>();
+            this._personListViewWrapper = GuiuiuiToolBox.ListViewFactory.Create<Person>(this.personListView);
+            this._personViewModel = GuiuiuiToolBox.ViewModelFactory.Create<Person>();
+            this._addressListViewWrapper = GuiuiuiToolBox.ListViewFactory.Create<Address>(this.addressListView);
+            this._addressViewModel1 = GuiuiuiToolBox.ViewModelFactory.Create<Address>();
+            this._addressViewModel2 = GuiuiuiToolBox.ViewModelFactory.Create<Address>();
 
             this.SetupDataBinding();
             this.SetupAddRemoveControllers();
@@ -89,14 +89,14 @@
         private void SetupAddRemoveControllers()
         {
             // "Persons"
-            var personAddRemoveController = ToolBox.AddRemoveFactory.CreateAddRemoveController(
+            var personAddRemoveController = GuiuiuiToolBox.AddRemoveFactory.CreateAddRemoveController(
                 () => this._persons,
                 this._personListViewWrapper);
 
             this.personAddRemoveButtons.Initialize(personAddRemoveController);
 
             // "Addresses"
-            var addressAddRemoveController = ToolBox.AddRemoveFactory.CreateAddRemoveController(
+            var addressAddRemoveController = GuiuiuiToolBox.AddRemoveFactory.CreateAddRemoveController(
                 this._personViewModel,
                 p => p.Addresses,
                 this._addressListViewWrapper);
