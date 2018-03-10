@@ -48,6 +48,7 @@
             this.addressColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.address1Label = new System.Windows.Forms.Label();
             this.streetLabel = new System.Windows.Forms.Label();
+            this.addressAddRemoveButtons = new Guiuiui.AddRemove.Buttons.StandardAddRemoveButtons();
             this.fullNameTextBox = new System.Windows.Forms.TextBox();
             this.fullNameLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
@@ -62,7 +63,6 @@
             this.isVegetarianCheckBox = new System.Windows.Forms.CheckBox();
             this.addressesLabel = new System.Windows.Forms.Label();
             this.personAddRemoveButtons = new Guiuiui.AddRemove.Buttons.StandardAddRemoveButtons();
-            this.addressAddRemoveButtons = new Guiuiui.AddRemove.Buttons.StandardAddRemoveButtons();
             this.layoutTable.SuspendLayout();
             this.personTable.SuspendLayout();
             this.addressTable.SuspendLayout();
@@ -322,6 +322,14 @@
             this.streetLabel.Text = "Street";
             this.streetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // addressAddRemoveButtons
+            // 
+            this.addressAddRemoveButtons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addressAddRemoveButtons.Location = new System.Drawing.Point(3, 3);
+            this.addressAddRemoveButtons.Name = "addressAddRemoveButtons";
+            this.addressAddRemoveButtons.Size = new System.Drawing.Size(224, 21);
+            this.addressAddRemoveButtons.TabIndex = 12;
+            // 
             // fullNameTextBox
             // 
             this.fullNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -459,14 +467,6 @@
             this.personAddRemoveButtons.Name = "personAddRemoveButtons";
             this.personAddRemoveButtons.Size = new System.Drawing.Size(224, 21);
             this.personAddRemoveButtons.TabIndex = 2;
-            // 
-            // addressAddRemoveButtons
-            // 
-            this.addressAddRemoveButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addressAddRemoveButtons.Location = new System.Drawing.Point(3, 3);
-            this.addressAddRemoveButtons.Name = "addressAddRemoveButtons";
-            this.addressAddRemoveButtons.Size = new System.Drawing.Size(224, 21);
-            this.addressAddRemoveButtons.TabIndex = 12;
             // 
             // MainForm
             // 

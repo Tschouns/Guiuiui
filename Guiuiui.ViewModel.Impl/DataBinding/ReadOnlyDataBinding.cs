@@ -21,6 +21,11 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
         private readonly IControlAdapter<TPropertyValue> _controlAdapter;
 
         /// <summary>
+        /// Used to prevent a stack overflow in case of back coupling due to ill-defined bindings.
+        /// </summary>
+        private int _callStackDepth = 0;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ReadOnlyDataBinding{TPropertyValue}"/> class.
         /// </summary>
         public ReadOnlyDataBinding(
@@ -72,11 +77,21 @@ namespace Guiuiui.ViewModel.Impl.DataBinding
         }
 
         private void ModelToControl()
-        {
+        {   
+            // Prevent stack overflow.
+            if (this._callStackDepth > 10)
+            {
+                return;
+            }
+
+            // Model value has changed?
             var modelValue = this._modelPropertyGetter.Get();
             if (!object.Equals(modelValue, this._controlAdapter.Value))
             {
+                // Update the control.
+                this._callStackDepth++;
                 this._controlAdapter.Value = modelValue;
+                this._callStackDepth--;
             }
         }
 

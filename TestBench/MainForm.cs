@@ -16,11 +16,11 @@
     public partial class MainForm : Form
     {
         // Person
-        private readonly IListView<Person> _personListViewWrapper;
+        private readonly IListView<Person> _personListView;
         private readonly IViewModel<Person> _personViewModel;
 
         // Address
-        private readonly IListView<Address> _addressListViewWrapper;
+        private readonly IListView<Address> _addressListView;
         private readonly IViewModel<Address> _addressViewModel1;
         private readonly IViewModel<Address> _addressViewModel2;
 
@@ -34,9 +34,10 @@
             GuiuiuiToolBox.TextConverterRegistry.RegisterTextConverter(new GenderTextConverter());
             GuiuiuiToolBox.TextConverterRegistry.RegisterTextConverter(new AddressTextConverter());
 
-            this._personListViewWrapper = GuiuiuiToolBox.ListViewFactory.Create<Person>(this.personListView);
+            this._personListView = GuiuiuiToolBox.ListViewFactory.Create<Person>(this.personListView);
             this._personViewModel = GuiuiuiToolBox.ViewModelFactory.Create<Person>();
-            this._addressListViewWrapper = GuiuiuiToolBox.ListViewFactory.Create<Address>(this.addressListView);
+
+            this._addressListView = GuiuiuiToolBox.ListViewFactory.Create<Address>(this.addressListView);
             this._addressViewModel1 = GuiuiuiToolBox.ViewModelFactory.Create<Address>();
             this._addressViewModel2 = GuiuiuiToolBox.ViewModelFactory.Create<Address>();
 
@@ -46,17 +47,17 @@
 
             this._persons = this.CreatePersons();
 
-            this._personListViewWrapper.SetListItemsToDisplay(this._persons);
+            this._personListView.SetListItemsToDisplay(this._persons);
         }
 
         private void SetupDataBinding()
         {
             // "Persons" list view
-            this._personListViewWrapper
+            this._personListView
                 .AddColumnBindingForProperty(p => p.FirstName)
                 .AddColumnBindingForProperty(p => p.LastName);
 
-            this._personListViewWrapper.AddViewModelForSelectedItem(this._personViewModel);
+            this._personListView.AddViewModelForSelectedItem(this._personViewModel);
 
             // "Person" view model
             this._personViewModel.BindPropertyGet(p => p.Summary).ToLabel(this.summaryLabel);
@@ -69,11 +70,11 @@
             this._personViewModel.BindPropertyGetAndSet(p => p.Gender, (p, v) => p.Gender = v).ToComboBox(this.genderComboBox);
             this._personViewModel.BindPropertyGetAndSet(p => p.IsVegetarian, (p, v) => p.IsVegetarian = v).ToCheckBox(this.isVegetarianCheckBox);
 
-            this._personViewModel.BindListProperty(p => p.Addresses).ToListControl(this._addressListViewWrapper);
+            this._personViewModel.BindListProperty(p => p.Addresses).ToListControl(this._addressListView);
 
             // "Addresses" list view
-            this._addressListViewWrapper.AddViewModelForSelectedItem(this._addressViewModel1);
-            this._addressListViewWrapper.AddViewModelForSelectedItem(this._addressViewModel2);
+            this._addressListView.AddViewModelForSelectedItem(this._addressViewModel1);
+            this._addressListView.AddViewModelForSelectedItem(this._addressViewModel2);
 
             // "Address 1" view model
             this._addressViewModel1.BindPropertyGetAndSet(a => a.Street, (a, v) => a.Street = v).ToTextBox(this.streetTextBox1);
@@ -91,7 +92,7 @@
             // "Persons"
             var personAddRemoveController = GuiuiuiToolBox.AddRemoveFactory.CreateAddRemoveController(
                 () => this._persons,
-                this._personListViewWrapper);
+                this._personListView);
 
             this.personAddRemoveButtons.Initialize(personAddRemoveController);
 
@@ -99,7 +100,7 @@
             var addressAddRemoveController = GuiuiuiToolBox.AddRemoveFactory.CreateAddRemoveController(
                 this._personViewModel,
                 p => p.Addresses,
-                this._addressListViewWrapper);
+                this._addressListView);
 
             this.addressAddRemoveButtons.Initialize(addressAddRemoveController);
         }
